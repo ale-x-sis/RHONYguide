@@ -664,7 +664,7 @@ function renderCastMeta(name) {
   const raw = castArchetypes[name];
 
   if (!raw) {
-    return `<span>RHONY cast member. Details pending.</span>`;
+    return `<div class="cast-meta"><p>RHONY cast member. Details pending.</p></div>`;
   }
 
   const knownFor = Array.isArray(raw.knownFor) && raw.knownFor.length
@@ -683,11 +683,6 @@ function renderCastMeta(name) {
       <p><strong>Quotes:</strong> <span class="inline-list">${quotes}</span></p>
     </div>
   `;
-}
-
-  const match = raw.match(/^Known for: ([^.]+)\. (.+)$/);
-  if (!match) return `<span>${escapeHtml(raw)}</span>`;
-  return `<span><strong class="franchise-name">${escapeHtml(match[1])}</strong>. ${escapeHtml(match[2])}</span>`;
 }
 
 function renderTripsGuide() {
