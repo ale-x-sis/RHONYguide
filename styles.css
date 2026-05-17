@@ -661,6 +661,28 @@ details summary {
   background: #fffdf7;
 }
 
+.cast-meta {
+  display: grid;
+  gap: 0.35rem;
+  margin-top: 0.55rem;
+}
+
+.cast-meta p {
+  margin: 0;
+}
+
+.inline-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.55rem;
+}
+
+.inline-list span:not(:last-child)::after {
+  content: "•";
+  margin-left: 0.55rem;
+  color: var(--oxblood);
+}
+
 .cast-name,
 .trip-card strong {
   display: block;
