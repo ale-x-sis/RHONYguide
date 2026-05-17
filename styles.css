@@ -385,6 +385,8 @@ main {
 }
 
 .table-wrap {
+  max-height: 75vh;
+  overflow: auto;
   overflow-x: auto;
 }
 
@@ -734,7 +736,13 @@ tr:target {
     overflow: hidden;
     clip: rect(0 0 0 0);
   }
-
+thead th {
+  position: sticky;
+  top: 72px;
+  z-index: 20;
+  background: #ead9bd;
+  box-shadow: 0 1px 0 rgba(8, 11, 18, 0.08);
+}
   tr {
     margin: 0.8rem;
     border: 1px solid var(--border);
