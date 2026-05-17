@@ -1,8 +1,50 @@
 const seasons = window.GUIDE_DATA || [];
 const allEpisodes = seasons.flatMap((season) => season.episodes);
 
+const seasonYears = {
+  6: 2014,
+  7: 2015,
+  8: 2016,
+  9: 2017,
+  10: 2018,
+  11: 2019,
+  12: 2020,
+  13: 2021,
+  14: 2023,
+  15: 2024
+};
+
+const guideCategories = [
+  {
+    id: "nyc",
+    label: "🍎 NYC",
+    description: "Lived-in city texture: restaurants, apartments, geography, class codes, and the feeling of overhearing three tables at once.",
+    episodes: () => topEpisodes((episode) => episode.nyc * 20 + episode.enjoyment / 10)
+  },
+  {
+    id: "drama",
+    label: "😮‍💨 Drama",
+    description: "Bias, darkness, emotionally heavy material, and socially draining group dynamics bundled into one quick mood check.",
+    episodes: () => topEpisodes((episode) => episode.bias * 18 + episode.darkness * 22 + episode.enjoyment / 20)
+  },
+  {
+    id: "enjoyment",
+    label: "✨ Enjoyment",
+    description: "A personalized estimate for “will this satisfy after work?” energy, not a moral ranking or recap-grade score.",
+    episodes: () => topEpisodes((episode) => episode.enjoyment)
+  },
+  {
+    id: "girls-trips",
+    label: "✈️ Girls Trips",
+    description: "Travel episodes outside the tristate orbit: when the group leaves its usual geography and takes the chaos on the road.",
+    episodes: () => topEpisodes((episode) => (isGirlsTrip(episode) ? 1000 : 0) + episode.enjoyment)
+  }
+];
+
 const castArchetypes = {
   "Aviva Drescher": "Known for: The Real Housewives of New York City. Medical anxiety, social provocation, extremely loaded family sidebars.",
+  "Barbara Kavovit (Friend Of)": "Known for: The Real Housewives of New York City. Construction-world bluntness, Hamptons clambake hosting, cabaret-adjacent reality checks.",
+  "Bershan Shaw (Friend Of)": "Known for: The Real Housewives of New York City. Wellness-world candor, Salem conflict spark, group-disrupting directness.",
   "Bethenny Frankel": "Known for: The Real Housewives of New York City. Speed, grief, business boundaries, emotional x-ray vision.",
   "Brynn Whitfield": "Known for: The Real Housewives of New York City reboot. Flirtation as strategy, vulnerability under lacquer.",
   "Carole Radziwill": "Known for: The Real Housewives of New York City. Downtown cool, writerly detachment, late-night social reads.",
@@ -62,17 +104,22 @@ const darkThemeLabels = {
 };
 
 const destinationPatterns = [
+  { name: "Anguilla", patterns: ["Anguilla"] },
   { name: "Atlantic City", patterns: ["Atlantic City", "Casinos", "Gambling"] },
   { name: "Berkshires", patterns: ["Berkshires"] },
   { name: "Cartagena, Colombia", patterns: ["Cartagena", "Colombia"] },
+  { name: "Cancun, Mexico", patterns: ["Cancun"] },
+  { name: "Connecticut", patterns: ["Connecticut"] },
   { name: "Hamptons", patterns: ["Hamptons"] },
   { name: "Miami", patterns: ["Miami"] },
   { name: "Mexico", patterns: ["Mexico", "Puerto Vallarta", "Cancun", "Tulum", "Tequila", "Villas"] },
   { name: "Montana", patterns: ["Montana", "Cabins", "Mountains", "Fishing", "Cattle", "Hatchets"] },
   { name: "Newport", patterns: ["Newport"] },
+  { name: "Puerto Rico", patterns: ["Puerto Rico"] },
   { name: "Salem", patterns: ["Salem"] },
   { name: "Saratoga Springs", patterns: ["Saratoga"] },
   { name: "Turks and Caicos", patterns: ["Turks", "Caicos"] },
+  { name: "Upstate New York", patterns: ["Upstate New York"] },
   { name: "Vermont", patterns: ["Vermont", "Snow", "Blizzard"] }
 ];
 
@@ -84,12 +131,9 @@ const el = {
   minEnjoymentLabel: document.querySelector("#minEnjoymentLabel"),
   travelFilter: document.querySelector("#travelFilter"),
   nycFilter: document.querySelector("#nycFilter"),
-  biasMode: document.querySelector("#biasMode"),
-  biasTheme: document.querySelector("#biasTheme"),
-  darkMode: document.querySelector("#darkMode"),
-  darkTheme: document.querySelector("#darkTheme"),
   seasonContainer: document.querySelector("#seasonContainer"),
   resultCount: document.querySelector("#resultCount"),
+  howToCards: document.querySelector("#howToCards"),
   castGuide: document.querySelector("#castGuide"),
   tripsGuide: document.querySelector("#tripsGuide"),
 };
@@ -108,17 +152,53 @@ function init() {
   document.querySelector("#filters").addEventListener("change", renderEpisodeGuide);
   el.seasonContainer.addEventListener("click", handleGuideClick);
   document.addEventListener("click", handleEpisodeJump);
-  initAnchorNavigation();
+  renderHowToCards();
   renderEpisodeGuide();
   renderCastGuide();
   renderTripsGuide();
 }
 
+function renderHowToCards() {
+  el.howToCards.innerHTML = guideCategories.map((category, index) => `
+    <details class="guide-card">
+      <summary>
+        <span class="guide-card-intro">
+          <span class="stamp">${category.label}</span>
+          <span>${escapeHtml(category.description)}</span>
+        </span>
+        <span class="guide-card-toggle" aria-hidden="true"></span>
+      </summary>
+      <div class="guide-picks">
+        ${category.episodes().map(renderGuidePick).join("")}
+      </div>
+    </details>
+  `).join("");
+}
+
+function topEpisodes(score) {
+  return [...allEpisodes]
+    .filter((episode) => score(episode) > 0)
+    .sort((a, b) => {
+      const difference = score(b) - score(a);
+      if (difference !== 0) return difference;
+      return b.enjoyment - a.enjoyment || a.season - b.season || a.ep - b.ep;
+    })
+    .slice(0, 3);
+}
+
+function isGirlsTrip(episode) {
+  if (!episode.travel) return false;
+  const localPattern = /Hamptons|Berkshires|Saratoga|Connecticut|Bronx|Upstate New York/i;
+  return !localPattern.test(`${episode.notes} ${episode.chaos} ${episode.officialSynopsis || ""} ${episode.editorialSynopsis || ""}`);
+}
+
+function renderGuidePick(episode) {
+  return `<a href="#${episode.id}" data-episode-jump="${episode.id}">S${episode.season}E${String(episode.ep).padStart(2, "0")} — “${escapeHtml(episode.episodeTitle || `Episode ${episode.ep}`)}”</a>`;
+}
+
 function getFilteredEpisodes() {
   const selectedSeason = el.seasonFilter.value;
   const minEnjoyment = Number(el.minEnjoyment.value);
-  const biasMode = el.biasMode.value;
-  const darkMode = el.darkMode.value;
   el.minEnjoymentLabel.textContent = `${minEnjoyment}%`;
 
   let result = allEpisodes.filter((episode) => {
@@ -126,12 +206,6 @@ function getFilteredEpisodes() {
     if (episode.enjoyment < minEnjoyment) return false;
     if (el.travelFilter.checked && !episode.travel) return false;
     if (el.nycFilter.checked && episode.nyc < 5) return false;
-    if (biasMode === "avoid" && episode.bias > 0) return false;
-    if (biasMode === "include" && !matchesTheme(episode, biasThemes[el.biasTheme.value])) return false;
-    if (biasMode === "avoid-theme" && matchesTheme(episode, biasThemes[el.biasTheme.value])) return false;
-    if (darkMode === "avoid" && episode.darkness > 0) return false;
-    if (darkMode === "include" && !matchesTheme(episode, darkThemes[el.darkTheme.value])) return false;
-    if (darkMode === "avoid-theme" && matchesTheme(episode, darkThemes[el.darkTheme.value])) return false;
     return true;
   });
 
@@ -151,7 +225,6 @@ function compareEpisodes(a, b) {
 function renderEpisodeGuide() {
   const episodes = getFilteredEpisodes();
   el.resultCount.textContent = `${episodes.length} of ${allEpisodes.length} rows`;
-  syncThemeControls();
   const bySeason = new Map();
   episodes.forEach((episode) => {
     if (!bySeason.has(episode.season)) bySeason.set(episode.season, []);
@@ -163,10 +236,9 @@ function renderEpisodeGuide() {
     return;
   }
 
-  const openAll = hasActiveFilters();
   el.seasonContainer.innerHTML = seasons
     .filter((season) => bySeason.has(season.season))
-    .map((season) => renderSeasonPanel(season, bySeason.get(season.season), openAll))
+    .map((season) => renderSeasonPanel(season, bySeason.get(season.season)))
     .join("");
 }
 
@@ -174,14 +246,7 @@ function hasActiveFilters() {
   return el.seasonFilter.value !== "all"
     || Number(el.minEnjoyment.value) > Number(el.minEnjoyment.min)
     || el.travelFilter.checked
-    || el.nycFilter.checked
-    || el.biasMode.value !== "any"
-    || el.darkMode.value !== "any";
-}
-
-function syncThemeControls() {
-  el.biasTheme.disabled = !["include", "avoid-theme"].includes(el.biasMode.value);
-  el.darkTheme.disabled = !["include", "avoid-theme"].includes(el.darkMode.value);
+    || el.nycFilter.checked;
 }
 
 function matchesTheme(episode, keywords = []) {
@@ -210,44 +275,51 @@ function unique(items) {
   return [...new Set(items.filter(Boolean))];
 }
 
-function renderSeasonPanel(season, episodes, open) {
+function renderSeasonPanel(season, episodes) {
   const cast = season.cast;
   const verified = season.sourceStatus === "Peacock verified";
+  const seasonTitle = `Season ${season.season}${seasonYears[season.season] ? `: ${seasonYears[season.season]}` : ""}`;
   return `
-    <details class="season-panel" ${open ? "open" : ""}>
-      <summary>
+    <article class="season-panel">
+      <div class="season-header">
         <span class="season-title-wrap">
-          <span class="season-title">Season ${season.season}</span>
+          <span class="season-title">${seasonTitle}</span>
           <span class="source-status ${verified ? "verified" : "provisional"}">${escapeHtml(season.sourceStatus || "Source status pending")}</span>
         </span>
         <span class="season-meta">${episodes.length} visible rows · ${season.episodes.length} total · avg ${average(episodes.map((e) => e.enjoyment))}% enjoyment</span>
-      </summary>
+      </div>
       <div class="cast-block">
         ${renderCastColumn("Returning Cast", cast.returning)}
         ${renderCastColumn("Departed Cast", cast.departed)}
         ${renderCastColumn("New Cast", cast.new)}
       </div>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              ${header("episode", "Ep#")}
-              ${header("synopsis", "Synopsis")}
-              ${header("nyc", "🍎 NYC")}
-              ${header("bias", "😮‍💨 Bias")}
-              ${header("darkness", "😔 Darkness")}
-              ${header("chaos", "Chaos Agents")}
-              ${header("enjoyment", "Enjoyment")}
-              ${header("notes", "Notes")}
-            </tr>
-          </thead>
-          <tbody>
-            ${episodes.map(renderEpisodeRow).join("")}
-          </tbody>
-        </table>
-      </div>
-      ${season.footer ? `<div class="footer-note"><strong>Reunion footer:</strong> ${escapeHtml(season.footer)}</div>` : ""}
-    </details>
+      <details class="episodes-disclosure">
+        <summary>
+          <span>Episode table</span>
+          <span>${episodes.length} visible rows</span>
+        </summary>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                ${header("episode", "Ep#")}
+                ${header("synopsis", "Synopsis")}
+                ${header("nyc", "🍎 NYC")}
+                ${header("bias", "😮‍💨 Bias")}
+                ${header("darkness", "😔 Darkness")}
+                ${header("chaos", "Chaos Agents")}
+                ${header("enjoyment", "Enjoyment")}
+                ${header("notes", "Notes")}
+              </tr>
+            </thead>
+            <tbody>
+              ${episodes.map(renderEpisodeRow).join("")}
+            </tbody>
+          </table>
+        </div>
+        ${season.footer ? `<div class="footer-note"><strong>Reunion footer:</strong> ${escapeHtml(season.footer)}</div>` : ""}
+      </details>
+    </article>
   `;
 }
 
@@ -257,14 +329,10 @@ function header(key, label) {
 }
 
 function renderCastColumn(title, names) {
-  const renderedNames = names.length
-    ? names.map((name) => `<strong>${escapeHtml(name)}</strong>`).join(", ")
-    : "None listed in source guide.";
-
   return `
     <div>
       <h4>${title}</h4>
-      <p>${renderedNames}</p>
+      <p>${names.length ? names.map(escapeHtml).join(", ") : "None listed in source guide."}</p>
     </div>
   `;
 }
@@ -439,30 +507,6 @@ function renderTrip(trip) {
   `;
 }
 
-
-function initAnchorNavigation() {
-  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    if (anchor.dataset.episodeJump) return;
-    anchor.addEventListener("click", (event) => {
-      const hash = anchor.getAttribute("href");
-      if (!hash || hash === "#") return;
-      const target = document.querySelector(hash);
-      if (!target) return;
-      event.preventDefault();
-      scrollToSection(target);
-      history.replaceState(null, "", hash);
-    });
-  });
-}
-
-function scrollToSection(target) {
-  const nav = document.querySelector(".topbar");
-  const navHeight = nav ? nav.getBoundingClientRect().height : 0;
-  const offset = navHeight + 18;
-  const top = target.getBoundingClientRect().top + window.scrollY - offset;
-  window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
-}
-
 function handleEpisodeJump(event) {
   const link = event.target.closest("[data-episode-jump]");
   if (!link) return;
@@ -484,9 +528,6 @@ function resetFilters() {
   el.minEnjoyment.value = el.minEnjoyment.min;
   el.travelFilter.checked = false;
   el.nycFilter.checked = false;
-  el.biasMode.value = "any";
-  el.darkMode.value = "any";
-  syncThemeControls();
 }
 
 function average(numbers) {
