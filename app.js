@@ -18,53 +18,301 @@ const guideCategories = [
   {
     id: "nyc",
     label: "🍎 NYC",
-    description: "Lived-in city texture: restaurants, apartments, geography, class codes, and the feeling of overhearing three tables at once.",
+    description: "New York City texture: restaurants, apartments, geography, and the feeling of overhearing three tables at once.",
     episodes: () => topEpisodes((episode) => episode.nyc * 20 + episode.enjoyment / 10)
   },
   {
     id: "drama",
     label: "😮‍💨 Drama",
-    description: "Bias, darkness, emotionally heavy material, and socially draining group dynamics bundled into one quick mood check.",
+    description: "Emotionally heavy material and socially draining group dynamics bundled into one quick mood check.",
     episodes: () => topEpisodes((episode) => episode.bias * 18 + episode.darkness * 22 + episode.enjoyment / 20)
   },
   {
     id: "enjoyment",
     label: "✨ Enjoyment",
-    description: "A personalized estimate for “will this satisfy after work?” energy, not a moral ranking or recap-grade score.",
+    description: "A personalized estimate for whether each episode is worth the dramav🫠",
     episodes: () => topEpisodes((episode) => episode.enjoyment)
   },
   {
     id: "girls-trips",
     label: "✈️ Girls Trips",
-    description: "Travel episodes outside the tristate orbit: when the group leaves its usual geography and takes the chaos on the road.",
+    description: "Travel episodes outside the usual orbit: when the group leaves its usual geography and takes the chaos on the road.",
     episodes: () => topEpisodes((episode) => (isGirlsTrip(episode) ? 1000 : 0) + episode.enjoyment)
   }
 ];
 
 const castArchetypes = {
-  "Aviva Drescher": "Known for: The Real Housewives of New York City. Medical anxiety, social provocation, extremely loaded family sidebars.",
-  "Barbara Kavovit (Friend Of)": "Known for: The Real Housewives of New York City. Construction-world bluntness, Hamptons clambake hosting, cabaret-adjacent reality checks.",
-  "Bershan Shaw (Friend Of)": "Known for: The Real Housewives of New York City. Wellness-world candor, Salem conflict spark, group-disrupting directness.",
-  "Bethenny Frankel": "Known for: The Real Housewives of New York City. Speed, grief, business boundaries, emotional x-ray vision.",
-  "Brynn Whitfield": "Known for: The Real Housewives of New York City reboot. Flirtation as strategy, vulnerability under lacquer.",
-  "Carole Radziwill": "Known for: The Real Housewives of New York City. Downtown cool, writerly detachment, late-night social reads.",
-  "Dorinda Medley": "Known for: The Real Housewives of New York City. Berkshires hostess energy, grief, martinis, combustible loyalty.",
-  "Eboni K. Williams": "Known for: The Real Housewives of New York City. Race, accountability, social translation labor.",
-  "Erin Lichy": "Known for: The Real Housewives of New York City reboot. Tribeca hosting, social order, status-coded friction.",
-  "Heather Thomson": "Known for: The Real Housewives of New York City. Brand-builder competence, maternal directness, holla-adjacent stamina.",
-  "Jenna Lyons": "Known for: The Real Housewives of New York City reboot. Fashion gravity, guarded vulnerability, reboot mystique.",
-  "Jessel Taank": "Known for: The Real Housewives of New York City reboot. Marriage, status anxiety, accidental comic precision.",
-  "Jules Wainstein": "Known for: The Real Housewives of New York City. Body-image vulnerability, social isolation, fragile group fit.",
-  "Kristen Taekman": "Known for: The Real Housewives of New York City. Model-wife underestimation, marriage strain, low-key comic timing.",
-  "Leah McSweeney": "Known for: The Real Housewives of New York City. Downtown generational rupture, sobriety, class friction.",
-  "Luann de Lesseps": "Known for: The Real Housewives of New York City. Countess codes, cabaret, recovery, romantic self-mythology.",
-  "Racquel Chevremont": "Known for: The Real Housewives of New York City reboot. Identity, art-world elegance, reboot emotional grounding.",
-  "Ramona Singer": "Known for: The Real Housewives of New York City. Upper East Side entropy, interruption, social survival instinct.",
-  "Rebecca Minkoff (Friend Of)": "Known for: The Real Housewives of New York City reboot. Fashion-world cameo, brand-adjacent reboot orbit.",
-  "Sai De Silva": "Known for: The Real Housewives of New York City reboot. Grief, image management, sharp social judgment.",
-  "Sonja Morgan": "Known for: The Real Housewives of New York City. Townhouse mythology, comic collapse, old-New-York yearning.",
-  "Tinsley Mortimer": "Known for: The Real Housewives of New York City. Society reentry, romance, arrested debutante melancholy.",
-  "Ubah Hassan": "Known for: The Real Housewives of New York City reboot. Warmth, bluntness, loyalty tests, model-off-duty voltage."
+  "Aviva Drescher": {
+    astro: "September 9, 1970 • Virgo",
+    seasons: "5-6",
+    knownFor: [
+      "Throwing her prosthetic leg at Le Cirque"
+    ],
+    quotes: [
+      "\"The only thing artificial or fake about me is THIS.\" (S6E20)"
+    ]
+  },
+
+  "Barbara Kavovit (Friend Of)": {
+    astro: "May 2, 1966 • Taurus",
+    seasons: "11",
+    knownFor: [
+      "Being exposed in the 'texting both sides' feud during Luann’s cabaret season"
+    ],
+    quotes: [
+      "\"I’m not your puppet.\" (S11)"
+    ]
+  },
+
+  "Bershan Shaw (Friend Of)": {
+    astro: "December 30, 1973 • Capricorn",
+    seasons: "13",
+    knownFor: [
+      "Calling the Season 13 cast 'grandmas' during the Salem trip"
+    ],
+    quotes: [
+      "\"Y’all are grandmas.\" (S13)"
+    ]
+  },
+
+  "Bethenny Frankel": {
+    astro: "November 4, 1970 • Scorpio",
+    seasons: "1-3, 7-11",
+    knownFor: [
+      "Selling Skinnygirl to Beam Suntory",
+      "The 'Mention It All' Berkshires fight with Ramona"
+    ],
+    quotes: [
+      "\"Mention it all!\" (S9E13)",
+      "\"Go to sleep!\" (S3E12)"
+    ]
+  },
+
+  "Brynn Whitfield": {
+    astro: "February 8, 1986 • Aquarius",
+    seasons: "14-present",
+    knownFor: [
+      "Flirting with Erin’s husband Abe throughout Season 14"
+    ],
+    quotes: [
+      "\"I flirt for sport.\" (S14)"
+    ]
+  },
+
+  "Carole Radziwill": {
+    astro: "August 20, 1963 • Leo",
+    seasons: "5-10",
+    knownFor: [
+      "Her fallout friendship with Bethenny",
+      "Running the NYC Marathon on the show"
+    ],
+    quotes: [
+      "\"I was awoken in the middle of the night by two male voices. One was Luann’s.\" (S8)"
+    ]
+  },
+
+  "Dorinda Medley": {
+    astro: "December 13, 1964 • Sagittarius",
+    seasons: "7-12",
+    knownFor: [
+      "Hosting the Berkshires trips at Bluestone Manor",
+      "The 'Clip!' dinner fight with Sonja"
+    ],
+    quotes: [
+      "\"I made it nice!\" (S8E9)",
+      "\"Clip!\" (S10E13)"
+    ]
+  },
+
+  "Eboni K. Williams": {
+    astro: "September 9, 1983 • Virgo",
+    seasons: "13",
+    knownFor: [
+      "Becoming RHONY’s first Black Housewife",
+      "The Season 13 race and politics conversations"
+    ],
+    quotes: [
+      "\"I’m not educating y’all for free.\" (S13)"
+    ]
+  },
+
+  "Erin Lichy": {
+    astro: "July 19, 1987 • Cancer",
+    seasons: "14-present",
+    knownFor: [
+      "The missing-phone feud with Ubah",
+      "Hosting the controversial Hamptons anniversary trip"
+    ],
+    quotes: [
+      "\"I’m very chill.\" (S14)"
+    ]
+  },
+
+  "Heather Thomson": {
+    astro: "January 20, 1971 • Aquarius",
+    seasons: "5-7",
+    knownFor: [
+      "The 'Don’t tell me nothin’, motherfucker!' Berkshires fight with Aviva",
+      "Her ongoing conflict with Bethenny after Season 7"
+    ],
+    quotes: [
+      "\"HOLLA!\" (Recurring)"
+    ]
+  },
+
+  "Jenna Lyons": {
+    astro: "June 8, 1968 • Gemini",
+    seasons: "14-present",
+    knownFor: [
+      "Leaving a group flight to travel separately",
+      "Bringing major fashion-industry status to reboot RHONY"
+    ],
+    quotes: [
+      "\"I don’t fly coach.\" (S14)"
+    ]
+  },
+
+  "Jessel Taank": {
+    astro: "November 23, 1979 • Sagittarius",
+    seasons: "14-present",
+    knownFor: [
+      "The lingerie/Jenna Lyons gift fallout",
+      "Saying Tribeca was 'up and coming'"
+    ],
+    quotes: [
+      "\"Tribeca is up and coming.\" (S14)"
+    ]
+  },
+
+  "Jules Wainstein": {
+    astro: "February 13, 1981 • Aquarius",
+    seasons: "8",
+    knownFor: [
+      "The calzone-with-utensils scene",
+      "Discussions around eating disorders and body image"
+    ],
+    quotes: [
+      "\"I’m half Jewish, half Asian — basically a unicorn.\" (S8)"
+    ]
+  },
+
+  "Kristen Taekman": {
+    astro: "April 21, 1977 • Taurus",
+    seasons: "6-7",
+    knownFor: [
+      "Ramona throwing a wine glass at her face during the Berkshires trip"
+    ],
+    quotes: [
+      "\"I’m not dumb, I’m pretty!\" (S6)"
+    ]
+  },
+
+  "Leah McSweeney": {
+    astro: "August 27, 1982 • Virgo",
+    seasons: "12-13",
+    knownFor: [
+      "Throwing tiki torches in the Hamptons",
+      "The nude ravioli party incident in Newport"
+    ],
+    quotes: [
+      "\"Okay boomer.\" (S12)"
+    ]
+  },
+
+  "Luann de Lesseps": {
+    astro: "May 17, 1965 • Taurus",
+    seasons: "1-13",
+    knownFor: [
+      "The pirate hookup in St. Barts",
+      "Her cabaret career after rehab and arrest"
+    ],
+    quotes: [
+      "\"Be cool. Don’t be all, like, uncool.\" (S3E11)",
+      "\"Jovani!\" (S10E16)"
+    ]
+  },
+
+  "Racquel Chevremont": {
+    astro: "October 31, 1971 • Scorpio",
+    seasons: "15-present",
+    knownFor: [
+      "Bringing art-world and queer representation into the reboot ensemble"
+    ],
+    quotes: [
+      "\"I’m very intentional.\" (S15)"
+    ]
+  },
+
+  "Ramona Singer": {
+    astro: "November 17, 1956 • Scorpio",
+    seasons: "1-13",
+    knownFor: [
+      "The runway walk",
+      "Frequently leaving cast trips early or causing room-assignment chaos"
+    ],
+    quotes: [
+      "\"Wow, Bethenny, wow.\" (S9)",
+      "\"Take a Xanax! Calm down!\" (S3E12)"
+    ]
+  },
+
+  "Rebecca Minkoff (Friend Of)": {
+    astro: "December 11, 1980 • Sagittarius",
+    seasons: "15",
+    knownFor: [
+      "Expanding the reboot’s fashion-world connections"
+    ],
+    quotes: [
+      "\"I’m very grounded.\" (S15)"
+    ]
+  },
+
+  "Sai De Silva": {
+    astro: "November 22, 1980 • Sagittarius",
+    seasons: "14-present",
+    knownFor: [
+      "The prolonged feud with Jessel over storytelling and authenticity"
+    ],
+    quotes: [
+      "\"I’m very direct.\" (S14)"
+    ]
+  },
+
+  "Sonja Morgan": {
+    astro: "November 25, 1963 • Sagittarius",
+    seasons: "3-13",
+    knownFor: [
+      "The crumbling Upper East Side townhouse",
+      "Sonja by Sonja Morgan fashion presentations"
+    ],
+    quotes: [
+      "\"I party with John-John and Madonna!\" (S7)",
+      "\"There’s nothing grey gardens about this.\" (S8)"
+    ]
+  },
+
+  "Tinsley Mortimer": {
+    astro: "August 11, 1975 • Leo",
+    seasons: "9-12",
+    knownFor: [
+      "Crying over frozen eggs in clown makeup",
+      "Her on-and-off relationship with Scott Kluth"
+    ],
+    quotes: [
+      "\"Coupon cabin.\" (S11)"
+    ]
+  },
+
+  "Ubah Hassan": {
+    astro: "August 27, 1983 • Virgo",
+    seasons: "14-present",
+    knownFor: [
+      "The escalating prank-war feud with Erin over the missing phone storyline"
+    ],
+    quotes: [
+      "\"Don’t prank me.\" (S14)"
+    ]
+  }
 };
 
 const biasThemes = {
