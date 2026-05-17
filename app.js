@@ -661,11 +661,29 @@ function renderCastGuide() {
 }
 
 function renderCastMeta(name) {
-  const fallback = { franchise: "The Real Housewives of New York City", description: "RHONY social ecosystem participant." };
   const raw = castArchetypes[name];
+
   if (!raw) {
-    return `<span><strong class="franchise-name">${fallback.franchise}</strong>. ${fallback.description}</span>`;
+    return `<span>RHONY cast member. Details pending.</span>`;
   }
+
+  const knownFor = Array.isArray(raw.knownFor) && raw.knownFor.length
+    ? raw.knownFor.map((item) => `<span>${escapeHtml(item)}</span>`).join("")
+    : "<span>Known-for moment pending.</span>";
+
+  const quotes = Array.isArray(raw.quotes) && raw.quotes.length
+    ? raw.quotes.map((quote) => `<span>${escapeHtml(quote)}</span>`).join("")
+    : "<span>No major quote logged yet.</span>";
+
+  return `
+    <div class="cast-meta">
+      <p><strong>Astro:</strong> ${escapeHtml(raw.astro || "Pending")}</p>
+      <p><strong>Seasons:</strong> ${escapeHtml(raw.seasons || "Pending")}</p>
+      <p><strong>Known for:</strong> <span class="inline-list">${knownFor}</span></p>
+      <p><strong>Quotes:</strong> <span class="inline-list">${quotes}</span></p>
+    </div>
+  `;
+}
 
   const match = raw.match(/^Known for: ([^.]+)\. (.+)$/);
   if (!match) return `<span>${escapeHtml(raw)}</span>`;
