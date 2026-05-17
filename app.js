@@ -375,6 +375,7 @@ let sortState = { key: "season", direction: "asc" };
 
 const el = {
   seasonFilter: document.querySelector("#seasonFilter"),
+  searchFilter: document.querySelector("#searchFilter"),
   minEnjoyment: document.querySelector("#minEnjoyment"),
   minEnjoymentLabel: document.querySelector("#minEnjoymentLabel"),
   travelFilter: document.querySelector("#travelFilter"),
@@ -447,11 +448,22 @@ function renderGuidePick(episode) {
 function getFilteredEpisodes() {
   const selectedSeason = el.seasonFilter.value;
   const minEnjoyment = Number(el.minEnjoyment.value);
+  const searchTerm = el.searchFilter?.value.trim().toLowerCase() || "";
   el.minEnjoymentLabel.textContent = `${minEnjoyment}%`;
 
   let result = allEpisodes.filter((episode) => {
     if (selectedSeason !== "all" && episode.season !== Number(selectedSeason)) return false;
     if (episode.enjoyment < minEnjoyment) return false;
+    if (searchTerm && ![
+  episode.episodeTitle,
+  episode.synopsis,
+  episode.officialSynopsis,
+  episode.editorialSynopsis,
+  episode.chaos,
+  episode.notes,
+  `season ${episode.season}`,
+  `s${episode.season}e${episode.ep}`
+].join(" ").toLowerCase().includes(searchTerm)) return false;
     if (el.travelFilter.checked && !episode.travel) return false;
     if (el.nycFilter.checked && episode.nyc < 5) return false;
     return true;
