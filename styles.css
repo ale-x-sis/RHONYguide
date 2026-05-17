@@ -202,7 +202,7 @@ main {
   margin-top: 2rem;
 }
 
-.framework-grid article,
+.guide-card,
 .season-panel,
 .filters,
 .cast-guide details,
@@ -212,9 +212,76 @@ main {
   box-shadow: 0 14px 28px var(--shadow);
 }
 
-.framework-grid article {
+.guide-card {
   min-height: 12rem;
   padding: 1rem;
+}
+
+.guide-card summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  list-style: none;
+}
+
+.guide-card summary::-webkit-details-marker {
+  display: none;
+}
+
+.guide-card-intro {
+  display: grid;
+  gap: 1rem;
+}
+
+.guide-card-intro > span:last-child {
+  font-size: 0.96rem;
+  line-height: 1.45;
+}
+
+.guide-card-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 1.85rem;
+  height: 1.85rem;
+  border: 1px solid var(--border);
+  background: #fffdf7;
+  color: var(--oxblood);
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+.guide-card-toggle::before {
+  content: "↓";
+}
+
+.guide-card[open] .guide-card-toggle {
+  background: var(--taxi);
+  border-color: var(--ink);
+  color: var(--oxblood);
+}
+
+.guide-card[open] .guide-card-toggle::before {
+  content: "↑";
+}
+
+.guide-picks {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+.guide-picks a {
+  color: var(--oxblood);
+  font-size: 0.88rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.guide-picks a:hover {
+  text-decoration: underline;
 }
 
 .stamp {
@@ -308,19 +375,14 @@ main {
   overflow: clip;
 }
 
-.season-panel summary {
+.season-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 1.1rem;
-  cursor: pointer;
   color: var(--cream);
   background: var(--ink);
-}
-
-.season-panel summary::marker {
-  color: var(--taxi);
 }
 
 .season-title {
@@ -384,19 +446,39 @@ main {
   font-size: 0.92rem;
 }
 
-.table-wrap {
-  max-height: 75vh;
-  overflow: auto;
-  position: relative;
+.episodes-disclosure {
+  background: var(--cream);
 }
 
-.table-wrap thead th {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: #ead9bd;
-  box-shadow: 0 2px 0 rgba(8, 11, 18, 0.08);
+.episodes-disclosure summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 1rem;
+  border-top: 1px solid var(--border);
+  background: #fffdf7;
+  color: var(--oxblood);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
+
+.episodes-disclosure summary::marker {
+  color: var(--oxblood);
+}
+
+.episodes-disclosure summary span:last-child {
+  color: #5b5146;
+  font-size: 0.74rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -719,7 +801,8 @@ tr:target {
   }
 
   .section-heading,
-  .season-panel summary {
+  .season-header,
+  .episodes-disclosure summary {
     display: grid;
   }
 
@@ -728,7 +811,7 @@ tr:target {
   }
 
   table,
-  d,
+  thead,
   tbody,
   tr,
   th,
@@ -743,19 +826,7 @@ tr:target {
     overflow: hidden;
     clip: rect(0 0 0 0);
   }
-.table-wrap {
-  max-height: 75vh;
-  overflow: auto;
-  position: relative;
-}
 
-.table-wrap thead th {
-  position: sticky;
-  top: 0;
-  z-index: 30;
-  background: #ead9bd;
-  box-shadow: 0 2px 0 rgba(8, 11, 18, 0.08);
-}
   tr {
     margin: 0.8rem;
     border: 1px solid var(--border);
