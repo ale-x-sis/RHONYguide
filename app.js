@@ -30,7 +30,7 @@ const guideCategories = [
   {
     id: "enjoyment",
     label: "✨ Enjoyment",
-    description: "A personalized estimate for whether each episode is worth the dramav🫠",
+    description: "A personalized estimate for whether each episode is worth the drama 🫠",
     episodes: () => topEpisodes((episode) => episode.enjoyment)
   },
   {
