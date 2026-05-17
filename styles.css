@@ -743,10 +743,16 @@ tr:target {
     overflow: hidden;
     clip: rect(0 0 0 0);
   }
-thead th {
+.table-wrap {
+  max-height: 75vh;
+  overflow: auto;
+  position: relative;
+}
+
+.table-wrap thead th {
   position: sticky;
   top: 0;
-  z-index: 25;
+  z-index: 30;
   background: #ead9bd;
   box-shadow: 0 2px 0 rgba(8, 11, 18, 0.08);
 }
