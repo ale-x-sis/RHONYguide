@@ -108,6 +108,7 @@ function init() {
   document.querySelector("#filters").addEventListener("change", renderEpisodeGuide);
   el.seasonContainer.addEventListener("click", handleGuideClick);
   document.addEventListener("click", handleEpisodeJump);
+  initAnchorNavigation();
   renderEpisodeGuide();
   renderCastGuide();
   renderTripsGuide();
@@ -165,7 +166,7 @@ function renderEpisodeGuide() {
   const openAll = hasActiveFilters();
   el.seasonContainer.innerHTML = seasons
     .filter((season) => bySeason.has(season.season))
-    .map((season, index) => renderSeasonPanel(season, bySeason.get(season.season), openAll || index === 0))
+    .map((season) => renderSeasonPanel(season, bySeason.get(season.season), openAll))
     .join("");
 }
 
@@ -256,10 +257,14 @@ function header(key, label) {
 }
 
 function renderCastColumn(title, names) {
+  const renderedNames = names.length
+    ? names.map((name) => `<strong>${escapeHtml(name)}</strong>`).join(", ")
+    : "None listed in source guide.";
+
   return `
     <div>
       <h4>${title}</h4>
-      <p>${names.length ? names.map(escapeHtml).join(", ") : "None listed in source guide."}</p>
+      <p>${renderedNames}</p>
     </div>
   `;
 }
@@ -432,6 +437,30 @@ function renderTrip(trip) {
       </details>
     </article>
   `;
+}
+
+
+function initAnchorNavigation() {
+  document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+    if (anchor.dataset.episodeJump) return;
+    anchor.addEventListener("click", (event) => {
+      const hash = anchor.getAttribute("href");
+      if (!hash || hash === "#") return;
+      const target = document.querySelector(hash);
+      if (!target) return;
+      event.preventDefault();
+      scrollToSection(target);
+      history.replaceState(null, "", hash);
+    });
+  });
+}
+
+function scrollToSection(target) {
+  const nav = document.querySelector(".topbar");
+  const navHeight = nav ? nav.getBoundingClientRect().height : 0;
+  const offset = navHeight + 18;
+  const top = target.getBoundingClientRect().top + window.scrollY - offset;
+  window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
 }
 
 function handleEpisodeJump(event) {
