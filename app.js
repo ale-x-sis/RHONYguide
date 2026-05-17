@@ -454,7 +454,7 @@ function getFilteredEpisodes() {
   let result = allEpisodes.filter((episode) => {
     if (selectedSeason !== "all" && episode.season !== Number(selectedSeason)) return false;
     if (episode.enjoyment < minEnjoyment) return false;
-    if (searchTerm && ![
+   const searchable = [
   episode.episodeTitle,
   episode.synopsis,
   episode.officialSynopsis,
@@ -463,7 +463,11 @@ function getFilteredEpisodes() {
   episode.notes,
   `season ${episode.season}`,
   `s${episode.season}e${episode.ep}`
-].join(" ").toLowerCase().includes(searchTerm)) return false;
+].join(" ").toLowerCase();
+
+const regex = new RegExp(`\\b${searchTerm.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i");
+
+if (searchTerm && !regex.test(searchable)) return false;
     if (el.travelFilter.checked && !episode.travel) return false;
     if (el.nycFilter.checked && episode.nyc < 5) return false;
     return true;
