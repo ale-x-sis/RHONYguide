@@ -35,7 +35,7 @@ const guideCategories = [
   },
   {
     id: "girls-trips",
-    label: "✈️ Girls Trips",
+    label: "✈️ Girls' Trips",
     description: "Travel episodes outside the usual orbit: when the group leaves its usual geography and takes the chaos on the road.",
     episodes: () => topEpisodes((episode) => (isGirlsTrip(episode) ? 1000 : 0) + episode.enjoyment)
   }
