@@ -40,7 +40,6 @@ const guideCategories = [
     episodes: () => topEpisodes((episode) => (isGirlsTrip(episode) ? 1000 : 0) + episode.enjoyment)
   }
 ];
-
 const castArchetypes = {
   "Alex McCord": {
     astro: "October 1, 1973 • Libra",
