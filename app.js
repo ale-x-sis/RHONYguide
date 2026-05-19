@@ -175,6 +175,13 @@ const castArchetypes = {
     knownFor: ["Singer Stinger", "Runway walk", "Room-assignment chaos"],
     quotes: ["\"Take a Xanax! Calm down!\" (S3E12)", "\"Wow, Bethenny, wow.\" (S10E19)"]
   },
+    "Rebecca Minkoff": {
+    astro: "December 4, 1980 • Sagittarius",
+    seasons: "15",
+    type: "Friend",
+    knownFor: ["Nordstrom Rack shade drama", "Puerto Rico vacation clashes"],
+    quotes: ["\"I built a $100 million company.\" (S15E7)"]
+  },
   "Sai De Silva": {
     astro: "November 22, 1980 • Sagittarius",
     seasons: "14-present",
