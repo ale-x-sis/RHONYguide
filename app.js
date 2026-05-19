@@ -42,276 +42,166 @@ const guideCategories = [
 ];
 
 const castArchetypes = {
+  "Alex McCord": {
+    astro: "October 1, 1973 • Libra",
+    seasons: "1-4",
+    type: "Main",
+    knownFor: ["Brooklyn social-climbing era"],
+    quotes: ["\"While you are in high school, I am in Brooklyn trying to survive in this economy!\" (S4E8)"]
+  },
   "Aviva Drescher": {
     astro: "September 9, 1970 • Virgo",
     seasons: "5-6",
-    knownFor: [
-      "Throwing her prosthetic leg at Le Cirque"
-    ],
-    quotes: [
-      "\"The only thing artificial or fake about me is THIS.\" (S6E20)"
-    ]
+    type: "Main",
+    knownFor: ["Throwing her prosthetic leg at Le Cirque"],
+    quotes: ["\"The only thing artificial or fake about me is THIS.\" (S6E20)"]
   },
-
-  "Barbara Kavovit (Friend Of)": {
-    astro: "May 2, 1966 • Taurus",
-    seasons: "11",
-    knownFor: [
-      "Being exposed in the 'texting both sides' feud during Luann’s cabaret season"
-    ],
-    quotes: [
-      "\"I’m not your puppet.\" (S11)"
-    ]
-  },
-
-  "Bershan Shaw (Friend Of)": {
-    astro: "December 30, 1973 • Capricorn",
-    seasons: "13",
-    knownFor: [
-      "Calling the Season 13 cast 'grandmas' during the Salem trip"
-    ],
-    quotes: [
-      "\"Y’all are grandmas.\" (S13)"
-    ]
-  },
-
   "Bethenny Frankel": {
     astro: "November 4, 1970 • Scorpio",
     seasons: "1-3, 7-11",
-    knownFor: [
-      "Selling Skinnygirl to Beam Suntory",
-      "The 'Mention It All' Berkshires fight with Ramona"
-    ],
-    quotes: [
-      "\"Mention it all!\" (S9E13)",
-      "\"Go to sleep!\" (S3E12)"
-    ]
+    type: "Main",
+    knownFor: ["Selling Skinnygirl to Beam Suntory", "The 'Mention It All' fight"],
+    quotes: ["\"Go to sleep!\" (S3E12)", "\"Mention it all!\" (S9E9)"]
   },
-
   "Brynn Whitfield": {
-    astro: "February 8, 1986 • Aquarius",
+    astro: "February 8, 1987 • Aquarius",
     seasons: "14-present",
-    knownFor: [
-      "Flirting with Erin’s husband Abe throughout Season 14"
-    ],
-    quotes: [
-      "\"I flirt for sport.\" (S14)"
-    ]
+    type: "Main",
+    knownFor: ["Flirting with luxury and cast members' partners"],
+    quotes: ["\"I flirt for sport.\" (Season 14 Tagline)"]
   },
-
-  "Carole Radziwill": {
-    astro: "August 20, 1963 • Leo",
-    seasons: "5-10",
-    knownFor: [
-      "Her fallout friendship with Bethenny",
-      "Running the NYC Marathon on the show"
-    ],
-    quotes: [
-      "\"I was awoken in the middle of the night by two male voices. One was Luann’s.\" (S8)"
-    ]
+  "Cindy Barshop": {
+    astro: "October 11, 1964 • Libra",
+    seasons: "4",
+    type: "Main",
+    knownFor: ["Quogue tension with Sonja and Ramona"],
+    quotes: ["\"You have no control over your emotions. You’re a liability.\" (S4E10)"]
   },
-
   "Dorinda Medley": {
     astro: "December 13, 1964 • Sagittarius",
     seasons: "7-12",
-    knownFor: [
-      "Hosting the Berkshires trips at Bluestone Manor",
-      "The 'Clip!' dinner fight with Sonja"
-    ],
-    quotes: [
-      "\"I made it nice!\" (S8E9)",
-      "\"Clip!\" (S10E13)"
-    ]
+    type: "Main",
+    knownFor: ["Bluestone Manor", "Berkshires blowups"],
+    quotes: ["\"Clip!\" (S9E14)", "\"I made it nice!\" (S8E9)", "\"Not well, bitch.\" (S10E13)", "\"Say it, forget it. Write it, regret it.\" (S10E3)"]
   },
-
   "Eboni K. Williams": {
     astro: "September 9, 1983 • Virgo",
     seasons: "13",
-    knownFor: [
-      "Becoming RHONY’s first Black Housewife",
-      "The Season 13 race and politics conversations"
-    ],
-    quotes: [
-      "\"I’m not educating y’all for free.\" (S13)"
-    ]
+    type: "Main",
+    knownFor: ["Becoming RHONY’s first Black Housewife"],
+    quotes: ["\"I’m the most educated person at this table.\" (S13E6)"]
   },
-
   "Erin Lichy": {
-    astro: "July 19, 1987 • Cancer",
+    astro: "July 1, 1987 • Cancer",
     seasons: "14-present",
-    knownFor: [
-      "The missing-phone feud with Ubah",
-      "Hosting the controversial Hamptons anniversary trip"
-    ],
-    quotes: [
-      "\"I’m very chill.\" (S14)"
-    ]
+    type: "Main",
+    knownFor: ["Cheese controversies and Tribeca hospitality hosting"],
+    quotes: ["\"Cheese is a personality.\" (Season 14 Tagline)"]
   },
-
   "Heather Thomson": {
     astro: "January 20, 1971 • Aquarius",
     seasons: "5-7",
-    knownFor: [
-      "The 'Don’t tell me nothin’, motherfucker!' Berkshires fight with Aviva",
-      "Her ongoing conflict with Bethenny after Season 7"
-    ],
-    quotes: [
-      "\"HOLLA!\" (Recurring)"
-    ]
+    type: "Main",
+    knownFor: ["Standing up to Aviva and Ramona"],
+    quotes: ["\"Don't manic-ure me.\" (S6E11)"]
   },
-
   "Jenna Lyons": {
     astro: "June 8, 1968 • Gemini",
     seasons: "14-present",
-    knownFor: [
-      "Leaving a group flight to travel separately",
-      "Bringing major fashion-industry status to reboot RHONY"
-    ],
-    quotes: [
-      "\"I don’t fly coach.\" (S14)"
-    ]
+    type: "Main",
+    knownFor: ["Anguilla flight drama"],
+    quotes: ["\"I don’t fly coach.\" (S14E8)"]
   },
-
   "Jessel Taank": {
-    astro: "November 23, 1979 • Sagittarius",
+    astro: "October 23, 1979 • Scorpio",
     seasons: "14-present",
-    knownFor: [
-      "The lingerie/Jenna Lyons gift fallout",
-      "Saying Tribeca was 'up and coming'"
-    ],
-    quotes: [
-      "\"Tribeca is up and coming.\" (S14)"
-    ]
+    type: "Main",
+    knownFor: ["Accidentally insulting Tribeca"],
+    quotes: ["\"Tribeca is up and coming.\" (S14E2)"]
   },
-
+  "Jill Zarin": {
+    astro: "November 30, 1963 • Sagittarius",
+    seasons: "1-4",
+    type: "Main",
+    knownFor: ["Surprise Scary Island arrival"],
+    quotes: ["\"Hiiiiiiiiiiiiiiiiii!\" (S3E6)"]
+  },
   "Jules Wainstein": {
     astro: "February 13, 1981 • Aquarius",
     seasons: "8",
-    knownFor: [
-      "The calzone-with-utensils scene",
-      "Discussions around eating disorders and body image"
-    ],
-    quotes: [
-      "\"I’m half Jewish, half Asian — basically a unicorn.\" (S8)"
-    ]
+    type: "Main",
+    knownFor: ["Opening up about identity and body image"],
+    quotes: ["\"I’m Asian, but I’m Jewish!\" (S8E1)"]
   },
-
+  "Kelly Bensimon": {
+    astro: "May 1, 1968 • Taurus",
+    seasons: "2-4",
+    type: "Main",
+    knownFor: ["Scary Island"],
+    quotes: ["\"Al Sharpton. Al Sharpton came to my house. He sat on my couch.\" (S3E11)", "\"I'm up here, and you're down here.\" (S2E11)"]
+  },
   "Kristen Taekman": {
     astro: "April 21, 1977 • Taurus",
     seasons: "6-7",
-    knownFor: [
-      "Ramona throwing a wine glass at her face during the Berkshires trip"
-    ],
-    quotes: [
-      "\"I’m not dumb, I’m pretty!\" (S6)"
-    ]
+    type: "Main",
+    knownFor: ["Ramona throwing a wine glass at her face"],
+    quotes: ["\"Who are you to get me wet?!\" (S6E12)"]
   },
-
   "Leah McSweeney": {
     astro: "August 27, 1982 • Virgo",
     seasons: "12-13",
-    knownFor: [
-      "Throwing tiki torches in the Hamptons",
-      "The nude ravioli party incident in Newport"
-    ],
-    quotes: [
-      "\"Okay boomer.\" (S12)"
-    ]
+    type: "Main",
+    knownFor: ["Newport chaos", "Generational clashes with Ramona"],
+    quotes: ["\"Bitch, I elevate this shit!\" (S12E12)", "\"Okay, boomer.\" (S12E2)"]
   },
-
   "Luann de Lesseps": {
     astro: "May 17, 1965 • Taurus",
     seasons: "1-13",
-    knownFor: [
-      "The pirate hookup in St. Barts",
-      "Her cabaret career after rehab and arrest"
-    ],
-    quotes: [
-      "\"Be cool. Don’t be all, like, uncool.\" (S3E11)",
-      "\"Jovani!\" (S10E16)"
-    ]
+    type: "Main",
+    knownFor: ["The pirate hookup in St. Barts", "Cabaret era"],
+    quotes: ["\"Be cool. Don’t be all, like, uncool.\" (S7E14)", "\"Jovani!\" (S10E16)"]
   },
-
   "Racquel Chevremont": {
     astro: "October 31, 1971 • Scorpio",
     seasons: "15-present",
-    knownFor: [
-      "Bringing art-world and queer representation into the reboot ensemble"
-    ],
-    quotes: [
-      "\"I’m very intentional.\" (S15)"
-    ]
+    type: "Main",
+    knownFor: ["Art-world and queer representation in the reboot"],
+    quotes: ["\"You're projecting your own insecurities on everybody else.\" (S15E5)"]
   },
-
   "Ramona Singer": {
     astro: "November 17, 1956 • Scorpio",
     seasons: "1-13",
-    knownFor: [
-      "The runway walk",
-      "Frequently leaving cast trips early or causing room-assignment chaos"
-    ],
-    quotes: [
-      "\"Wow, Bethenny, wow.\" (S9)",
-      "\"Take a Xanax! Calm down!\" (S3E12)"
-    ]
+    type: "Main",
+    knownFor: ["Singer Stinger", "Runway walk", "Room-assignment chaos"],
+    quotes: ["\"Take a Xanax! Calm down!\" (S3E12)", "\"Wow, Bethenny, wow.\" (S10E19)"]
   },
-
-  "Rebecca Minkoff (Friend Of)": {
-    astro: "December 11, 1980 • Sagittarius",
-    seasons: "15",
-    knownFor: [
-      "Expanding the reboot’s fashion-world connections"
-    ],
-    quotes: [
-      "\"I’m very grounded.\" (S15)"
-    ]
-  },
-
   "Sai De Silva": {
     astro: "November 22, 1980 • Sagittarius",
     seasons: "14-present",
-    knownFor: [
-      "The prolonged feud with Jessel over storytelling and authenticity"
-    ],
-    quotes: [
-      "\"I’m very direct.\" (S14)"
-    ]
+    type: "Main",
+    knownFor: ["Food complaints and Jessel conflict"],
+    quotes: ["\"I need food.\" (S14E6)"]
   },
-
   "Sonja Morgan": {
     astro: "November 25, 1963 • Sagittarius",
     seasons: "3-13",
-    knownFor: [
-      "The crumbling Upper East Side townhouse",
-      "Sonja by Sonja Morgan fashion presentations"
-    ],
-    quotes: [
-      "\"I party with John-John and Madonna!\" (S7)",
-      "\"There’s nothing grey gardens about this.\" (S8)"
-    ]
+    type: "Main",
+    knownFor: ["The townhouse", "John-John and Madonna lore"],
+    quotes: ["\"I party with John-John and Madonna!\" (S7E6)", "\"There’s nothing Grey Gardens about this.\" (S6E2)"]
   },
-
   "Tinsley Mortimer": {
     astro: "August 11, 1975 • Leo",
     seasons: "9-12",
-    knownFor: [
-      "Crying over frozen eggs in clown makeup",
-      "Her on-and-off relationship with Scott Kluth"
-    ],
-    quotes: [
-      "\"Coupon cabin.\" (S11)"
-    ]
+    type: "Main",
+    knownFor: ["Scott relationship", "Crying over frozen eggs in clown makeup"],
+    quotes: ["\"I’m miserable.\" (S11E9)", "\"Yeah, I’m drinking, Luann.\" (S11E15)"]
   },
-
   "Ubah Hassan": {
     astro: "August 27, 1983 • Virgo",
     seasons: "14-present",
-    knownFor: [
-      "The escalating prank-war feud with Erin over the missing phone storyline"
-    ],
-    quotes: [
-      "\"Don’t prank me.\" (S14)"
-    ]
+    type: "Main",
+    knownFor: ["Phone privacy fight with Erin"],
+    quotes: ["\"I’m not fake nice.\" (S14E11)"]
   }
 };
 
