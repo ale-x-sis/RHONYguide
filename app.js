@@ -728,7 +728,9 @@ function handleEpisodeJump(event) {
     const panel = target.closest("details");
     if (panel) panel.open = true;
     target.scrollIntoView({ behavior: "smooth", block: "center" });
-history.replaceState(null, "", `#${link.dataset.episodeJump}`);
+    target.style.outline = "2px solid #c9a84c";
+    setTimeout(() => { target.style.outline = ""; }, 2000);
+    history.replaceState(null, "", `#${link.dataset.episodeJump}`);
   });
 }
 
