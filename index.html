@@ -13,6 +13,7 @@
   <body>
     <header class="site-header">
       <nav class="topbar" aria-label="Primary navigation">
+        <a href="#home">How to Use</a>
         <a href="#guide">Episode Guide</a>
         <a href="#cast">Who's Who</a>
         <a href="#trips">Trips</a>
@@ -31,12 +32,17 @@
     </header>
 
     <main>
-    
+      <section class="section how-to" aria-labelledby="how-title">
+        <div class="section-label">How to use this guide</div>
+        <h2 id="how-title">Use the table to decide when to skip ahead, or to view episode summaries</h2>
+        <div id="howToCards" class="framework-grid"></div>
+      </section>
+
       <section class="section guide-section" id="guide" aria-labelledby="guide-title">
         <div class="section-heading">
           <div>
-            <div class="section-label">How to use this guide</div>
-            <h2 id="guide-title">Use the table to decide when to skip ahead, or to view episode summaries</h2>
+            <div class="section-label">episode guide</div>
+            <h2 id="guide-title">The info you need to quickly scan for plotlines or BS to skip.</h2>
           </div>
           <p id="resultCount" class="count-pill"></p>
         </div>
