@@ -883,6 +883,12 @@ details summary {
 tr:target {
   outline: 2px solid var(--oxblood);
   outline-offset: -2px;
+  animation: highlight-fade 2.5s ease forwards;
+}
+
+@keyframes highlight-fade {
+  0%   { outline-color: var(--oxblood); }
+  100% { outline-color: transparent; }
 }
 
 /* ── BACK TO TOP ── */
