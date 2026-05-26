@@ -600,75 +600,57 @@ function renderTripsGuide() {
     if (!episode.travel) return;
 
     const destination = getDestination(episode);
-    if (!destination) return;
+    if (!seasonTrips[episode.season]) seasonTrips[episode.season] = {};
+    if (!seasonTrips[episode.season][destination]) seasonTrips[episode.season][destination] = [];
 
-    const seasonKey = `Season ${episode.season}`;
-
-    if (!seasonTrips[seasonKey]) {
-      seasonTrips[seasonKey] = {};
-    }
-
-    if (!seasonTrips[seasonKey][destination]) {
-      seasonTrips[seasonKey][destination] = [];
-    }
-
-    seasonTrips[seasonKey][destination].push(episode);
+    seasonTrips[episode.season][destination].push(episode);
   });
 
-  const sortedSeasons = Object.keys(seasonTrips).sort((a, b) => {
-    const aNum = Number(a.replace("Season ", ""));
-    const bNum = Number(b.replace("Season ", ""));
-    return aNum - bNum;
-  });
+  el.tripsGuide.innerHTML = Object.entries(seasonTrips)
+    .sort(([a], [b]) => Number(a) - Number(b))
+    .map(([season, trips]) => `
+      <details class="trip-season" open>
+        <summary>
+          <span>Season ${season}</span>
+          <span>${Object.keys(trips).length} trip${Object.keys(trips).length === 1 ? "" : "s"}</span>
+        </summary>
 
-  el.tripsGuide.innerHTML = sortedSeasons.map((season) => {
-    const trips = seasonTrips[season];
+        <div class="trip-table">
+          <div class="trip-row trip-row-head">
+            <span>Location</span>
+            <span>Episodes</span>
+            <span>Why it matters</span>
+            <span>Mood</span>
+            <span>Jump</span>
+          </div>
 
-    return `
-      <section class="trip-season">
-        <h3 class="trip-season-title">${season}</h3>
+          ${Object.entries(trips).map(([destination, episodes]) => {
+            const first = episodes[0];
+            const last = episodes[episodes.length - 1];
+            const episodeRange = episodes.length === 1
+              ? `S${first.season}E${first.ep}`
+              : `S${first.season}E${first.ep}–E${last.ep}`;
 
-        ${Object.entries(trips).map(([destination, episodes]) => {
-          const firstEp = episodes[0];
-          const lastEp = episodes[episodes.length - 1];
+            const why = first.notes?.replace(/^Travel:\s*[^.]+.\s*/i, "") || first.editorialSynopsis || "Major RHONY trip arc.";
+            const mood = first.chaos || "RHONY chaos";
 
-          const episodeRange =
-            episodes.length === 1
-              ? `S${firstEp.season}E${firstEp.ep}`
-              : `S${firstEp.season}E${firstEp.ep}–E${lastEp.ep}`;
-
-          return `
-            <article class="trip-card">
-              <h4>${destination}</h4>
-
-              <p>
-                <strong>Episodes:</strong>
-                ${episodeRange}
-              </p>
-
-              <p>
-                <strong>Why it matters:</strong>
-                ${episodes[0].notes || episodes[0].editorialSynopsis || "Major RHONY travel arc."}
-              </p>
-
-              <p>
-                <strong>Mood:</strong>
-                ${episodes[0].chaos || "RHONY chaos"}
-              </p>
-
-              <div class="trip-jumps">
-                ${episodes.map((ep) => `
-                  <button onclick="jumpToEpisode('${ep.id}')">
-                    S${ep.season}E${ep.ep}
-                  </button>
-                `).join("")}
+            return `
+              <div class="trip-row">
+                <strong>${escapeHtml(destination)}</strong>
+                <span>${escapeHtml(episodeRange)}</span>
+                <span>${escapeHtml(why)}</span>
+                <span>${escapeHtml(mood)}</span>
+                <span class="trip-jumps">
+                  ${episodes.map((ep) => `
+                    <a href="#${ep.id}" data-episode-jump="${ep.id}">S${ep.season}E${ep.ep}</a>
+                  `).join("")}
+                </span>
               </div>
-            </article>
-          `;
-        }).join("")}
-      </section>
-    `;
-  }).join("");
+            `;
+          }).join("")}
+        </div>
+      </details>
+    `).join("");
 }
 function jumpToEpisode(id) {
   location.hash = id;
