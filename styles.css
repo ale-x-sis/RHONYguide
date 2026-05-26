@@ -902,3 +902,74 @@ tr:target {
     letter-spacing: 0.06em;
   }
 }
+.trip-season {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  margin-bottom: 0.85rem;
+}
+
+.trip-season summary {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  background: var(--ink);
+  color: var(--cream);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.trip-table {
+  display: grid;
+}
+
+.trip-row {
+  display: grid;
+  grid-template-columns: 1.1fr 0.8fr 2.2fr 1.2fr 1.2fr;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.7rem 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.trip-row-head {
+  color: var(--oxblood);
+  background: rgba(201, 184, 159, 0.22);
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.trip-jumps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.trip-jumps a {
+  display: inline-flex;
+  padding: 0.2rem 0.35rem;
+  border: 1px solid var(--ink);
+  background: var(--taxi);
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .trip-row,
+  .trip-row-head {
+    grid-template-columns: 1fr;
+  }
+
+  .trip-row-head {
+    display: none;
+  }
+
+  .trip-row {
+    gap: 0.35rem;
+  }
+}
