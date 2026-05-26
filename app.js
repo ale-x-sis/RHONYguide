@@ -64,10 +64,10 @@ const castArchetypes = {
   },
   "Brynn Whitfield": {
     astro: "February 8, 1987 • Aquarius",
-    seasons: "14-present",
+    seasons: "14-15",
     type: "Main",
-    knownFor: ["Flirting with luxury and cast members' partners"],
-    quotes: ["\"I flirt for sport.\" (Season 14 Tagline)"]
+    knownFor: ["Quick-witted one-liners • Aggressive flirting "],
+    quotes: ["\"It's not 2005, and I'm not a D-list model. Olive Garden is chicer.\" (S14E1)"]
   },
   "Cindy Barshop": {
     astro: "October 11, 1964 • Libra",
@@ -92,7 +92,7 @@ const castArchetypes = {
   },
   "Erin Lichy": {
     astro: "July 1, 1987 • Cancer",
-    seasons: "14-present",
+    seasons: "14-15",
     type: "Main",
     knownFor: ["Cheese controversies and Tribeca hospitality hosting"],
     quotes: ["\"Cheese is a personality.\" (Season 14 Tagline)"]
@@ -106,23 +106,23 @@ const castArchetypes = {
   },
   "Jenna Lyons": {
     astro: "June 8, 1968 • Gemini",
-    seasons: "14-present",
+    seasons: "14-15",
     type: "Main",
     knownFor: ["Anguilla flight drama"],
     quotes: ["\"I don’t fly coach.\" (S14E8)"]
   },
   "Jessel Taank": {
     astro: "October 23, 1979 • Scorpio",
-    seasons: "14-present",
+    seasons: "14-15",
     type: "Main",
-    knownFor: ["Accidentally insulting Tribeca"],
+    knownFor: ["Calling Tribeca an "up and coming" neighborhood","Keeping a detailed grievance list about one of the women on her phone"],
     quotes: ["\"Tribeca is up and coming.\" (S14E2)"]
   },
   "Jill Zarin": {
     astro: "November 30, 1963 • Sagittarius",
     seasons: "1-4",
     type: "Main",
-    knownFor: ["Surprise Scary Island arrival"],
+    knownFor: ["her surprise Scary Island arrival"],
     quotes: ["\"Hiiiiiiiiiiiiiiiiii!\" (S3E6)"]
   },
   "Jules Wainstein": {
@@ -157,12 +157,12 @@ const castArchetypes = {
     astro: "May 17, 1965 • Taurus",
     seasons: "1-13",
     type: "Main",
-    knownFor: ["The pirate hookup in St. Barts", "Cabaret era"],
+    knownFor: ["The pirate hookup in St. Barts", "her Cabaret era"],
     quotes: ["\"Be cool. Don’t be all, like, uncool.\" (S7E14)", "\"Jovani!\" (S10E16)"]
   },
   "Racquel Chevremont": {
     astro: "October 31, 1971 • Scorpio",
-    seasons: "15-present",
+    seasons: "14-15",
     type: "Main",
     knownFor: ["Art-world and queer representation in the reboot"],
     quotes: ["\"You're projecting your own insecurities on everybody else.\" (S15E5)"]
@@ -171,28 +171,28 @@ const castArchetypes = {
     astro: "November 17, 1956 • Scorpio",
     seasons: "1-13",
     type: "Main",
-    knownFor: ["Singer Stinger", "Runway walk", "Room-assignment chaos"],
+    knownFor: ["Being called "White Trash" and then Goolging "What is white trash?"", "Drunken chaos"],
     quotes: ["\"Take a Xanax! Calm down!\" (S3E12)", "\"Wow, Bethenny, wow.\" (S10E19)"]
   },
     "Rebecca Minkoff": {
     astro: "December 4, 1980 • Sagittarius",
     seasons: "15",
     type: "Friend",
-    knownFor: ["Nordstrom Rack shade drama", "Puerto Rico vacation clashes"],
+    knownFor: ["Nordstrom Rack shady drama", "Scientology"],
     quotes: ["\"I built a $100 million company.\" (S15E7)"]
   },
   "Sai De Silva": {
     astro: "November 22, 1980 • Sagittarius",
-    seasons: "14-present",
+    seasons: "14-15",
     type: "Main",
-    knownFor: ["Food complaints and Jessel conflict"],
+    knownFor: ["Food complaints and conflicts with Jessel"],
     quotes: ["\"I need food.\" (S14E6)"]
   },
   "Sonja Morgan": {
     astro: "November 25, 1963 • Sagittarius",
     seasons: "3-13",
     type: "Main",
-    knownFor: ["The townhouse", "John-John and Madonna lore"],
+    knownFor: ["Being Ramona's ride-or-die", "Party-girl lore"],
     quotes: ["\"I party with John-John and Madonna!\" (S7E6)", "\"There’s nothing Grey Gardens about this.\" (S6E2)"]
   },
   "Tinsley Mortimer": {
@@ -204,7 +204,7 @@ const castArchetypes = {
   },
   "Ubah Hassan": {
     astro: "August 27, 1983 • Virgo",
-    seasons: "14-present",
+    seasons: "14-15",
     type: "Main",
     knownFor: ["Phone privacy fight with Erin"],
     quotes: ["\"I’m not fake nice.\" (S14E11)"]
