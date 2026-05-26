@@ -115,7 +115,7 @@ const castArchetypes = {
     astro: "October 23, 1979 • Scorpio",
     seasons: "14-15",
     type: "Main",
-    knownFor: ["Calling Tribeca an "up and coming" neighborhood","Keeping a detailed grievance list about one of the women on her phone"],
+    knownFor: ["Calling Tribeca an \"up and coming\" neighborhood", "Keeping a detailed grievance list about one of the women on her phone"],
     quotes: ["\"Tribeca is up and coming.\" (S14E2)"]
   },
   "Jill Zarin": {
