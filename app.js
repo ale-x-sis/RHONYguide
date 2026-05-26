@@ -544,11 +544,7 @@ function handleGuideClick(event) {
 }
 
 function renderCastGuide() {
-  const names = [...new Set(seasons.flatMap((season) => [
-    ...season.cast.returning,
-    ...season.cast.departed,
-    ...season.cast.new
-  ]))].sort((a, b) => a.localeCompare(b));
+  const names = Object.keys(castArchetypes).sort((a, b) => a.localeCompare(b));
 
   const groups = {
     "A-D": names.filter((name) => /^[A-D]/.test(name)),
