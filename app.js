@@ -728,7 +728,7 @@ function handleEpisodeJump(event) {
     const panel = target.closest("details");
     if (panel) panel.open = true;
     target.scrollIntoView({ behavior: "smooth", block: "center" });
-location.hash = link.dataset.episodeJump;
+history.replaceState(null, "", `#${link.dataset.episodeJump}`);
   });
 }
 
