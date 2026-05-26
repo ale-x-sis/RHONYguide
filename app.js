@@ -594,21 +594,94 @@ function renderCastMeta(name) {
 }
 
 function renderTripsGuide() {
-  const travelEpisodes = allEpisodes.filter((episode) => episode.travel);
-  const destinations = collectTrips(travelEpisodes);
-  el.tripsGuide.innerHTML = destinations.map((destination, index) => `
-    <details ${index < 4 ? "open" : ""}>
-      <summary>
-        <span>${escapeHtml(destination.name)}</span>
-        <span>${destination.arcs.length} arc${destination.arcs.length === 1 ? "" : "s"} · avg ${average(destination.arcs.flatMap((arc) => arc.episodes.map((episode) => episode.enjoyment)))}%</span>
-      </summary>
-      <div class="trip-list">
-        ${destination.arcs.map(renderTrip).join("")}
-      </div>
-    </details>
-  `).join("");
-}
+  const seasonTrips = {};
 
+  allEpisodes.forEach((episode) => {
+    if (!episode.travel) return;
+
+    const destination = getDestination(episode);
+    if (!destination) return;
+
+    const seasonKey = `Season ${episode.season}`;
+
+    if (!seasonTrips[seasonKey]) {
+      seasonTrips[seasonKey] = {};
+    }
+
+    if (!seasonTrips[seasonKey][destination]) {
+      seasonTrips[seasonKey][destination] = [];
+    }
+
+    seasonTrips[seasonKey][destination].push(episode);
+  });
+
+  const sortedSeasons = Object.keys(seasonTrips).sort((a, b) => {
+    const aNum = Number(a.replace("Season ", ""));
+    const bNum = Number(b.replace("Season ", ""));
+    return aNum - bNum;
+  });
+
+  el.tripsGuide.innerHTML = sortedSeasons.map((season) => {
+    const trips = seasonTrips[season];
+
+    return `
+      <section class="trip-season">
+        <h3 class="trip-season-title">${season}</h3>
+
+        ${Object.entries(trips).map(([destination, episodes]) => {
+          const firstEp = episodes[0];
+          const lastEp = episodes[episodes.length - 1];
+
+          const episodeRange =
+            episodes.length === 1
+              ? `S${firstEp.season}E${firstEp.ep}`
+              : `S${firstEp.season}E${firstEp.ep}–E${lastEp.ep}`;
+
+          return `
+            <article class="trip-card">
+              <h4>${destination}</h4>
+
+              <p>
+                <strong>Episodes:</strong>
+                ${episodeRange}
+              </p>
+
+              <p>
+                <strong>Why it matters:</strong>
+                ${episodes[0].notes || episodes[0].editorialSynopsis || "Major RHONY travel arc."}
+              </p>
+
+              <p>
+                <strong>Mood:</strong>
+                ${episodes[0].chaos || "RHONY chaos"}
+              </p>
+
+              <div class="trip-jumps">
+                ${episodes.map((ep) => `
+                  <button onclick="jumpToEpisode('${ep.id}')">
+                    S${ep.season}E${ep.ep}
+                  </button>
+                `).join("")}
+              </div>
+            </article>
+          `;
+        }).join("")}
+      </section>
+    `;
+  }).join("");
+}
+function jumpToEpisode(id) {
+  location.hash = id;
+
+  const target = document.getElementById(id);
+
+  if (target) {
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+}
 function collectTrips(episodes) {
   const grouped = new Map();
 
