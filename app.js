@@ -722,7 +722,7 @@ function handleEpisodeJump(event) {
   event.preventDefault();
   resetFilters();
   renderEpisodeGuide();
-  requestAnimationFrame(() => {
+ setTimeout(() => {
     const target = document.getElementById(link.dataset.episodeJump);
     if (!target) return;
     const panel = target.closest("details");
@@ -731,7 +731,7 @@ function handleEpisodeJump(event) {
     target.style.outline = "2px solid #c9a84c";
     setTimeout(() => { target.style.outline = ""; }, 2000);
     history.replaceState(null, "", `#${link.dataset.episodeJump}`);
-  });
+  }, 50);
 }
 
 function resetFilters() {
