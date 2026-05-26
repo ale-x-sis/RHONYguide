@@ -171,7 +171,7 @@ const castArchetypes = {
     astro: "November 17, 1956 • Scorpio",
     seasons: "1-13",
     type: "Main",
-    knownFor: ["Being called "White Trash" and then Goolging "What is white trash?"", "Drunken chaos"],
+    knownFor: ["Being called White Trash and then Googling \"What is white trash?\"", "Drunken chaos"],
     quotes: ["\"Take a Xanax! Calm down!\" (S3E12)", "\"Wow, Bethenny, wow.\" (S10E19)"]
   },
     "Rebecca Minkoff": {
