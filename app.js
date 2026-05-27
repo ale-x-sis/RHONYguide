@@ -462,12 +462,13 @@ function renderSeasonPanel(season, episodes) {
     </article>
   `;
 }
-
 function header(key, label) {
   const marker = sortState.key === key ? (sortState.direction === "asc" ? " ↑" : " ↓") : "";
-  return `<th><button class="th-button" data-sort="${key}" type="button">${label}${marker}</button></th>`;
+  const content = key === "nyc"
+    ? `<span class="sort-emoji" aria-hidden="true">🍎</span><span>NYC</span>${marker ? `<span class="sort-marker">${marker.trim()}</span>` : ""}`
+    : `${label}${marker}`;
+  return `<th><button class="th-button ${key === "nyc" ? "apple-sort-button" : ""}" data-sort="${key}" type="button" aria-label="Sort by ${escapeHtml(label.replace(/[🍎😮‍💨😔]/g, "").trim() || label)}">${content}</button></th>`;
 }
-
 function renderCastColumn(title, names) {
   return `
     <div>
