@@ -578,6 +578,26 @@ th {
   white-space: nowrap;
 }
 
+.apple-sort-button {
+  gap: 0.3rem;
+}
+
+.apple-sort-button .sort-emoji {
+  font-size: 1rem;
+  line-height: 1;
+  margin-right: 0.1rem;
+  transition: transform 0.15s ease;
+}
+
+.apple-sort-button:hover .sort-emoji {
+  transform: scale(1.18);
+}
+
+.apple-sort-button .sort-marker {
+  color: var(--oxblood);
+  font-weight: 600;
+}
+
 th:nth-child(3),
 .score-cell {
   min-width: 6rem;

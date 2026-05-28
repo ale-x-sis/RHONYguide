@@ -378,10 +378,21 @@ function renderEpisodeGuide() {
     return;
   }
 
+  const openSeasons = new Set();
+  el.seasonContainer.querySelectorAll('.episodes-disclosure[data-season]').forEach((d) => {
+    if (d.open) openSeasons.add(d.dataset.season);
+  });
+
   el.seasonContainer.innerHTML = seasons
     .filter((season) => bySeason.has(season.season))
     .map((season) => renderSeasonPanel(season, bySeason.get(season.season)))
     .join("");
+
+  if (openSeasons.size) {
+    el.seasonContainer.querySelectorAll('.episodes-disclosure[data-season]').forEach((d) => {
+      if (openSeasons.has(d.dataset.season)) d.open = true;
+    });
+  }
 }
 
 function hasActiveFilters() {
@@ -435,7 +446,7 @@ function renderSeasonPanel(season, episodes) {
         ${renderCastColumn("Departed Cast", cast.departed)}
         ${renderCastColumn("New Cast", cast.new)}
       </div>
-      <details class="episodes-disclosure">
+      <details class="episodes-disclosure" data-season="${season.season}">
         <summary>
           <span>Episode table</span>
           <span>${episodes.length} visible rows</span>
@@ -514,9 +525,12 @@ function handleGuideClick(event) {
 
   if (sortButton) {
     const key = sortButton.dataset.sort;
+    const numericKeys = ["nyc", "enjoyment", "bias", "darkness"];
+    const defaultDir = numericKeys.includes(key) ? "desc" : "asc";
+    const flipDir = defaultDir === "desc" ? "asc" : "desc";
     sortState = {
       key,
-      direction: sortState.key === key && sortState.direction === "asc" ? "desc" : "asc"
+      direction: sortState.key === key && sortState.direction === defaultDir ? flipDir : defaultDir
     };
     renderEpisodeGuide();
   }
