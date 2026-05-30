@@ -1309,9 +1309,32 @@ tr:target {
 /* Badge readability cleanup */
 .badge-essential,
 .b-essential {
-  background: var(--oxblood);
-  border-color: var(--oxblood);
-  color: var(--cream);
+ background: var(--oxblood) !important;
+  border-color: var(--oxblood) !important;
+  color: #fff8ea !important;
+}
+
+.badge-great,
+.b-great {
+  background: var(--taxi) !important;
+  border-color: var(--taxi) !important;
+  color: #080b12 !important;
+}
+
+.badge-elite,
+.b-elite {
+  background: #080b12 !important;
+  border-color: #080b12 !important;
+  color: #fff8ea !important;
+}
+
+.badge-optional,
+.badge-good,
+.b-optional,
+.b-good {
+  background: transparent !important;
+  border-color: rgba(13, 13, 13, 0.16) !important;
+  color: rgba(13, 13, 13, 0.48) !important;
 }
 
 /* Chaos Agents: visible, but not shouty */
@@ -1329,3 +1352,9 @@ tr:target {
 .agent-chunk span {
   text-transform: none;
 }
+/* Keep season/episode code muted, but make episode titles readable */
+.ep-title,
+.episode-title {
+  color: var(--ink) !important;
+}
+
