@@ -14,32 +14,6 @@ const seasonYears = {
   15: 2024
 };
 
-const guideCategories = [
-  {
-    id: "nyc",
-    label: "🍎 NYC",
-    description: "New York City texture: restaurants, apartments, geography, and the feeling of overhearing three tables at once.",
-    episodes: () => topEpisodes((episode) => episode.nyc * 20 + episode.enjoyment / 10)
-  },
-  {
-    id: "drama",
-    label: "😮‍💨 Drama",
-    description: "Emotionally heavy material and socially draining group dynamics bundled into one quick mood check.",
-    episodes: () => topEpisodes((episode) => episode.bias * 18 + episode.darkness * 22 + episode.enjoyment / 20)
-  },
-  {
-    id: "enjoyment",
-    label: "✨ Enjoyment",
-    description: "A personalized estimate for whether each episode is worth the drama 🫠",
-    episodes: () => topEpisodes((episode) => episode.enjoyment)
-  },
-  {
-    id: "girls-trips",
-    label: "✈️ Girls' Trips",
-    description: "Travel episodes outside the usual orbit: when the group leaves its usual geography and takes the chaos on the road.",
-    episodes: () => topEpisodes((episode) => (isGirlsTrip(episode) ? 1000 : 0) + episode.enjoyment)
-  }
-];
 const castArchetypes = {
   "Alex McCord": {
     astro: "October 1, 1973 • Libra",
@@ -353,7 +327,6 @@ const el = {
   essentialFilter: document.querySelector("#essentialFilter"),
   seasonContainer: document.querySelector("#seasonContainer"),
   resultCount: document.querySelector("#resultCount"),
-  howToCards: document.querySelector("#howToCards"),
   castGuide: document.querySelector("#castGuide"),
   tripsGuide: document.querySelector("#tripsGuide"),
   pickerForm: document.querySelector("#pickerForm"),
@@ -534,27 +507,6 @@ function renderPrescription(answers) {
       ${match.alsoConsider ? `<p class="prescription-also"><strong>Also consider:</strong> ${escapeHtml(match.alsoConsider)}</p>` : ""}
     </article>
   `;
-}
-
-function topEpisodes(score) {
-  return [...allEpisodes]
-    .filter((episode) => score(episode) > 0)
-    .sort((a, b) => {
-      const difference = score(b) - score(a);
-      if (difference !== 0) return difference;
-      return b.enjoyment - a.enjoyment || a.season - b.season || a.ep - b.ep;
-    })
-    .slice(0, 3);
-}
-
-function isGirlsTrip(episode) {
-  if (!episode.travel) return false;
-  const localPattern = /Hamptons|Berkshires|Saratoga|Connecticut|Bronx|Upstate New York/i;
-  return !localPattern.test(`${episode.notes} ${episode.chaos} ${episode.officialSynopsis || ""} ${episode.editorialSynopsis || ""}`);
-}
-
-function renderGuidePick(episode) {
-  return `<a href="#${episode.id}" data-episode-jump="${episode.id}">S${episode.season}E${String(episode.ep).padStart(2, "0")} — “${escapeHtml(episode.episodeTitle || `Episode ${episode.ep}`)}”</a>`;
 }
 
 function getFilteredEpisodes() {
