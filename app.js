@@ -383,22 +383,99 @@ function init() {
 // ── PICK MY EPISODE LOGIC ──
 function initPicker() {
   if (!el.pickerForm) return;
+
+  setupPickerCardFlow();
   limitMessSelection();
+
   el.pickerForm.addEventListener("submit", (event) => {
     event.preventDefault();
     renderPrescription(readPickerAnswers());
   });
 }
 
-// Enforce the "pick up to 2" rule on the mess checkboxes.
+function setupPickerCardFlow() {
+  const steps = [...el.pickerForm.querySelectorAll(".picker-q")];
+  const actions = el.pickerForm.querySelector(".picker-actions");
+  const submitButton = actions?.querySelector('button[type="submit"]');
+
+  if (!steps.length || !actions || !submitButton) return;
+
+  let currentStep = 0;
+
+  const progress = document.createElement("div");
+  progress.className = "picker-progress";
+  el.pickerForm.prepend(progress);
+
+  const flowControls = document.createElement("div");
+  flowControls.className = "picker-flow-controls";
+
+  const backButton = document.createElement("button");
+  backButton.type = "button";
+  backButton.className = "button ghost picker-back";
+  backButton.textContent = "Back";
+
+  const nextButton = document.createElement("button");
+  nextButton.type = "button";
+  nextButton.className = "button primary picker-next";
+  nextButton.textContent = "Next";
+
+  flowControls.append(backButton, nextButton);
+  actions.prepend(flowControls);
+
+  submitButton.textContent = "Write my prescription";
+
+  function updateStep() {
+    steps.forEach((step, index) => {
+      step.hidden = index !== currentStep;
+      step.classList.toggle("is-active", index === currentStep);
+    });
+
+    progress.textContent = `Question ${currentStep + 1} of ${steps.length}`;
+
+    backButton.hidden = currentStep === 0;
+    nextButton.hidden = currentStep === steps.length - 1;
+    submitButton.hidden = currentStep !== steps.length - 1;
+  }
+
+  function currentStepIsAnswered() {
+    const current = steps[currentStep];
+    const radios = [...current.querySelectorAll('input[type="radio"]')];
+
+    if (!radios.length) return true;
+
+    const groupNames = [...new Set(radios.map((radio) => radio.name))];
+
+    return groupNames.every((name) =>
+      current.querySelector(`input[name="${name}"]:checked`)
+    );
+  }
+
+  nextButton.addEventListener("click", () => {
+    if (!currentStepIsAnswered()) return;
+
+    currentStep = Math.min(currentStep + 1, steps.length - 1);
+    updateStep();
+  });
+
+  backButton.addEventListener("click", () => {
+    currentStep = Math.max(currentStep - 1, 0);
+    updateStep();
+  });
+
+  updateStep();
+}
+
+// Enforce the "pick up to 2" rule without permanently greying out options.
 function limitMessSelection() {
   const boxes = [...el.pickerForm.querySelectorAll('input[name="mess"]')];
+
   boxes.forEach((box) => {
     box.addEventListener("change", () => {
       const checked = boxes.filter((b) => b.checked);
-      boxes.forEach((b) => {
-        b.disabled = !b.checked && checked.length >= 2;
-      });
+
+      if (checked.length > 2) {
+        box.checked = false;
+      }
     });
   });
 }
