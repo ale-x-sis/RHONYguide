@@ -1302,3 +1302,30 @@ tr:target {
     letter-spacing: -0.05em;
   }
 }
+/* Hide old source-status markers; these were placeholder labels. */
+.source-status {
+  display: none !important;
+}
+/* Badge readability cleanup */
+.badge-essential,
+.b-essential {
+  background: var(--oxblood);
+  border-color: var(--oxblood);
+  color: var(--cream);
+}
+
+/* Chaos Agents: visible, but not shouty */
+.chaos-agent-list,
+.agent-chunk {
+  color: var(--oxblood);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.chaos-agent-list span,
+.agent-chunk span {
+  text-transform: none;
+}
