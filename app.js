@@ -330,7 +330,8 @@ const el = {
   castGuide: document.querySelector("#castGuide"),
   tripsGuide: document.querySelector("#tripsGuide"),
   pickerForm: document.querySelector("#pickerForm"),
-  prescription: document.querySelector("#prescription"),
+  pickerStart: document.querySelector("#pickerStart"),
+  prescription: document.querySelector("#prescription")
 };
 
 init();
