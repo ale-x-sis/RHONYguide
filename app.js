@@ -437,18 +437,10 @@ function setupPickerCardFlow() {
     submitButton.hidden = currentStep !== steps.length - 1;
   }
 
-  function currentStepIsAnswered() {
-    const current = steps[currentStep];
-    const radios = [...current.querySelectorAll('input[type="radio"]')];
-
-    if (!radios.length) return true;
-
-    const groupNames = [...new Set(radios.map((radio) => radio.name))];
-
-    return groupNames.every((name) =>
-      current.querySelector(`input[name="${name}"]:checked`)
-    );
-  }
+nextButton.addEventListener("click", () => {
+  currentStep = Math.min(currentStep + 1, steps.length - 1);
+  updateStep();
+});
 
   nextButton.addEventListener("click", () => {
     if (!currentStepIsAnswered()) return;
@@ -482,11 +474,12 @@ function limitMessSelection() {
 
 function readPickerAnswers() {
   const form = el.pickerForm;
+
   return {
-    goal: form.querySelector('input[name="goal"]:checked')?.value || "",
-    mess: [...form.querySelectorAll('input[name="mess"]:checked')].map((b) => b.value),
-    time: form.querySelector('input[name="time"]:checked')?.value || "",
-    weather: form.querySelector('input[name="weather"]:checked')?.value || ""
+    goal: form.querySelector('input[name="goal"]:checked')?.value || "Pick one episode",
+    mess: [...form.querySelectorAll('input[name="mess"]:checked')].map((input) => input.value),
+    time: form.querySelector('input[name="time"]:checked')?.value || "One episode",
+    weather: form.querySelector('input[name="weather"]:checked')?.value || "Surprise me"
   };
 }
 
