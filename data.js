@@ -3487,3 +3487,29 @@ window.GUIDE_DATA = [
     ]
   }
 ];
+const reunionFooters = {
+  6: "Reunion note: The Season 6 reunion centers on Ramona’s refusal to discuss her impending divorce from Mario, Aviva’s defense of her medical claims, and the unresolved “Bookgate” ghostwriting drama. It also functions as Aviva’s final group reckoning before her exit from the franchise.",
+
+  7: "Reunion note: The Season 7 reunion revisits Sonja’s business and financial delusions, the Turks and Caicos fallout, and Luann’s double standards around the “pirate incident.” Useful continuity before Luann’s defensive Tom-era posture hardens in Season 8.",
+
+  8: "Reunion note: The Season 8 reunion heavily litigates Bethenny’s takedown of Sonja’s “Tipsy Girl” brand and the fallout from the Regency Hotel texts. Luann doubles down on marrying Tom, making this reunion strong context for Season 9.",
+
+  9: "Reunion note: The Season 9 reunion revisits the season-long Ramona and Bethenny conflict, the Mexico trip, and Luann’s defense of her short-lived marriage to Tom. It provides the immediate emotional baseline before Luann’s divorce and Season 10 reset.",
+
+  10: "Reunion note: The Season 10 reunion captures the final collapse of Bethenny and Carole’s friendship, leading into Carole’s franchise exit. It also surfaces growing concerns around Dorinda’s drinking, defensiveness, and anger toward Luann.",
+
+  11: "Reunion note: The Season 11 reunion confronts Luann’s probation issues, cabaret self-absorption, and the group’s exhaustion with her behavior. It also serves as Bethenny’s final reunion appearance before the power structure shifts in Season 12.",
+
+  12: "Reunion note: The Season 12 reunion, filmed during the pandemic, focuses heavily on Dorinda’s treatment of Tinsley and her refusal to take meaningful accountability for her anger. It functions as Dorinda’s final reckoning before her exit.",
+
+  13: "Reunion note: Season 13 did not have a reunion. The cancellation leaves the season without a formal cast reckoning and effectively marks the end of the original RHONY timeline before the full reboot.",
+
+  14: "Reunion note: The Season 14 reunion centers on Jessel pushing back against the group’s treatment of her marriage and cultural identity, while Ubah and Erin revisit the Anguilla phone conflict. It sets the reboot cast’s early fault lines going into Season 15.",
+
+  15: "Reunion note: The Season 15 reunion focuses on accountability for the Puerto Rico fallout, especially around Brynn’s role in spreading damaging allegations and social rumors. Jenna taking a firmer stance signals a more guarded group dynamic heading into the next chapter."
+};
+
+window.GUIDE_DATA = window.GUIDE_DATA.map((season) => ({
+  ...season,
+  footer: reunionFooters[season.season] || season.footer
+}));
