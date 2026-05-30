@@ -357,6 +357,13 @@ function init() {
 function initPicker() {
   if (!el.pickerForm) return;
 
+  if (el.pickerStart) {
+    el.pickerStart.addEventListener("click", () => {
+      el.pickerForm.hidden = false;
+      el.pickerStart.hidden = true;
+    });
+  }
+
   setupPickerCardFlow();
   limitMessSelection();
 
@@ -365,7 +372,6 @@ function initPicker() {
     renderPrescription(readPickerAnswers());
   });
 }
-
 function setupPickerCardFlow() {
   const steps = [...el.pickerForm.querySelectorAll(".picker-q")];
   const actions = el.pickerForm.querySelector(".picker-actions");
