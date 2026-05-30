@@ -14,6 +14,7 @@
     <header class="site-header">
       <nav class="topbar" aria-label="Primary navigation">
         <a href="#home">How to Use</a>
+        <a href="#picker">Pick My Episode</a>
         <a href="#guide">Episode Guide</a>
         <a href="#cast">Who's Who</a>
         <a href="#trips">Trips</a>
@@ -25,13 +26,71 @@
           A spoiler-free viewing guide for choosing an episode by mood.
         </p>
         <div class="hero-actions">
-          <a class="button primary" href="#guide">Scan by Season</a>
-          <a class="button ghost" href="#trips">Housewives Trips</a>
+          <a class="button primary" href="#picker">Pick My Episode</a>
+          <a class="button ghost" href="#guide">Full Episode Guide</a>
         </div>
       </section>
     </header>
 
     <main>
+
+      <section class="section picker-section" id="picker" aria-labelledby="picker-title">
+        <div class="section-label">Pick My Episode</div>
+        <h2 id="picker-title">Answer four questions and get a prescription.</h2>
+        <p class="picker-intro">A quick mood-matcher for when you can't decide. Tell it what you're after and it writes you a viewing prescription.</p>
+
+        <form class="picker-form" id="pickerForm" aria-label="Pick my episode">
+          <fieldset class="picker-q">
+            <legend>What are you trying to do?</legend>
+            <div class="picker-options">
+              <label><input type="radio" name="goal" value="Pick one episode" checked /> Pick one episode</label>
+              <label><input type="radio" name="goal" value="Give me a short arc" /> Give me a short arc</label>
+              <label><input type="radio" name="goal" value="Catch me up before I jump ahead" /> Catch me up before I jump ahead</label>
+              <label><input type="radio" name="goal" value="Give me vacation chaos" /> Give me vacation chaos</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="picker-q">
+            <legend>What kind of mess? <span class="picker-hint">Pick up to 2.</span></legend>
+            <div class="picker-options" id="messOptions">
+              <label><input type="checkbox" name="mess" value="Iconic canon" /> Iconic canon</label>
+              <label><input type="checkbox" name="mess" value="Emotional fallout" /> Emotional fallout</label>
+              <label><input type="checkbox" name="mess" value="Low-stakes nonsense" /> Low-stakes nonsense</label>
+              <label><input type="checkbox" name="mess" value="Social warfare" /> Social warfare</label>
+              <label><input type="checkbox" name="mess" value="Relationship doom" /> Relationship doom</label>
+              <label><input type="checkbox" name="mess" value="Business delusion" /> Business delusion</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="picker-q">
+            <legend>How much time?</legend>
+            <div class="picker-options">
+              <label><input type="radio" name="time" value="One episode" checked /> One episode</label>
+              <label><input type="radio" name="time" value="Two episodes" /> Two episodes</label>
+              <label><input type="radio" name="time" value="Mini-run 3–4 episodes" /> Mini-run 3–4 episodes</label>
+              <label><input type="radio" name="time" value="I’m settling in" /> I’m settling in</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="picker-q">
+            <legend>What weather are we watching in?</legend>
+            <div class="picker-options">
+              <label><input type="radio" name="weather" value="Warm/tropical" checked /> Warm/tropical</label>
+              <label><input type="radio" name="weather" value="Cold/snowy" /> Cold/snowy</label>
+              <label><input type="radio" name="weather" value="Crisp city weather" /> Crisp city weather</label>
+              <label><input type="radio" name="weather" value="Summer out east" /> Summer out east</label>
+              <label><input type="radio" name="weather" value="Indoor dinner-party weather" /> Indoor dinner-party weather</label>
+              <label><input type="radio" name="weather" value="Surprise me" /> Surprise me</label>
+            </div>
+          </fieldset>
+
+          <div class="picker-actions">
+            <button type="submit" class="button primary">Write my prescription</button>
+          </div>
+        </form>
+
+        <div id="prescription" class="prescription" aria-live="polite"></div>
+      </section>
 
       <section class="section guide-section" id="guide" aria-labelledby="guide-title">
         <div class="section-heading">

@@ -267,6 +267,84 @@ const destinationPatterns = [
   { name: "Vermont", patterns: ["Vermont", "Snow", "Blizzard"] }
 ];
 
+// ── PICK MY EPISODE (MVP) ──
+// A small set of hand-written prescriptions. Each is tagged against the four
+// picker questions and matched by overlap — no auto-generation from episode data yet.
+const prescriptions = [
+  {
+    goal: "Pick one episode",
+    mess: ["Iconic canon", "Social warfare"],
+    time: "One episode",
+    weather: ["Indoor dinner-party weather", "Crisp city weather"],
+    episodes: ["s6e20"],
+    why: "The single most-quoted moment in the franchise. A finale dinner that detonates the instant Aviva walks in — pure canon you can drop into cold.",
+    alsoConsider: "S6E14 — “Sex, Lies and Facials” if you want the slow build before the blow-up."
+  },
+  {
+    goal: "Pick one episode",
+    mess: ["Emotional fallout", "Iconic canon"],
+    time: "One episode",
+    weather: ["Crisp city weather"],
+    episodes: ["s10e1"],
+    why: "A city-Halloween premiere carrying real grief underneath the costumes. Heavy and theatrical at once, and it sets the tone for the whole season.",
+    alsoConsider: "S6E20 — “The Last Leg” if you'd rather have chaos than feelings."
+  },
+  {
+    goal: "Give me vacation chaos",
+    mess: ["Iconic canon", "Social warfare"],
+    time: "One episode",
+    weather: ["Cold/snowy"],
+    episodes: ["s6e17"],
+    why: "Montana strips the women of their usual comforts and the Kristen–Heather feud forces everyone to pick a side. Trip chaos with a real edge.",
+    alsoConsider: "S6E18 if you want to see where the Montana tension lands next."
+  },
+  {
+    goal: "Give me vacation chaos",
+    mess: ["Low-stakes nonsense", "Iconic canon"],
+    time: "Two episodes",
+    weather: ["Warm/tropical", "Surprise me"],
+    episodes: ["s9e16", "s9e17"],
+    why: "The Mexico trip: room politics, tequila, and Luann going horizontal. Two episodes of low-consequence, high-rewatch nonsense in the sun.",
+    alsoConsider: "S7E13 — “Sonja Island” for another tropical trip with a softer center."
+  },
+  {
+    goal: "Give me a short arc",
+    mess: ["Relationship doom", "Low-stakes nonsense"],
+    time: "Two episodes",
+    weather: ["Warm/tropical", "Summer out east"],
+    episodes: ["s7e13", "s7e15"],
+    why: "Turks and Caicos glamour gives way to the cleanest boundary-breach storyline RHONY ever ran. The island sets you up; the fallout pays off.",
+    alsoConsider: "S7E18 — “Rumble on the Runway” to follow the same season back into the city."
+  },
+  {
+    goal: "Catch me up before I jump ahead",
+    mess: ["Emotional fallout", "Social warfare"],
+    time: "Mini-run 3–4 episodes",
+    weather: ["Cold/snowy", "Indoor dinner-party weather"],
+    episodes: ["s7e9", "s8e9", "s9e8"],
+    why: "Three Berkshires chapters across three seasons. Watch them in order and you understand the house, the group dynamic, and why every later mention lands.",
+    alsoConsider: "S6E17 — “Bury the Hatchet” for the Montana trip if you want the group out of the city entirely."
+  },
+  {
+    goal: "Pick one episode",
+    mess: ["Business delusion", "Social warfare"],
+    time: "One episode",
+    weather: ["Crisp city weather"],
+    episodes: ["s7e18"],
+    why: "Fashion Week as a battlefield: ambition, branding, and Bethenny–Ramona friction colliding on the runway. The franchise's business delusion in one tidy package.",
+    alsoConsider: "S8E1 — “Start Spreading the News” for Sonja's townhouse-as-business-plan era."
+  },
+  {
+    goal: "I’m settling in",
+    mess: ["Iconic canon", "Relationship doom"],
+    time: "I’m settling in",
+    weather: ["Warm/tropical", "Surprise me"],
+    episodes: ["s7e13", "s7e15", "s9e16", "s9e17"],
+    why: "A four-episode binge that pairs the season 7 island saga with the season 9 Mexico meltdown — two trips, two eras, maximum chaos for a long sit-down.",
+    alsoConsider: "Add S6E20 — “The Last Leg” first if you want the all-time-canon opener."
+  }
+];
+
 let sortState = { key: "season", direction: "asc" };
 
 const el = {
@@ -278,6 +356,8 @@ const el = {
   howToCards: document.querySelector("#howToCards"),
   castGuide: document.querySelector("#castGuide"),
   tripsGuide: document.querySelector("#tripsGuide"),
+  pickerForm: document.querySelector("#pickerForm"),
+  prescription: document.querySelector("#prescription"),
 };
 
 init();
@@ -297,6 +377,93 @@ function init() {
   renderEpisodeGuide();
   renderCastGuide();
   renderTripsGuide();
+  initPicker();
+}
+
+// ── PICK MY EPISODE LOGIC ──
+function initPicker() {
+  if (!el.pickerForm) return;
+  limitMessSelection();
+  el.pickerForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    renderPrescription(readPickerAnswers());
+  });
+}
+
+// Enforce the "pick up to 2" rule on the mess checkboxes.
+function limitMessSelection() {
+  const boxes = [...el.pickerForm.querySelectorAll('input[name="mess"]')];
+  boxes.forEach((box) => {
+    box.addEventListener("change", () => {
+      const checked = boxes.filter((b) => b.checked);
+      boxes.forEach((b) => {
+        b.disabled = !b.checked && checked.length >= 2;
+      });
+    });
+  });
+}
+
+function readPickerAnswers() {
+  const form = el.pickerForm;
+  return {
+    goal: form.querySelector('input[name="goal"]:checked')?.value || "",
+    mess: [...form.querySelectorAll('input[name="mess"]:checked')].map((b) => b.value),
+    time: form.querySelector('input[name="time"]:checked')?.value || "",
+    weather: form.querySelector('input[name="weather"]:checked')?.value || ""
+  };
+}
+
+// Score each prescription by how well it matches the answers, then pick the best.
+function scorePrescription(prescription, answers) {
+  let score = 0;
+  if (prescription.goal === answers.goal) score += 4;
+  if (prescription.time === answers.time) score += 3;
+  score += prescription.mess.filter((tag) => answers.mess.includes(tag)).length * 2;
+  if (answers.weather === "Surprise me") score += 1;
+  else if (prescription.weather.includes(answers.weather)) score += 2;
+  return score;
+}
+
+function pickPrescription(answers) {
+  return prescriptions.reduce(
+    (best, current) => (scorePrescription(current, answers) > scorePrescription(best, answers) ? current : best),
+    prescriptions[0]
+  );
+}
+
+function findEpisodeById(id) {
+  return allEpisodes.find((episode) => episode.id === id);
+}
+
+function episodeCode(episode) {
+  return `S${episode.season}E${String(episode.ep).padStart(2, "0")}`;
+}
+
+function renderPrescription(answers) {
+  const match = pickPrescription(answers);
+  const episodes = match.episodes.map(findEpisodeById).filter(Boolean);
+  if (!episodes.length) {
+    el.prescription.innerHTML = `<div class="empty-state">No prescription available yet for that combination.</div>`;
+    return;
+  }
+
+  const first = episodes[0];
+  const startLine = `${episodeCode(first)} — “${escapeHtml(first.episodeTitle || `Episode ${first.ep}`)}”`;
+  const watchOrder = episodes.length > 1
+    ? episodes.map((episode) => `<a href="#${episode.id}" data-episode-jump="${episode.id}">${episodeCode(episode)}</a>`).join(" → ")
+    : "";
+
+  el.prescription.innerHTML = `
+    <article class="prescription-card">
+      <div class="prescription-label">Prescription</div>
+      <p class="prescription-start">
+        <a href="#${first.id}" data-episode-jump="${first.id}">${startLine}</a>
+      </p>
+      ${watchOrder ? `<p class="prescription-watch"><strong>Then watch:</strong> ${watchOrder}</p>` : ""}
+      <p class="prescription-why"><strong>Why:</strong> ${escapeHtml(match.why)}</p>
+      ${match.alsoConsider ? `<p class="prescription-also"><strong>Also consider:</strong> ${escapeHtml(match.alsoConsider)}</p>` : ""}
+    </article>
+  `;
 }
 
 function topEpisodes(score) {

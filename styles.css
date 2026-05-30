@@ -998,6 +998,132 @@ tr:target {
   border-color: var(--oxblood);
 }
 
+/* ── PICK MY EPISODE ── */
+.picker-intro {
+  max-width: 640px;
+  margin: 0.75rem 0 0;
+  color: var(--muted);
+}
+
+.picker-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin: 1.75rem 0 0;
+}
+
+.picker-q {
+  margin: 0;
+  padding: 1rem 1.1rem 1.1rem;
+  background: var(--cream);
+  border: 1px solid var(--border);
+}
+
+.picker-q legend {
+  padding: 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--ink);
+}
+
+.picker-hint {
+  margin-left: 0.4rem;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--muted);
+}
+
+.picker-options {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+}
+
+.picker-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.92rem;
+  cursor: pointer;
+}
+
+.picker-options label:has(input:disabled) {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.picker-actions {
+  grid-column: 1 / -1;
+}
+
+.picker-actions .button {
+  border: 1px solid var(--oxblood);
+}
+
+.prescription:empty {
+  display: none;
+}
+
+.prescription-card {
+  margin-top: 1.75rem;
+  padding: 1.5rem;
+  background: #fffdf7;
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--oxblood);
+}
+
+.prescription-label {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(13, 13, 13, 0.5);
+}
+
+.prescription-start {
+  margin: 0.5rem 0 1rem;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  font-style: italic;
+}
+
+.prescription-start a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.prescription-start a:hover {
+  text-decoration: underline;
+}
+
+.prescription-card p {
+  max-width: 720px;
+}
+
+.prescription-watch,
+.prescription-why,
+.prescription-also {
+  margin: 0.5rem 0 0;
+  line-height: 1.5;
+}
+
+.prescription-watch a {
+  color: var(--oxblood);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.prescription-watch a:hover {
+  text-decoration: underline;
+}
+
+.prescription-also {
+  color: var(--muted);
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
   .framework-grid,
@@ -1026,7 +1152,8 @@ tr:target {
 
   .framework-grid,
   .cast-block,
-  .filters {
+  .filters,
+  .picker-form {
     grid-template-columns: 1fr;
   }
 
