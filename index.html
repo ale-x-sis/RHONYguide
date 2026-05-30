@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A spoiler-light, NYC-specific RHONY viewing field guide for Seasons 6-15."
+    />
+    <title>RHONY Viewing Guide</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="topbar" aria-label="Primary navigation">
+        <a href="#home">How to Use</a>
+        <a href="#guide">Episode Guide</a>
+        <a href="#cast">Who's Who</a>
+        <a href="#trips">Trips</a>
+      </nav>
+      <section class="hero" id="home">
+        <div class="kicker">Field Guide to Seasons 6 and Beyond</div>
+        <h1>A Watch Guide to RHONY: by Lex, for Lex 💅🏾 </h1>
+        <p>
+          A spoiler-free viewing guide for choosing an episode by mood.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#guide">Scan by Season</a>
+          <a class="button ghost" href="#trips">Housewives Trips</a>
+        </div>
+      </section>
+    </header>
+
+    <main>
+
+      <section class="section guide-section" id="guide" aria-labelledby="guide-title">
+        <div class="section-heading">
+          <div>
+            <div class="section-label">How to Use This Guide</div>
+            <h2 id="guide-title">The info you need to quickly scan for plotlines or BS to skip.</h2>
+          </div>
+          <p id="resultCount" class="count-pill"></p>
+        </div>
+
+        <form class="filters" id="filters" aria-label="Episode filters">
+          <label>
+            Season
+            <select id="seasonFilter">
+              <option value="all">All seasons</option>
+            </select>
+          </label>
+          <label>
+            Keyword search
+            <input id="searchFilter" type="search" placeholder="divorce, Berkshires, cabaret..." />
+          </label>
+          <label class="check-filter">
+            <input id="essentialFilter" type="checkbox" />
+            Essential episodes only
+          </label>
+        </form>
+
+        <div id="seasonContainer" class="season-stack"></div>
+      </section>
+
+      <section class="section" id="cast" aria-labelledby="cast-title">
+        <div class="section-label">Who's who cast guide</div>
+        <h2 id="cast-title">Quick notes on the women of RHONY.</h2>
+        <div id="castGuide" class="cast-guide"></div>
+      </section>
+
+      <section class="section" id="trips" aria-labelledby="trips-title">
+        <div class="section-label">Trips guide</div>
+        <h2 id="trips-title">Notes on destinations, plotlines, and likelihood of enjoyment.</h2>
+        <div id="tripsGuide" class="trip-guide"></div>
+      </section>
+    </main>
+
+    <a class="back-to-top" href="#home" aria-label="Back to top">↑ Top</a>
+
+    <footer class="site-footer">
+      <p> Built by Lex, for Lex ✨ </p>
+    </footer>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
