@@ -1684,3 +1684,12 @@ tr:target {
 .picker-flow-controls .button[hidden] {
   display: none !important;
 }
+/* Picker starts collapsed until user clicks Start */
+#pickerForm[hidden],
+#pickerStart[hidden] {
+  display: none !important;
+}
+
+.picker-start {
+  margin-top: 1.25rem;
+}
