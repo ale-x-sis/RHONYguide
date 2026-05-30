@@ -1631,3 +1631,56 @@ tr:target {
 .prescription-card {
   max-width: 760px;
 }
+/* ── Picker flow button cleanup ── */
+.picker-actions {
+  max-width: 760px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.picker-flow-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.picker-flow-controls .button,
+.picker-actions .button {
+  min-height: 2.4rem;
+  padding: 0.55rem 0.95rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.picker-back {
+  background: transparent !important;
+  border: 1px solid rgba(13, 13, 13, 0.22) !important;
+  color: var(--ink) !important;
+}
+
+.picker-back:hover {
+  border-color: var(--oxblood) !important;
+  color: var(--oxblood) !important;
+}
+
+.picker-next {
+  background: var(--oxblood) !important;
+  border-color: var(--oxblood) !important;
+  color: #fff8ea !important;
+}
+
+.picker-actions > button[type="submit"] {
+  margin-left: auto;
+  background: var(--ink) !important;
+  border-color: var(--ink) !important;
+  color: #fff8ea !important;
+}
+
+.picker-actions .button[hidden],
+.picker-flow-controls .button[hidden] {
+  display: none !important;
+}
