@@ -2,6 +2,11 @@ const seasons = window.GUIDE_DATA || [];
 const allEpisodes = seasons.flatMap((season) => season.episodes);
 
 const seasonYears = {
+  1: 2008,
+  2: 2009,
+  3: 2010,
+  4: 2011,
+  5: 2012,
   6: 2014,
   7: 2015,
   8: 2016,
