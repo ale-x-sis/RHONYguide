@@ -48,47 +48,54 @@
 </button>
 
 <form class="picker-form" id="pickerForm" aria-label="Pick my episode" hidden>
-          <fieldset class="picker-q">
+          <fieldset class="picker-q" data-picker-step="goal">
             <legend>What is your general vibe?</legend>
-            <div class="picker-options">
-              <label><input type="radio" name="goal" value="Pick one episode" checked /> Quick - one episode!</label>
-              <label><input type="radio" name="goal" value="Give me a short arc" /> I've got time for a short arc</label>
-              <label><input type="radio" name="goal" value="Catch me up before I jump ahead" /> Catch me up before I jump ahead</label>
-              <label><input type="radio" name="goal" value="Give me vacation chaos" /> Give me vacation chaos</label>
+            <div class="picker-options picker-options-copy">
+              <label>
+                <input type="radio" name="goal" value="Quick Episode" checked />
+                <span><strong>Quick Episode</strong><small>One strong episode. Minimal homework.</small></span>
+              </label>
+              <label>
+                <input type="radio" name="goal" value="Short Arc" />
+                <span><strong>Short Arc</strong><small>A tight 2–4 episode run with a beginning, middle, and payoff.</small></span>
+              </label>
+              <label>
+                <input type="radio" name="goal" value="Catch Me Up Before I Jump Ahead" />
+                <span><strong>Catch Me Up Before I Jump Ahead</strong><small>The essential season context: what you need without watching everything.</small></span>
+              </label>
+              <label>
+                <input type="radio" name="goal" value="Give Me Vacation Chaos" />
+                <span><strong>Give Me Vacation Chaos</strong><small>A trip Rx, from light vacation nonsense to full villa warfare.</small></span>
+              </label>
             </div>
           </fieldset>
 
-          <fieldset class="picker-q">
+          <fieldset class="picker-q" data-picker-step="mess">
             <legend>What kind of mess? <span class="picker-hint">Pick up to 2.</span></legend>
             <div class="picker-options" id="messOptions">
-              <label><input type="checkbox" name="mess" value="Iconic canon" /> Iconic canon</label>
-              <label><input type="checkbox" name="mess" value="Emotional fallout" /> Emotional fallout</label>
-              <label><input type="checkbox" name="mess" value="Low-stakes nonsense" /> Low-stakes nonsense</label>
-              <label><input type="checkbox" name="mess" value="Social warfare" /> Social warfare</label>
-              <label><input type="checkbox" name="mess" value="Relationship doom" /> Relationship doom</label>
-              <label><input type="checkbox" name="mess" value="Business delusion" /> Business delusion</label>
+              <label><input type="checkbox" name="mess" value="Iconic Canon" /> Iconic Canon</label>
+              <label><input type="checkbox" name="mess" value="Low-Stakes Nonsense" /> Low-Stakes Nonsense</label>
+              <label><input type="checkbox" name="mess" value="Emotional Fallout" /> Emotional Fallout</label>
+              <label><input type="checkbox" name="mess" value="Dealer's Choice" /> Dealer’s Choice</label>
             </div>
           </fieldset>
 
-          <fieldset class="picker-q">
-            <legend>How much time?</legend>
+          <fieldset class="picker-q" data-picker-step="time">
+            <legend>How much are we watching?</legend>
             <div class="picker-options">
-              <label><input type="radio" name="time" value="One episode" checked /> One episode</label>
-              <label><input type="radio" name="time" value="Two episodes" /> Two episodes</label>
-              <label><input type="radio" name="time" value="Mini-run 3–4 episodes" /> Mini-run 3–4 episodes</label>
-              <label><input type="radio" name="time" value="I’m settling in" /> I’m settling in</label>
+              <label><input type="radio" name="time" value="Two-Episode Taste" checked /> Two-Episode Taste</label>
+              <label><input type="radio" name="time" value="Story Arc" /> Story Arc</label>
+              <label><input type="radio" name="time" value="Full Season / Binge Mode" /> Full Season / Binge Mode</label>
             </div>
           </fieldset>
 
-          <fieldset class="picker-q">
-            <legend>What's the weather look like?</legend>
+          <fieldset class="picker-q" data-picker-step="atmosphere">
+            <legend>What's the atmosphere?</legend>
             <div class="picker-options">
-              <label><input type="radio" name="weather" value="Warm/tropical" checked /> Warm/tropical</label>
-              <label><input type="radio" name="weather" value="Cold/snowy" /> Cold/snowy</label>
-              <label><input type="radio" name="weather" value="Crisp city weather" /> Crisp city weather</label>
-              <label><input type="radio" name="weather" value="Summer out east" /> Summer out east</label>
-              <label><input type="radio" name="weather" value="Indoor dinner-party weather" /> Indoor dinner-party weather</label>
-              <label><input type="radio" name="weather" value="Surprise me" /> Surprise me</label>
+              <label><input type="radio" name="weather" value="Tropical & Chaotic" checked /> Tropical & Chaotic</label>
+              <label><input type="radio" name="weather" value="Cozy & Insular" /> Cozy & Insular</label>
+              <label><input type="radio" name="weather" value="High-Energy Urban" /> High-Energy Urban</label>
+              <label><input type="radio" name="weather" value="Surprise Me" /> Surprise Me</label>
             </div>
           </fieldset>
 

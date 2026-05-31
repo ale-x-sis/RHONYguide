@@ -1693,3 +1693,51 @@ tr:target {
 .picker-start {
   margin-top: 1.25rem;
 }
+
+
+/* ── Picker option microcopy + prescription controls ── */
+.picker-options-copy label {
+  align-items: flex-start;
+}
+
+.picker-options-copy span {
+  display: grid;
+  gap: 0.18rem;
+}
+
+.picker-options-copy strong {
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.2;
+}
+
+.picker-options-copy small {
+  color: var(--muted);
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.prescription-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px solid var(--border);
+}
+
+.prescription-actions .button {
+  min-height: 2.25rem;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.78rem;
+}
+
+.prescription-actions .button.ghost {
+  border: 1px solid rgba(13, 13, 13, 0.22);
+  color: var(--ink);
+}
+
+.prescription-actions .button.ghost:hover {
+  border-color: var(--oxblood);
+  color: var(--oxblood);
+}

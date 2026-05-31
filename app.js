@@ -227,23 +227,29 @@ const darkThemeLabels = {
 };
 
 const destinationPatterns = [
+  { name: "St. John, USVI", patterns: ["St. John", "USVI", "Scary Island"] },
+  { name: "St. Barts", patterns: ["St. Barts", "St. Barths", "Pirate"] },
+  { name: "Marrakesh, Morocco", patterns: ["Marrakesh", "Morocco", "Riad", "Fortune Teller", "Camel"] },
+  { name: "London", patterns: ["London", "U.K.", "UK", "Euro"] },
   { name: "Anguilla", patterns: ["Anguilla"] },
   { name: "Atlantic City", patterns: ["Atlantic City", "Casinos", "Gambling"] },
-  { name: "Berkshires", patterns: ["Berkshires"] },
+  { name: "Berkshires", patterns: ["Berkshires", "Bluestone"] },
+  { name: "Bronx", patterns: ["Bronx"] },
   { name: "Cartagena, Colombia", patterns: ["Cartagena", "Colombia"] },
   { name: "Cancun, Mexico", patterns: ["Cancun"] },
-  { name: "Connecticut", patterns: ["Connecticut"] },
-  { name: "Hamptons", patterns: ["Hamptons"] },
+  { name: "Connecticut / Mohegan Sun", patterns: ["Connecticut", "Mohegan Sun"] },
+  { name: "Hamptons", patterns: ["Hamptons", "Quogue", "Out East", "Hamptons Classic"] },
   { name: "Miami", patterns: ["Miami"] },
-  { name: "Mexico", patterns: ["Mexico", "Puerto Vallarta", "Cancun", "Tulum", "Tequila", "Villas"] },
+  { name: "Mexico", patterns: ["Mexico", "Puerto Vallarta", "Tulum", "Tequila", "Jalisco", "Villas"] },
   { name: "Montana", patterns: ["Montana", "Cabins", "Mountains", "Fishing", "Cattle", "Hatchets"] },
   { name: "Newport", patterns: ["Newport"] },
   { name: "Puerto Rico", patterns: ["Puerto Rico"] },
   { name: "Salem", patterns: ["Salem"] },
   { name: "Saratoga Springs", patterns: ["Saratoga"] },
-  { name: "Turks and Caicos", patterns: ["Turks", "Caicos"] },
+  { name: "Turks and Caicos", patterns: ["Turks", "Caicos", "Conch"] },
   { name: "Upstate New York", patterns: ["Upstate New York"] },
-  { name: "Vermont", patterns: ["Vermont", "Snow", "Blizzard"] }
+  { name: "Vermont", patterns: ["Vermont", "Snow", "Blizzard", "Slopes"] },
+  { name: "Washington, D.C.", patterns: ["Washington, D.C.", "Washington", "D.C."] }
 ];
 
 // ── PICK MY EPISODE (MVP) ──
@@ -251,76 +257,154 @@ const destinationPatterns = [
 // picker questions and matched by overlap — no auto-generation from episode data yet.
 const prescriptions = [
   {
-    goal: "Pick one episode",
-    mess: ["Iconic canon", "Social warfare"],
-    time: "One episode",
-    weather: ["Indoor dinner-party weather", "Crisp city weather"],
+    id: "quick-canon-bethenny-kelly",
+    goal: "Quick Episode",
+    mess: ["Iconic Canon", "Emotional Fallout"],
+    time: "Single Episode",
+    weather: ["High-Energy Urban", "Surprise Me"],
+    episodes: ["s2e7"],
+    why: "Kelly and Bethenny’s downtown sit-down is one of the cleanest early RHONY hierarchy moments. One episode, huge franchise footprint, very little homework.",
+    alsoConsider: "S3E6 — “The Ambush” if you want a sharper friendship-fallout one-off."
+  },
+  {
+    id: "quick-canon-leg",
+    goal: "Quick Episode",
+    mess: ["Iconic Canon", "Dealer's Choice"],
+    time: "Single Episode",
+    weather: ["High-Energy Urban", "Surprise Me"],
     episodes: ["s6e20"],
-    why: "The single most-quoted moment in the franchise. A finale dinner that detonates the instant Aviva walks in — pure canon you can drop into cold.",
-    alsoConsider: "S6E14 — “Sex, Lies and Facials” if you want the slow build before the blow-up."
+    why: "A finale dinner that detonates the second Aviva walks in. It is pure RHONY canon and works even if you only want one high-impact episode.",
+    alsoConsider: "S4E15 — “Video Killed the Countess” if you want camp instead of prosthetic warfare."
   },
   {
-    goal: "Pick one episode",
-    mess: ["Emotional fallout", "Iconic canon"],
-    time: "One episode",
-    weather: ["Crisp city weather"],
-    episodes: ["s10e1"],
-    why: "A city-Halloween premiere carrying real grief underneath the costumes. Heavy and theatrical at once, and it sets the tone for the whole season.",
-    alsoConsider: "S6E20 — “The Last Leg” if you'd rather have chaos than feelings."
+    id: "quick-low-stakes-dog-wedding",
+    goal: "Quick Episode",
+    mess: ["Low-Stakes Nonsense", "Dealer's Choice"],
+    time: "Single Episode",
+    weather: ["High-Energy Urban", "Cozy & Insular", "Surprise Me"],
+    episodes: ["s8e12"],
+    why: "A health scare and a high-society dog wedding share the same social calendar. It is absurd without requiring a whole investigation board.",
+    alsoConsider: "S2E8 — “Game, Set, Feud” for tennis chaos plus early Skinnygirl canon."
   },
   {
-    goal: "Give me vacation chaos",
-    mess: ["Iconic canon", "Social warfare"],
-    time: "One episode",
-    weather: ["Cold/snowy"],
-    episodes: ["s6e17"],
-    why: "Montana strips the women of their usual comforts and the Kristen–Heather feud forces everyone to pick a side. Trip chaos with a real edge.",
-    alsoConsider: "S6E18 if you want to see where the Montana tension lands next."
+    id: "quick-fallout-tom",
+    goal: "Quick Episode",
+    mess: ["Emotional Fallout", "Iconic Canon"],
+    time: "Single Episode",
+    weather: ["High-Energy Urban", "Surprise Me"],
+    episodes: ["s8e20"],
+    why: "The Tom information lands hard. It is emotional fallout with actual narrative consequences, not a slow sad episode you are forcing yourself through.",
+    alsoConsider: "S10E1 — “Ghouls Just Wanna Have Fun” for a city-premiere with grief and costume controversy."
   },
   {
-    goal: "Give me vacation chaos",
-    mess: ["Low-stakes nonsense", "Iconic canon"],
-    time: "Two episodes",
-    weather: ["Warm/tropical", "Surprise me"],
-    episodes: ["s9e16", "s9e17"],
-    why: "The Mexico trip: room politics, tequila, and Luann going horizontal. Two episodes of low-consequence, high-rewatch nonsense in the sun.",
-    alsoConsider: "S7E13 — “Sonja Island” for another tropical trip with a softer center."
+    id: "arc-nyc-luann-countess",
+    goal: "Short Arc",
+    mess: ["Iconic Canon", "Low-Stakes Nonsense"],
+    time: "Two-Episode Taste",
+    weather: ["High-Energy Urban", "Surprise Me"],
+    episodes: ["s2e4", "s2e5"],
+    why: "A tight NYC run of Countess etiquette, uptown rules, and Bethenny refusing to treat aristocratic cosplay as settled law.",
+    alsoConsider: "S1E4–S1E6 if you want the original social-climbing blueprint first."
   },
   {
-    goal: "Give me a short arc",
-    mess: ["Relationship doom", "Low-stakes nonsense"],
-    time: "Two episodes",
-    weather: ["Warm/tropical", "Summer out east"],
-    episodes: ["s7e13", "s7e15"],
-    why: "Turks and Caicos glamour gives way to the cleanest boundary-breach storyline RHONY ever ran. The island sets you up; the fallout pays off.",
-    alsoConsider: "S7E18 — “Rumble on the Runway” to follow the same season back into the city."
+    id: "arc-nyc-proxy-war",
+    goal: "Short Arc",
+    mess: ["Emotional Fallout", "Iconic Canon"],
+    time: "Story Arc",
+    weather: ["High-Energy Urban", "Cozy & Insular", "Surprise Me"],
+    episodes: ["s3e8", "s3e9", "s3e10"],
+    why: "A compact Jill/Bethenny proxy-war run: engagement news, pregnancy leaks, Alex-as-messenger, and the charity-event confrontation before Scary Island.",
+    alsoConsider: "S3E11–S3E13 if you decide you want the full trip detonation."
   },
   {
-    goal: "Catch me up before I jump ahead",
-    mess: ["Emotional fallout", "Social warfare"],
-    time: "Mini-run 3–4 episodes",
-    weather: ["Cold/snowy", "Indoor dinner-party weather"],
-    episodes: ["s7e9", "s8e9", "s9e8"],
-    why: "Three Berkshires chapters across three seasons. Watch them in order and you understand the house, the group dynamic, and why every later mention lands.",
-    alsoConsider: "S6E17 — “Bury the Hatchet” for the Montana trip if you want the group out of the city entirely."
+    id: "arc-sonja-toaster",
+    goal: "Short Arc",
+    mess: ["Low-Stakes Nonsense", "Dealer's Choice"],
+    time: "Two-Episode Taste",
+    weather: ["Cozy & Insular", "High-Energy Urban", "Surprise Me"],
+    episodes: ["s5e10", "s5e11"],
+    why: "Sonja’s toaster-oven mythology moves from business meeting to holiday party, which is exactly the kind of nonsense this guide was born to protect.",
+    alsoConsider: "S4E14 — “Burlesque Is More” for another Sonja identity-performance chapter."
   },
   {
-    goal: "Pick one episode",
-    mess: ["Business delusion", "Social warfare"],
-    time: "One episode",
-    weather: ["Crisp city weather"],
-    episodes: ["s7e18"],
-    why: "Fashion Week as a battlefield: ambition, branding, and Bethenny–Ramona friction colliding on the runway. The franchise's business delusion in one tidy package.",
-    alsoConsider: "S8E1 — “Start Spreading the News” for Sonja's townhouse-as-business-plan era."
+    id: "catch-season-5",
+    goal: "Catch Me Up Before I Jump Ahead",
+    mess: ["Iconic Canon", "Emotional Fallout", "Dealer's Choice"],
+    time: "Full Season / Binge Mode",
+    weather: ["Tropical & Chaotic", "High-Energy Urban", "Surprise Me"],
+    episodes: ["s5e1", "s5e10", "s5e13", "s5e14", "s5e15", "s5e18"],
+    why: "This is the Season 5 bridge path: cast reset, toaster-oven lore, St. Barts/Pirate fallout, Aviva’s arrival, and the finale posture that leads into Season 6.",
+    alsoConsider: "Add S5E16 if you want the immediate post-trip dinner litigation."
   },
   {
-    goal: "I’m settling in",
-    mess: ["Iconic canon", "Relationship doom"],
-    time: "I’m settling in",
-    weather: ["Warm/tropical", "Surprise me"],
-    episodes: ["s7e13", "s7e15", "s9e16", "s9e17"],
-    why: "A four-episode binge that pairs the season 7 island saga with the season 9 Mexico meltdown — two trips, two eras, maximum chaos for a long sit-down.",
-    alsoConsider: "Add S6E20 — “The Last Leg” first if you want the all-time-canon opener."
+    id: "catch-season-3",
+    goal: "Catch Me Up Before I Jump Ahead",
+    mess: ["Iconic Canon", "Emotional Fallout", "Dealer's Choice"],
+    time: "Story Arc",
+    weather: ["Tropical & Chaotic", "High-Energy Urban", "Surprise Me"],
+    episodes: ["s3e6", "s3e10", "s3e11", "s3e12", "s3e13", "s3e14"],
+    why: "The tightest useful Season 3 path: Brooklyn Bridge, pre-island proxy war, Scary Island, Jill’s surprise arrival, and the finale reset.",
+    alsoConsider: "Start with S3E1 if you want the cold-war setup from the beginning."
+  },
+  {
+    id: "catch-season-4",
+    goal: "Catch Me Up Before I Jump Ahead",
+    mess: ["Iconic Canon", "Dealer's Choice"],
+    time: "Full Season / Binge Mode",
+    weather: ["Tropical & Chaotic", "High-Energy Urban", "Surprise Me"],
+    episodes: ["s4e1", "s4e5", "s4e8", "s4e9", "s4e10", "s4e16"],
+    why: "This gives you the Season 4 soft landing: Cindy enters, Sonja’s financial shadow appears, Morocco goes fully canon, and the finale closes the original-cast era.",
+    alsoConsider: "S4E6 if you want the Pinot launch and subgroup divide before Morocco."
+  },
+  {
+    id: "trip-scary-island",
+    goal: "Give Me Vacation Chaos",
+    mess: ["Iconic Canon", "Emotional Fallout"],
+    time: "Story Arc",
+    weather: ["Tropical & Chaotic", "Surprise Me"],
+    episodes: ["s3e11", "s3e12", "s3e13"],
+    why: "The St. John trip becomes Scary Island: yacht glamour, escalating confusion, jelly beans, and Jill’s catastrophic surprise arrival.",
+    alsoConsider: "S3E10 if you want the pre-trip confrontation that sets the table."
+  },
+  {
+    id: "trip-morocco",
+    goal: "Give Me Vacation Chaos",
+    mess: ["Iconic Canon", "Emotional Fallout", "Dealer's Choice"],
+    time: "Story Arc",
+    weather: ["Tropical & Chaotic", "Surprise Me"],
+    episodes: ["s4e8", "s4e9", "s4e10"],
+    why: "Morocco is major Season 4 canon: the Fortune Teller prophecy, camel panic, face paint, and clique warfare — with a real 2011 cultural-tourism/orientalist framing note attached.",
+    alsoConsider: "S4E7 if you want the pre-trip logistics and anti-bullying irony."
+  },
+  {
+    id: "trip-london",
+    goal: "Give Me Vacation Chaos",
+    mess: ["Low-Stakes Nonsense", "Dealer's Choice"],
+    time: "Two-Episode Taste",
+    weather: ["Cozy & Insular", "Surprise Me"],
+    episodes: ["s5e6", "s5e7"],
+    why: "London is less villa warfare and more trip-manners stress: Heather’s hospitality, penthouse expectations, sports, dinners, and social snubbing.",
+    alsoConsider: "S7E17 for a very different London chapter built around Carole and Dorinda’s friendship canon."
+  },
+  {
+    id: "trip-st-barts",
+    goal: "Give Me Vacation Chaos",
+    mess: ["Iconic Canon", "Emotional Fallout"],
+    time: "Full Season / Binge Mode",
+    weather: ["Tropical & Chaotic", "Surprise Me"],
+    episodes: ["s5e13", "s5e14", "s5e15", "s5e16"],
+    why: "The St. Barts Rx: Pirate, alibis, Aviva’s late arrival, white-trash fallout, and the post-trip dinner where everyone keeps litigating vacation like it’s federal court.",
+    alsoConsider: "S9E16–S9E18 for another tropical arc with less phobia discourse and more tequila."
+  },
+  {
+    id: "trip-berkshires",
+    goal: "Give Me Vacation Chaos",
+    mess: ["Low-Stakes Nonsense", "Emotional Fallout", "Dealer's Choice"],
+    time: "Story Arc",
+    weather: ["Cozy & Insular", "Surprise Me"],
+    episodes: ["s7e9", "s7e10", "s8e9"],
+    why: "A cozy-insular Berkshires sampler: Dorinda’s house becomes a pressure cooker long before it becomes full Bluestone mythology.",
+    alsoConsider: "S9E8 if you want the later intervention-flavored Berkshires chapter."
   }
 ];
 
@@ -360,6 +444,8 @@ function init() {
 }
 
 // ── PICK MY EPISODE LOGIC ──
+let lastPrescriptionId = null;
+
 function initPicker() {
   if (!el.pickerForm) return;
 
@@ -378,12 +464,13 @@ function initPicker() {
     renderPrescription(readPickerAnswers());
   });
 }
+
 function setupPickerCardFlow() {
-  const steps = [...el.pickerForm.querySelectorAll(".picker-q")];
+  const allSteps = [...el.pickerForm.querySelectorAll(".picker-q")];
   const actions = el.pickerForm.querySelector(".picker-actions");
   const submitButton = actions?.querySelector('button[type="submit"]');
 
-  if (!steps.length || !actions || !submitButton) return;
+  if (!allSteps.length || !actions || !submitButton) return;
 
   let currentStep = 0;
 
@@ -409,10 +496,25 @@ function setupPickerCardFlow() {
 
   submitButton.textContent = "Write my prescription";
 
+  function selectedGoal() {
+    return el.pickerForm.querySelector('input[name="goal"]:checked')?.value || "Quick Episode";
+  }
+
+  function visibleSteps() {
+    return allSteps.filter((step) => !(selectedGoal() === "Quick Episode" && step.dataset.pickerStep === "time"));
+  }
+
   function updateStep() {
-    steps.forEach((step, index) => {
-      step.hidden = index !== currentStep;
-      step.classList.toggle("is-active", index === currentStep);
+    const steps = visibleSteps();
+    currentStep = Math.min(currentStep, steps.length - 1);
+
+    allSteps.forEach((step) => {
+      const isVisibleStep = steps.includes(step);
+      const isActiveStep = step === steps[currentStep];
+
+      step.hidden = !isActiveStep;
+      step.classList.toggle("is-active", isActiveStep);
+      step.classList.toggle("is-skipped", !isVisibleStep);
     });
 
     progress.textContent = `Question ${currentStep + 1} of ${steps.length}`;
@@ -422,15 +524,8 @@ function setupPickerCardFlow() {
     submitButton.hidden = currentStep !== steps.length - 1;
   }
 
-nextButton.addEventListener("click", () => {
-  currentStep = Math.min(currentStep + 1, steps.length - 1);
-  updateStep();
-});
-
   nextButton.addEventListener("click", () => {
-    if (!currentStepIsAnswered()) return;
-
-    currentStep = Math.min(currentStep + 1, steps.length - 1);
+    currentStep = Math.min(currentStep + 1, visibleSteps().length - 1);
     updateStep();
   });
 
@@ -439,10 +534,21 @@ nextButton.addEventListener("click", () => {
     updateStep();
   });
 
+  el.pickerForm.querySelectorAll('input[name="goal"]').forEach((input) => {
+    input.addEventListener("change", () => {
+      currentStep = Math.min(currentStep, visibleSteps().length - 1);
+      updateStep();
+    });
+  });
+
+  el.pickerForm.addEventListener("picker:resetFlow", () => {
+    currentStep = 0;
+    updateStep();
+  });
+
   updateStep();
 }
 
-// Enforce the "pick up to 2" rule without permanently greying out options.
 function limitMessSelection() {
   const boxes = [...el.pickerForm.querySelectorAll('input[name="mess"]')];
 
@@ -459,31 +565,56 @@ function limitMessSelection() {
 
 function readPickerAnswers() {
   const form = el.pickerForm;
+  const goal = form.querySelector('input[name="goal"]:checked')?.value || "Quick Episode";
 
   return {
-    goal: form.querySelector('input[name="goal"]:checked')?.value || "Pick one episode",
+    goal,
     mess: [...form.querySelectorAll('input[name="mess"]:checked')].map((input) => input.value),
-    time: form.querySelector('input[name="time"]:checked')?.value || "One episode",
-    weather: form.querySelector('input[name="weather"]:checked')?.value || "Surprise me"
+    time: goal === "Quick Episode"
+      ? "Single Episode"
+      : form.querySelector('input[name="time"]:checked')?.value || "Story Arc",
+    weather: form.querySelector('input[name="weather"]:checked')?.value || "Surprise Me"
   };
 }
 
-// Score each prescription by how well it matches the answers, then pick the best.
+// Score each prescription by how well it matches the answers, then pick from the strongest pool.
 function scorePrescription(prescription, answers) {
   let score = 0;
-  if (prescription.goal === answers.goal) score += 4;
-  if (prescription.time === answers.time) score += 3;
-  score += prescription.mess.filter((tag) => answers.mess.includes(tag)).length * 2;
-  if (answers.weather === "Surprise me") score += 1;
-  else if (prescription.weather.includes(answers.weather)) score += 2;
+
+  if (prescription.goal === answers.goal) score += 8;
+  else score -= 8;
+
+  if (answers.time === "Full Season / Binge Mode" && prescription.time === "Story Arc") score += 1;
+  if (prescription.time === answers.time) score += 4;
+
+  if (!answers.mess.length || answers.mess.includes("Dealer's Choice")) score += 1;
+  score += prescription.mess.filter((tag) => answers.mess.includes(tag)).length * 3;
+
+  if (answers.weather === "Surprise Me") score += 2;
+  else if (prescription.weather.includes(answers.weather)) score += 3;
+
   return score;
 }
 
-function pickPrescription(answers) {
-  return prescriptions.reduce(
-    (best, current) => (scorePrescription(current, answers) > scorePrescription(best, answers) ? current : best),
-    prescriptions[0]
-  );
+function pickPrescription(answers, excludeId = null) {
+  const scored = prescriptions
+    .map((prescription) => ({
+      prescription,
+      score: scorePrescription(prescription, answers)
+    }))
+    .sort((a, b) => b.score - a.score);
+
+  const bestScore = scored[0]?.score ?? 0;
+  let pool = scored
+    .filter((item) => item.score >= bestScore - 2)
+    .map((item) => item.prescription)
+    .filter((prescription) => prescription.id !== excludeId);
+
+  if (!pool.length) {
+    pool = scored.slice(0, 3).map((item) => item.prescription);
+  }
+
+  return pool[Math.floor(Math.random() * pool.length)] || prescriptions[0];
 }
 
 function findEpisodeById(id) {
@@ -494,8 +625,10 @@ function episodeCode(episode) {
   return `S${episode.season}E${String(episode.ep).padStart(2, "0")}`;
 }
 
-function renderPrescription(answers) {
-  const match = pickPrescription(answers);
+function renderPrescription(answers, options = {}) {
+  const match = pickPrescription(answers, options.excludeId ? lastPrescriptionId : null);
+  lastPrescriptionId = match.id;
+
   const episodes = match.episodes.map(findEpisodeById).filter(Boolean);
   if (!episodes.length) {
     el.prescription.innerHTML = `<div class="empty-state">No prescription available yet for that combination.</div>`;
@@ -517,10 +650,35 @@ function renderPrescription(answers) {
       ${watchOrder ? `<p class="prescription-watch"><strong>Then watch:</strong> ${watchOrder}</p>` : ""}
       <p class="prescription-why"><strong>Why:</strong> ${escapeHtml(match.why)}</p>
       ${match.alsoConsider ? `<p class="prescription-also"><strong>Also consider:</strong> ${escapeHtml(match.alsoConsider)}</p>` : ""}
+      <div class="prescription-actions">
+        <button type="button" class="button ghost prescription-try">Try another prescription</button>
+        <button type="button" class="button ghost prescription-reset">Reset quiz</button>
+      </div>
     </article>
   `;
+
+  el.prescription.querySelector(".prescription-try")?.addEventListener("click", () => {
+    renderPrescription(readPickerAnswers(), { excludeId: true });
+  });
+
+  el.prescription.querySelector(".prescription-reset")?.addEventListener("click", resetPicker);
 }
 
+function resetPicker() {
+  el.pickerForm.reset();
+  el.prescription.innerHTML = "";
+  lastPrescriptionId = null;
+  el.pickerForm.dispatchEvent(new CustomEvent("picker:resetFlow"));
+
+  el.pickerForm.hidden = true;
+  if (el.pickerStart) {
+    el.pickerStart.hidden = false;
+    el.pickerStart.focus();
+  }
+
+  const progress = el.pickerForm.querySelector(".picker-progress");
+  if (progress) progress.textContent = "";
+}
 function getFilteredEpisodes() {
   const selectedSeason = el.seasonFilter.value;
   const searchTerm = el.searchFilter?.value.trim().toLowerCase() || "";
@@ -860,14 +1018,15 @@ function renderTripsGuide() {
           </div>
 
           ${Object.entries(trips).map(([destination, episodes]) => {
+            episodes.sort((a, b) => a.ep - b.ep);
             const first = episodes[0];
             const last = episodes[episodes.length - 1];
             const episodeRange = episodes.length === 1
               ? `S${first.season}E${first.ep}`
               : `S${first.season}E${first.ep}–E${last.ep}`;
 
-            const why = first.notes?.replace(/^Travel:\s*[^.]+.\s*/i, "") || first.editorialSynopsis || "Major RHONY trip arc.";
-            const mood = first.chaos || "RHONY chaos";
+            const why = tripWhy(destination, episodes);
+            const mood = tripMood(destination, episodes);
 
             return `
               <div class="trip-row">
@@ -887,6 +1046,77 @@ function renderTripsGuide() {
       </details>
     `).join("");
 }
+
+function tripWhy(destination, episodes) {
+  const ids = episodes.map((episode) => episode.id);
+
+  if (ids.includes("s3e11") && ids.includes("s3e12")) {
+    return "The Scary Island arc: St. John glamour turns into one of the defining RHONY trip sequences and a major fracture point for the group.";
+  }
+
+  if (ids.includes("s4e8") && ids.includes("s4e9")) {
+    return "The Morocco arc: Fortune Teller prophecy, camel meltdown, and clique warfare, with clear 2011-era cultural-tourism/orientalist framing to keep in view.";
+  }
+
+  if (ids.includes("s5e6") && ids.includes("s5e7")) {
+    return "Heather hosts the women in London, turning hospitality, gratitude, trip manners, and social snubbing into the story.";
+  }
+
+  if (ids.includes("s5e13") && ids.includes("s5e15")) {
+    return "The St. Barts arc: Pirate, alibis, Aviva’s late arrival, white-trash fallout, and the post-trip damage trail.";
+  }
+
+  const first = episodes[0];
+  return cleanTravelNote(first.notes, destination) || first.editorialSynopsis || "Major RHONY trip arc.";
+}
+
+function tripMood(destination, episodes) {
+  const chaos = episodes.map((episode) => episode.chaos).filter(Boolean);
+  if (!chaos.length) return "RHONY chaos";
+
+  return chaos.slice(0, 2).join(" / ");
+}
+
+function cleanTravelNote(note = "", destination = "") {
+  if (!note) return "";
+
+  let cleaned = note.trim();
+
+  const destinationAliases = [
+    destination,
+    "St. John, USVI",
+    "St. Barts",
+    "St. Barths",
+    "Marrakesh, Morocco",
+    "Morocco",
+    "London, UK",
+    "Hamptons, NY",
+    "Quogue/Hamptons-adjacent",
+    "Miami, FL",
+    "Montana",
+    "Berkshires, MA",
+    "Turks and Caicos",
+    "Mexico",
+    "Tequila, Jalisco, Mexico",
+    "Mohegan Sun, CT",
+    "Washington, D.C.",
+    "Vermont",
+    "Atlantic City, NJ",
+    "Saratoga Springs, NY"
+  ].filter(Boolean);
+
+  destinationAliases.forEach((alias) => {
+    cleaned = cleaned.replace(new RegExp(`^Travel:\\\\s*${escapeRegExp(alias)}\\\\.?\\\\s*`, "i"), "");
+  });
+
+  cleaned = cleaned.replace(/^Travel:\s*/i, "");
+  return cleaned || note;
+}
+
+function escapeRegExp(value) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
 function jumpToEpisode(id) {
   location.hash = id;
 
@@ -930,7 +1160,7 @@ function collectTrips(episodes) {
 }
 
 function getDestination(episode) {
-  const haystack = `${episode.notes} ${episode.chaos} ${episode.synopsis}`;
+  const haystack = `${episode.notes || ""} ${episode.chaos || ""} ${episode.synopsis || ""} ${episode.editorialSynopsis || ""}`;
   const found = destinationPatterns.find((destination) =>
     destination.patterns.some((pattern) => haystack.toLowerCase().includes(pattern.toLowerCase()))
   );
