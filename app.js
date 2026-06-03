@@ -1116,7 +1116,7 @@ function renderSeasonPanel(season, episodes) {
       </div>
       <details class="episodes-disclosure" data-season="${season.season}">
         <summary>
-          <span class="episode-table-toggle-label">Episode table <span aria-hidden="true">↓</span></span>
+          <span class="episode-table-toggle-label">Episode table <span aria-hidden="true">click to expand ↓</span></span>
           <span>${episodes.length} visible rows</span>
         </summary>
         <div class="table-wrap">
