@@ -635,12 +635,10 @@ const tripArcs = [
 // questions and matched by overlap. Keep this curated so results feel intentional.
 const prescriptions = [
   // Lex's Choice follows expressed viewing preferences, not an official ranking.
-  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s5e10"], why: "Sonja’s toaster-oven ambitions: sincere business delusion and ensemble absurdity. There is branding-meeting friction, but this pick centers the ridiculous venture rather than cruelty."},
-  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e18"], why: "The Mexico trip’s affectionate, alcohol-fueled bonding and bad decisions. Bethenny is part of the ensemble rather than the reason to follow a whole personal arc."},
-  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s6e19"], why: "Carole’s birthday and Sonja/Harry social absurdity: a city-party pick built around group chemistry, with a little vulnerability."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s5e10"], why: "Sonja’s toaster-oven ambitions, branding-meeting friction, and wonderfully sincere business delusion."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e18"], why: "Affectionate Mexico bonding, tequila, and bad decisions—with Bethenny as part of the ensemble."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s6e19"], why: "Carole’s birthday, Sonja/Harry absurdity, and city-party chemistry, with a little vulnerability."},
   {lexChoice: true, lexOnly: true, goal: "Short Arc", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Two-Episode Taste", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e16", "s9e18"], why: "A Mexico sampler: the arrival and Luann’s fall, then the villa’s bonding and bad decisions. This skips Episode 17’s heavier sniping; it is a sampler, not a complete story arc."},
-  {lexChoice: true, lexOnly: true, goal: "Short Arc", mess: ["Lex's Choice"], time: "Two-Episode Taste", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s16e1", "s16e2"], why: "A taste of the current Season 16 ensemble that Lex has called fun and eventful. New personalities and city social dynamics come with real grief and marriage trouble; this is not a claim that the season is an all-time favorite."},
-  {goal: "Catch Me Up on the Current Season", mess: ["Iconic Canon", "Emotional Fallout"], time: "Story Arc", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s16e1", "s16e2", "s16e3", "s16e4"], why: "The released Season 16 episodes establish the new lineup and carry the opening conflicts through the Seder and gala. Includes grief, marital separation, and distressing personal history."},
   {goal: "Short Arc", mess: ["Emotional Fallout"], time: "Two-Episode Taste", atmosphere: ["High-Energy Urban", "Cozy & Insular", "Surprise Me"], episodes: ["s16e3", "s16e4"], why: "A Brooklyn Seder becomes a two-episode conflict arc, with fallout carrying into Carole’s gala. Includes discussion of distressing tabloid history and relationship conflict."},
   {
     goal: "Quick Episode",
@@ -671,7 +669,7 @@ const prescriptions = [
   },
   {
     goal: "Quick Episode",
-    mess: ["Lex's Choice"],
+    mess: ["Low-Stakes Nonsense"],
     time: "Single Episode",
     atmosphere: ["Surprise Me", "High-Energy Urban"],
     episodes: ["s7e15"],
@@ -684,7 +682,7 @@ const prescriptions = [
     time: "Story Arc",
     atmosphere: ["High-Energy Urban", "Surprise Me"],
     episodes: ["s3e9", "s3e10", "s3e14"],
-    why: "A compact city arc for the Jill/Bethenny collapse: messenger warfare, charity-event confrontation, and the final failed lunch.",
+    why: "A city sampler of the Jill/Bethenny collapse: messenger warfare, charity-event confrontation, and the final failed lunch.",
     alsoConsider: "S2E6–S2E8 if you want the Kelly/Bethenny and early Skinnygirl foundation instead."
   },
   {
@@ -707,7 +705,7 @@ const prescriptions = [
   },
   {
     goal: "Short Arc",
-    mess: ["Lex's Choice"],
+    mess: ["Low-Stakes Nonsense"],
     time: "Story Arc",
     atmosphere: ["High-Energy Urban", "Surprise Me"],
     episodes: ["s5e10", "s5e11", "s5e12"],
@@ -743,7 +741,7 @@ const prescriptions = [
   },
   {
     goal: "Catch Me Up Before I Jump Ahead",
-    mess: ["Lex's Choice"],
+    mess: ["Low-Stakes Nonsense"],
     time: "Story Arc",
     atmosphere: ["Surprise Me"],
     episodes: ["s4e5", "s4e6", "s4e8", "s4e9", "s4e10"],
@@ -780,7 +778,7 @@ const prescriptions = [
   },
   {
     goal: "Give Me Vacation Chaos",
-    mess: ["Lex's Choice"],
+    mess: ["Low-Stakes Nonsense"],
     time: "Two-Episode Taste",
     atmosphere: ["Cozy & Insular", "Surprise Me"],
     episodes: ["s12e13", "s12e14"],
@@ -889,8 +887,7 @@ function setupPickerCardFlow() {
   submitButton.textContent = "Write my prescription";
 
   function getActiveSteps() {
-    const goal = el.pickerForm.querySelector('input[name="goal"]:checked')?.value;
-    return allSteps.filter((step) => !(goal === "Quick Episode" && step.dataset.stepName === "time"));
+    return allSteps;
   }
 
   function updateStep() {
@@ -922,11 +919,19 @@ function setupPickerCardFlow() {
     updateStep();
   });
 
-  el.pickerForm.querySelectorAll('input[name="goal"]').forEach((input) => {
+  el.pickerForm.querySelectorAll('input[name="mode"]').forEach((input) => {
     input.addEventListener("change", () => {
-      currentStep = Math.min(currentStep, getActiveSteps().length - 1);
-      updateStep();
+      if (input.checked && input.value === "Lex's Choice") {
+        lastPrescriptionKey = "";
+        renderPrescription(readPickerAnswers());
+        el.pickerForm.hidden = true;
+        el.prescription.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }
     });
+  });
+  el.pickerForm.addEventListener("reset", () => {
+    currentStep = 0;
+    updateStep();
   });
 
   updateStep();
@@ -949,55 +954,41 @@ function limitMessSelection() {
 
 function readPickerAnswers() {
   const form = el.pickerForm;
-  const goal = form.querySelector('input[name="goal"]:checked')?.value || "Quick Episode";
-
   return {
-    goal,
+    mode: form.querySelector('input[name="mode"]:checked')?.value || "Match my mood",
     mess: [...form.querySelectorAll('input[name="mess"]:checked')].map((input) => input.value),
-    time: goal === "Quick Episode"
-      ? "Single Episode"
-      : form.querySelector('input[name="time"]:checked')?.value || "Story Arc",
+    time: form.querySelector('input[name="time"]:checked')?.value || "Single Episode",
     atmosphere: form.querySelector('input[name="atmosphere"]:checked')?.value || "Surprise Me"
   };
 }
 
-// Score each prescription by how well it matches the answers, then choose one.
+// Episode count is a firm limit; mood and setting rank the eligible selections.
 function scorePrescription(prescription, answers) {
-  let score = 0;
+  const moodScore = prescription.mess.filter((tag) => answers.mess.includes(tag)).length * 3;
+  const settingScore = answers.atmosphere !== "Surprise Me" && prescription.atmosphere.includes(answers.atmosphere) ? 3 : 0;
+  return moodScore + settingScore;
+}
 
-  if (answers.mess.includes("Lex's Choice") && prescription.lexChoice) score += 20;
-
-  if (prescription.goal === answers.goal) score += 10;
-  if (prescription.time === answers.time) score += 3;
-
-  if (!answers.mess.length || answers.mess.includes("Lex's Choice")) {
-    score += 2;
-  } else {
-    score += prescription.mess.filter((tag) => answers.mess.includes(tag)).length * 3;
-  }
-
-  if (answers.atmosphere === "Surprise Me") score += 1;
-  else if (prescription.atmosphere.includes(answers.atmosphere)) score += 3;
-
-  return score;
+function matchesEpisodeCount(prescription, time) {
+  const count = prescription.episodes.length;
+  if (time === "Single Episode") return count === 1;
+  if (time === "Two-Episode Taste") return count === 2;
+  return count >= 3 && count <= 4;
 }
 
 function pickPrescription(answers, excludeKey = "") {
-  const wantsLex = answers.mess.includes("Lex's Choice");
-  const candidates = prescriptions.filter((item) => {
-    if (answers.goal === "Catch Me Up on the Current Season") return item.goal === answers.goal;
-    if (item.goal === "Catch Me Up on the Current Season") return false;
-    return wantsLex ? item.lexChoice === true : item.lexOnly !== true;
-  });
-  const ranked = candidates
-    .map((prescription) => ({
-      prescription,
-      score: scorePrescription(prescription, answers),
-      key: prescription.episodes.join("|")
-    }))
-    .sort((a, b) => b.score - a.score);
-
-  return (ranked.find((item) => item.key !== excludeKey) || ranked[0]).prescription;
+  const wantsLex = answers.mode === "Lex's Choice";
+  const candidates = prescriptions.filter((item) => wantsLex
+    ? item.lexChoice === true
+    : item.lexOnly !== true && matchesEpisodeCount(item, answers.time));
+  const alternatives = candidates.filter((item) => item.episodes.join("|") !== excludeKey);
+  const pool = alternatives.length ? alternatives : candidates;
+  if (!pool.length) return null;
+  if (wantsLex) return pool[Math.floor(Math.random() * pool.length)];
+  const ranked = pool.map((prescription) => ({ prescription, score: scorePrescription(prescription, answers) }));
+  const bestScore = Math.max(...ranked.map((item) => item.score));
+  const best = ranked.filter((item) => item.score === bestScore);
+  return best[Math.floor(Math.random() * best.length)].prescription;
 }
 
 function findEpisodeById(id) {
@@ -1010,7 +1001,7 @@ function episodeCode(episode) {
 
 function renderPrescription(answers, options = {}) {
   const match = pickPrescription(answers, options.excludeKey ? lastPrescriptionKey : "");
-  const episodes = match.episodes.map(findEpisodeById).filter(Boolean);
+  const episodes = match ? match.episodes.map(findEpisodeById).filter(Boolean) : [];
 
   if (!episodes.length) {
     el.prescription.innerHTML = `<div class="empty-state">No prescription available yet for that combination.</div>`;
@@ -1022,12 +1013,12 @@ function renderPrescription(answers, options = {}) {
   const first = episodes[0];
   const startLine = `${episodeCode(first)} — “${escapeHtml(first.episodeTitle || `Episode ${first.ep}`)}”`;
   const watchOrder = episodes.length > 1
-    ? episodes.map((episode) => `<a href="#${episode.id}" data-episode-jump="${episode.id}">${episodeCode(episode)}</a>`).join(" → ")
+    ? episodes.slice(1).map((episode) => `<a href="#${episode.id}" data-episode-jump="${episode.id}">${episodeCode(episode)}</a>`).join(" → ")
     : "";
 
   el.prescription.innerHTML = `
     <article class="prescription-card">
-      <div class="prescription-label">Prescription</div>
+      <div class="prescription-label">${episodes.length === 1 ? "Single episode" : `${episodes.length}-episode ${match.episodes.every((id, i) => i === 0 || episodes[i].season === episodes[i - 1].season && episodes[i].ep === episodes[i - 1].ep + 1) ? "run" : "sampler"}`}</div>
       <p class="prescription-start">
         <a href="#${first.id}" data-episode-jump="${first.id}">${startLine}</a>
       </p>
@@ -1071,7 +1062,7 @@ function resetPicker() {
     step.classList.toggle("is-active", step === firstStep);
   });
 
-  if (progress) progress.textContent = "Question 1 of 3";
+  if (progress) progress.textContent = "Question 1 of 4";
 }
 
 
@@ -1503,3 +1494,4 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
+
