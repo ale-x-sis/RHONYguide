@@ -198,9 +198,11 @@ castArchetypes["Carole Radziwill"] = {
   "type": "Main",
   "knownFor": [
     "Journalism and memoir writing",
+    "Her fallout friendship with Bethenny",
+    "Running the NYC Marathon on the show",
     "Returning to the cast in Season 16"
   ],
-  "quotes": []
+  "quotes": ["\"I was awoken in the middle of the night by two male voices. One was Luann’s.\" (S8)"]
 };
 castArchetypes["Hailey Glassman"] = {
   "astro": "February 18, 1987 • Aquarius",
@@ -1350,7 +1352,7 @@ function renderCastMeta(name) {
   }
 
   const knownFor = Array.isArray(raw.knownFor) && raw.knownFor.length
-    ? raw.knownFor.map((item) => `<span>${escapeHtml(item)}</span>`).join("")
+    ? raw.knownFor.map((item) => escapeHtml(item)).join(" • ")
     : "<span>Known-for moment pending.</span>";
 
   const quotes = Array.isArray(raw.quotes) && raw.quotes.length
