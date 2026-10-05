@@ -231,9 +231,9 @@ castArchetypes["Erika Hammond"] = {
   ],
   "quotes": [
     {
-      "text": "I know you don't like this outfit, but I'm wearing this outfit.",
-      "context": "To her husband before dinner, as recalled by Jessel in a Bravo Insider interview.",
-      "sourceUrl": "https://www.bravotv.com/the-daily-dish/rhony-season-16-behind-the-scenes-interviews-photos-exclusive"
+      "text": "Should we go in and f**king scrape them and fix them?",
+      "context": "Offering to fix Daisy’s popcorn ceilings during the Seder.",
+      "episodeId": "s16e4"
     }
   ]
 };
@@ -1340,8 +1340,7 @@ function renderCastQuote(quote) {
   if (typeof quote === "string") return `<span>${linkifyQuote(quote)}</span>`;
   const episode = quote.episodeId && findEpisodeById(quote.episodeId);
   const jump = episode ? `<a href="#${episode.id}" data-episode-jump="${episode.id}">S${episode.season}E${episode.ep}</a>` : "";
-  const source = quote.sourceUrl ? `<a href="${escapeHtml(quote.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source</a>` : "";
-  return `<span class="cast-quote">“${escapeHtml(quote.text)}”<small class="quote-context">${escapeHtml(quote.context)} ${jump} ${source}</small></span>`;
+  return `<span class="cast-quote">“${escapeHtml(quote.text)}”<small class="quote-context">${escapeHtml(quote.context)} ${jump}</small></span>`;
 }
 
 function renderCastMeta(name) {
