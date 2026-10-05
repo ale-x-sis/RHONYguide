@@ -1866,3 +1866,40 @@ html { scroll-padding-top: 7rem; }
 /* Replace forest-green/white action blocks with editorial text on stone. */
 .button.primary, .picker-next, .picker-actions > button[type="submit"] { background: var(--paper) !important; color: var(--ink) !important; border-color: var(--ink) !important; font-family: var(--serif); font-style: italic; font-size: 1.2rem; font-weight: 400; }
 .button.primary:hover, .picker-next:hover { background: #e3efe6 !important; }
+
+/* One typography and link treatment for every Who’s Who profile. */
+.cast-meta, .cast-meta p, .cast-meta span, .cast-meta .quote-context {
+  font-family: var(--sans);
+  font-size: .88rem;
+  line-height: 1.5;
+  color: var(--text);
+}
+.cast-meta .cast-quotes, .cast-meta .cast-quote {
+  display: block;
+  margin-top: .25rem;
+}
+.cast-meta .cast-quote + .cast-quote { margin-top: .65rem; }
+.cast-meta a, .cast-meta a:visited, .cast-meta a:hover, .cast-meta a:focus-visible {
+  color: var(--oxblood);
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.cast-meta .quote-context { display: block; font-style: italic; margin-top: .35rem; }
+
+
+/* Consistent controls: serif italic buttons, neutral sans-serif option labels. */
+.button, .picker-actions .button, .picker-flow-controls .button, .prescription-actions .button {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+.picker-options label, .picker-option-title {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+}
