@@ -68,3 +68,7 @@ Removed the generic current-season catch-up prescription and overlapping goal/du
 Results label contiguous selections as episode runs and selections with gaps as samplers, avoiding the claim that any two-episode sample is a complete story arc. The displayed follow-on watch order no longer repeats the start episode. Buttons consistently use Instrument Serif italic; answer labels consistently use regular Lato.
 
 Validation: JavaScript syntax passed; Node VM checks passed for 84 mood/count/setting combinations and retries, the automatic curated Lex pool, valid episode anchors, result rendering, next/back/reset navigation, immediate Lex result behavior, and neutral option markup. Browser visual QA remains unavailable because Playwright’s Chromium executable is absent.
+
+## Quote presentation consistency — October 5
+
+Every displayed cast quote now uses the same structured data: text, short scene context, and episodeId. All episode links appear after the context without parentheses, in the shared green link style. Older string-based quote rendering is removed. Context is included for returning and new cast alike, rather than selectively for Season 16 additions. Jules’s visible verification footnote is removed; unresolved source/caption questions remain documented above for editorial review. Structural checks passed for all quotes, context completeness, episode targets, shared markup, and removal of visible review footnotes.
