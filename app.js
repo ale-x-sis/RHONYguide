@@ -202,7 +202,7 @@ castArchetypes["Carole Radziwill"] = {
     "Running the NYC Marathon on the show",
     "Returning to the cast in Season 16"
   ],
-  "quotes": ["\"I was awoken in the middle of the night by two male voices. One was Luann’s.\" (S8)"]
+  "quotes": ["\"I was awoken in the middle of the night by two male voices. One was Luann’s.\" (S5E13)"]
 };
 castArchetypes["Hailey Glassman"] = {
   "astro": "February 18, 1987 • Aquarius",
@@ -244,7 +244,11 @@ castArchetypes["Daisy Toye"] = {
     "Martha Stewart's longtime makeup artist",
     "Hosting the Brooklyn Seder"
   ],
-  "quotes": []
+  "quotes": [{
+    "text": "This is winning the lottery in New York City.",
+    "context": "Defending her rent-controlled apartment after Jessel comments on the popcorn ceilings.",
+    "episodeId": "s16e3"
+  }]
 };
 
 const biasThemes = {
@@ -1330,7 +1334,7 @@ function renderCastGuide() {
 }
 
 function linkifyQuote(quote) {
-  return escapeHtml(quote).replace(/\(S(\d+)E(\d+)\)/g, (match, s, e) => {
+  return escapeHtml(quote).replace(/\(Season (\d+) Tagline\)/g, (match, season) => `(<a href="#season-${season}">Season ${season} Tagline</a>)`).replace(/\(S(\d+)E(\d+)\)/g, (match, s, e) => {
     const id = `s${s}e${e}`;
     return `(<a href="#${id}" data-episode-jump="${id}" style="color:var(--oxblood);font-weight:500;text-decoration:underline;text-underline-offset:2px;">S${s}E${e}</a>)`;
   });
