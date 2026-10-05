@@ -16,7 +16,8 @@ const seasonYears = {
   12: 2020,
   13: 2021,
   14: 2023,
-  15: 2024
+  15: 2024,
+  16: 2026
 };
 
 const castArchetypes = {
@@ -71,7 +72,7 @@ const castArchetypes = {
   },
   "Erin Lichy": {
     astro: "July 1, 1987 • Cancer",
-    seasons: "14-15",
+    seasons: "14-present",
     type: "Main",
     knownFor: ["Cheese controversies and Tribeca hospitality hosting"],
     quotes: ["\"Cheese is a personality.\" (Season 14 Tagline)"]
@@ -92,7 +93,7 @@ const castArchetypes = {
   },
   "Jessel Taank": {
     astro: "October 23, 1979 • Scorpio",
-    seasons: "14-15",
+    seasons: "14-present",
     type: "Main",
     knownFor: ["Calling Tribeca an \"up and coming\" neighborhood", "Keeping a detailed grievance list about one of the women on her phone"],
     quotes: ["\"Tribeca is up and coming.\" (S14E2)"]
@@ -162,7 +163,7 @@ const castArchetypes = {
   },
   "Sai De Silva": {
     astro: "November 22, 1980 • Sagittarius",
-    seasons: "14-15",
+    seasons: "14-present",
     type: "Main",
     knownFor: ["Food complaints and conflicts with Jessel"],
     quotes: ["\"I need food.\" (S14E6)"]
@@ -188,6 +189,60 @@ const castArchetypes = {
     knownFor: ["Phone privacy fight with Erin"],
     quotes: ["\"I’m not fake nice.\" (S14E11)"]
   }
+};
+
+// Season 16 cast additions; retain existing quotes for returning women.
+castArchetypes["Carole Radziwill"] = {
+  "astro": "August 20, 1963 • Leo",
+  "seasons": "5-10, 16-present",
+  "type": "Main",
+  "knownFor": [
+    "Journalism and memoir writing",
+    "Returning to the cast in Season 16"
+  ],
+  "quotes": []
+};
+castArchetypes["Hailey Glassman"] = {
+  "astro": "February 18, 1987 • Aquarius",
+  "seasons": "16-present",
+  "type": "Main",
+  "knownFor": [
+    "Public relations and tabloid history",
+    "Discussing her unconventional marriage"
+  ],
+  "quotes": [
+    {
+      "text": "Lying-ass snake.",
+      "context": "Excerpt from her confrontation with Erin during the Seder fallout.",
+      "episodeId": "s16e4",
+      "sourceUrl": "https://tasteofreality.com/the-real-housewives-of-new-york-live-discussion-gloves-off-at-the-gala-season-16-episode-4/"
+    }
+  ]
+};
+castArchetypes["Erika Hammond"] = {
+  "astro": "April 29, 1991 • Taurus",
+  "seasons": "16-present",
+  "type": "Main",
+  "knownFor": [
+    "Former WWE performer and Rumble Boxing entrepreneur",
+    "Inviting the group on an island getaway"
+  ],
+  "quotes": [
+    {
+      "text": "I know you don't like this outfit, but I'm wearing this outfit.",
+      "context": "To her husband before dinner, as recalled by Jessel in a Bravo Insider interview.",
+      "sourceUrl": "https://www.bravotv.com/the-daily-dish/rhony-season-16-behind-the-scenes-interviews-photos-exclusive"
+    }
+  ]
+};
+castArchetypes["Daisy Toye"] = {
+  "seasons": "16-present",
+  "type": "Main",
+  "knownFor": [
+    "Martha Stewart's longtime makeup artist",
+    "Hosting the Brooklyn Seder"
+  ],
+  "quotes": []
 };
 
 const biasThemes = {
@@ -569,6 +624,8 @@ const tripArcs = [
 // A small set of hand-written prescriptions. Each is tagged against the picker
 // questions and matched by overlap. Keep this curated so results feel intentional.
 const prescriptions = [
+  {goal: "Catch Me Up on the Current Season", mess: ["Iconic Canon", "Emotional Fallout"], time: "Story Arc", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s16e1", "s16e2", "s16e3", "s16e4"], why: "The released Season 16 episodes establish the new lineup and carry the opening conflicts through the Seder and gala. Includes grief, marital separation, and distressing personal history."},
+  {goal: "Short Arc", mess: ["Emotional Fallout"], time: "Two-Episode Taste", atmosphere: ["High-Energy Urban", "Cozy & Insular", "Surprise Me"], episodes: ["s16e3", "s16e4"], why: "A Brooklyn Seder becomes a two-episode conflict arc, with fallout carrying into Carole’s gala. Includes discussion of distressing tabloid history and relationship conflict."},
   {
     goal: "Quick Episode",
     mess: ["Iconic Canon"],
@@ -907,7 +964,9 @@ function scorePrescription(prescription, answers) {
 }
 
 function pickPrescription(answers, excludeKey = "") {
-  const ranked = prescriptions
+  const candidates = prescriptions.filter((item) => answers.goal === "Catch Me Up on the Current Season"
+    ? item.goal === answers.goal : item.goal !== "Catch Me Up on the Current Season");
+  const ranked = candidates
     .map((prescription) => ({
       prescription,
       score: scorePrescription(prescription, answers),
@@ -1101,13 +1160,13 @@ function renderSeasonPanel(season, episodes) {
   const verified = season.sourceStatus === "Peacock verified";
   const seasonTitle = `Season ${season.season}${seasonYears[season.season] ? `: ${seasonYears[season.season]}` : ""}`;
   return `
-    <article class="season-panel">
+    <article class="season-panel" id="season-${season.season}">
       <div class="season-header">
         <span class="season-title-wrap">
           <span class="season-title">${seasonTitle}</span>
           <span class="source-status ${verified ? "verified" : "provisional"}">${escapeHtml(season.sourceStatus || "Source status pending")}</span>
         </span>
-        <span class="season-meta">${episodes.length} visible rows · ${season.episodes.length} total</span>
+        <span class="season-meta">${episodes.length} visible rows · ${season.episodes.length} ${season.currentlyAiring ? "released · Currently airing" : "total"}</span>
       </div>
       <div class="cast-block">
         ${renderCastColumn("Returning Cast", cast.returning)}
@@ -1179,7 +1238,7 @@ function renderEpisodeRow(episode) {
       <td class="chaos-cell chaos-agents-cell" data-label="Chaos Agents">
         ${renderChaosAgents(episode.chaos)}
       </td>
-      <td class="score-cell nyc-cell" data-label="NYC">${repeat("🍎", episode.nyc)}</td>
+      <td class="score-cell nyc-cell" data-label="NYC"><span aria-label="NYC texture: ${episode.nyc} out of 5">${repeat("🍎", episode.nyc)}</span></td>
     </tr>
   `;
 }
@@ -1275,6 +1334,14 @@ function linkifyQuote(quote) {
   });
 }
 
+function renderCastQuote(quote) {
+  if (typeof quote === "string") return `<span>${linkifyQuote(quote)}</span>`;
+  const episode = quote.episodeId && findEpisodeById(quote.episodeId);
+  const jump = episode ? `<a href="#${episode.id}" data-episode-jump="${episode.id}">S${episode.season}E${episode.ep}</a>` : "";
+  const source = quote.sourceUrl ? `<a href="${escapeHtml(quote.sourceUrl)}" target="_blank" rel="noopener noreferrer">Source</a>` : "";
+  return `<span class="cast-quote">“${escapeHtml(quote.text)}”<small class="quote-context">${escapeHtml(quote.context)} ${jump} ${source}</small></span>`;
+}
+
 function renderCastMeta(name) {
   const raw = castArchetypes[name];
 
@@ -1287,12 +1354,12 @@ function renderCastMeta(name) {
     : "<span>Known-for moment pending.</span>";
 
   const quotes = Array.isArray(raw.quotes) && raw.quotes.length
-    ? raw.quotes.map((quote) => `<span>${linkifyQuote(quote)}</span>`).join("")
+    ? raw.quotes.map(renderCastQuote).join("")
     : "<span>No major quote logged yet.</span>";
 
   return `
     <div class="cast-meta">
-      <p><strong>Astro:</strong> ${escapeHtml(raw.astro || "Pending")}</p>
+      ${raw.astro ? `<p><strong>Astro:</strong> ${escapeHtml(raw.astro)}</p>` : ""}
       <p><strong>Seasons:</strong> ${escapeHtml(raw.seasons || "Pending")}</p>
       <p><strong>Known for:</strong> <span class="inline-list">${knownFor}</span></p>
       <p><strong>Quotes:</strong> <span class="inline-list">${quotes}</span></p>
@@ -1315,7 +1382,7 @@ function renderTripsGuide() {
       return grouped;
     }, {});
 
-  el.tripsGuide.innerHTML = Object.entries(arcsBySeason)
+  el.tripsGuide.innerHTML = `<p class="current-trip-note">Season 16: the island trip is announced in <a href="#s16e4" data-episode-jump="s16e4">S16E4</a>. On-location episodes will be indexed once released.</p>` + Object.entries(arcsBySeason)
     .sort(([a], [b]) => Number(a) - Number(b))
     .map(([season, arcs]) => `
       <details class="trip-season" open>
