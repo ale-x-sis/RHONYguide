@@ -8,7 +8,7 @@ Updated October 4, 2026. Includes released Episodes 1–4 only.
 - Cast and schedule: https://www.bravotv.com/the-daily-dish/rhony-season-16-everything-to-know
 - Carole's promotion from friend to full-time: https://ew.com/rhony-season-16-trailer-carole-radziwill-return-12023514
 - Hailey quote excerpt and S16E4 preview: https://tasteofreality.com/the-real-housewives-of-new-york-live-discussion-gloves-off-at-the-gala-season-16-episode-4/
-- Erika quote, recalled by Jessel in an interview: https://www.bravotv.com/the-daily-dish/rhony-season-16-behind-the-scenes-interviews-photos-exclusive
+- Erika’s popcorn-ceiling quote from S16E4: https://www.tvinsider.com/1293657/rhony-preview-sai-daisy-fight-popcorn-ceiling-apartment/
 - Hailey birthday: https://www.usmagazine.com/celebrities/hailey-glassman/
 - Erika birthday: https://www.imdb.com/name/nm5551241/
 - Daisy's makeup work: https://www.themarthablog.com/2024/02/my-super-sunday-weekend-in-las-vegas.html
@@ -19,7 +19,7 @@ All four opening episodes are provisionally Essential / Great. NYC texture score
 
 S16E4 announces an island trip; it is not indexed as an on-location travel episode. The Trips guide links to the setup and explicitly waits for released travel episodes.
 
-Existing returning cast quotes are preserved. Hailey's quote is a short excerpt with an S16E4 link. Erika's quote links to the interview and is explicitly attributed to Jessel's recollection; no fabricated episode anchor.
+Existing returning cast quotes are preserved. Hailey's quote is a short excerpt with an S16E4 link. Erika's popcorn-ceiling quote links to S16E4. Quote cards show internal episode-guide links only; external research citations stay in this document.
 
 ## Outstanding verification
 
