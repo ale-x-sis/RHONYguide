@@ -16,7 +16,8 @@ const seasonYears = {
   12: 2020,
   13: 2021,
   14: 2023,
-  15: 2024
+  15: 2024,
+  16: 2026
 };
 
 const castArchetypes = {
@@ -71,7 +72,7 @@ const castArchetypes = {
   },
   "Erin Lichy": {
     astro: "July 1, 1987 • Cancer",
-    seasons: "14-15",
+    seasons: "14-present",
     type: "Main",
     knownFor: ["Cheese controversies and Tribeca hospitality hosting"],
     quotes: ["\"Cheese is a personality.\" (Season 14 Tagline)"]
@@ -92,7 +93,7 @@ const castArchetypes = {
   },
   "Jessel Taank": {
     astro: "October 23, 1979 • Scorpio",
-    seasons: "14-15",
+    seasons: "14-present",
     type: "Main",
     knownFor: ["Calling Tribeca an \"up and coming\" neighborhood", "Keeping a detailed grievance list about one of the women on her phone"],
     quotes: ["\"Tribeca is up and coming.\" (S14E2)"]
@@ -162,7 +163,7 @@ const castArchetypes = {
   },
   "Sai De Silva": {
     astro: "November 22, 1980 • Sagittarius",
-    seasons: "14-15",
+    seasons: "14-present",
     type: "Main",
     knownFor: ["Food complaints and conflicts with Jessel"],
     quotes: ["\"I need food.\" (S14E6)"]
@@ -188,6 +189,66 @@ const castArchetypes = {
     knownFor: ["Phone privacy fight with Erin"],
     quotes: ["\"I’m not fake nice.\" (S14E11)"]
   }
+};
+
+// Season 16 cast additions; retain existing quotes for returning women.
+castArchetypes["Carole Radziwill"] = {
+  "astro": "August 20, 1963 • Leo",
+  "seasons": "5-10, 16-present",
+  "type": "Main",
+  "knownFor": [
+    "Journalism and memoir writing",
+    "Her fallout friendship with Bethenny",
+    "Running the NYC Marathon on the show",
+    "Returning to the cast in Season 16"
+  ],
+  "quotes": ["\"I was awoken in the middle of the night by two male voices. One was Luann’s.\" (S5E13)"]
+};
+castArchetypes["Hailey Glassman"] = {
+  "astro": "February 18, 1987 • Aquarius",
+  "seasons": "16-present",
+  "type": "Main",
+  "knownFor": [
+    "Public relations and tabloid history",
+    "Discussing her unconventional marriage"
+  ],
+  "quotes": [
+    {
+      "text": "Lying-ass snake.",
+      "context": "Excerpt from her confrontation with Erin during the Seder fallout.",
+      "episodeId": "s16e4",
+      "sourceUrl": "https://tasteofreality.com/the-real-housewives-of-new-york-live-discussion-gloves-off-at-the-gala-season-16-episode-4/"
+    }
+  ]
+};
+castArchetypes["Erika Hammond"] = {
+  "astro": "April 29, 1991 • Taurus",
+  "seasons": "16-present",
+  "type": "Main",
+  "knownFor": [
+    "Former WWE performer and Rumble Boxing entrepreneur",
+    "Inviting the group on an island getaway"
+  ],
+  "quotes": [
+    {
+      "text": "Should we go in and f**king scrape them and fix them?",
+      "context": "Offering to fix Daisy’s popcorn ceilings during the Seder.",
+      "episodeId": "s16e4"
+    }
+  ]
+};
+castArchetypes["Daisy Toye"] = {
+  "seasons": "16-present",
+  "type": "Main",
+  "knownFor": [
+    "Martha Stewart's longtime makeup artist",
+    "Hosting the Brooklyn Seder"
+  ],
+  "quotes": [{
+    "text": "This is winning the lottery in New York City.",
+    "context": "Defending her rent-controlled apartment after Jessel comments on the popcorn ceilings.",
+    "episodeId": "s16e3"
+  }]
 };
 
 const biasThemes = {
@@ -411,6 +472,7 @@ const tripArcs = [
   {
     season: 9,
     location: "Mexico",
+    lexChoice: true,
     episodes: ["s9e16", "s9e17", "s9e18"],
     why: "The Mexico arc is high-rewatch vacation nonsense: room politics, tequila, Luann going horizontal, and villa chaos.",
     mood: "Mexico. Tequila. Villa."
@@ -569,6 +631,14 @@ const tripArcs = [
 // A small set of hand-written prescriptions. Each is tagged against the picker
 // questions and matched by overlap. Keep this curated so results feel intentional.
 const prescriptions = [
+  // Lex's Choice follows expressed viewing preferences, not an official ranking.
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s5e10"], why: "Sonja’s toaster-oven ambitions: sincere business delusion and ensemble absurdity. There is branding-meeting friction, but this pick centers the ridiculous venture rather than cruelty."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e18"], why: "The Mexico trip’s affectionate, alcohol-fueled bonding and bad decisions. Bethenny is part of the ensemble rather than the reason to follow a whole personal arc."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s6e19"], why: "Carole’s birthday and Sonja/Harry social absurdity: a city-party pick built around group chemistry, with a little vulnerability."},
+  {lexChoice: true, lexOnly: true, goal: "Short Arc", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Two-Episode Taste", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e16", "s9e18"], why: "A Mexico sampler: the arrival and Luann’s fall, then the villa’s bonding and bad decisions. This skips Episode 17’s heavier sniping; it is a sampler, not a complete story arc."},
+  {lexChoice: true, lexOnly: true, goal: "Short Arc", mess: ["Lex's Choice"], time: "Two-Episode Taste", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s16e1", "s16e2"], why: "A taste of the current Season 16 ensemble that Lex has called fun and eventful. New personalities and city social dynamics come with real grief and marriage trouble; this is not a claim that the season is an all-time favorite."},
+  {goal: "Catch Me Up on the Current Season", mess: ["Iconic Canon", "Emotional Fallout"], time: "Story Arc", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s16e1", "s16e2", "s16e3", "s16e4"], why: "The released Season 16 episodes establish the new lineup and carry the opening conflicts through the Seder and gala. Includes grief, marital separation, and distressing personal history."},
+  {goal: "Short Arc", mess: ["Emotional Fallout"], time: "Two-Episode Taste", atmosphere: ["High-Energy Urban", "Cozy & Insular", "Surprise Me"], episodes: ["s16e3", "s16e4"], why: "A Brooklyn Seder becomes a two-episode conflict arc, with fallout carrying into Carole’s gala. Includes discussion of distressing tabloid history and relationship conflict."},
   {
     goal: "Quick Episode",
     mess: ["Iconic Canon"],
@@ -598,7 +668,7 @@ const prescriptions = [
   },
   {
     goal: "Quick Episode",
-    mess: ["Dealer's Choice"],
+    mess: ["Lex's Choice"],
     time: "Single Episode",
     atmosphere: ["Surprise Me", "High-Energy Urban"],
     episodes: ["s7e15"],
@@ -634,7 +704,7 @@ const prescriptions = [
   },
   {
     goal: "Short Arc",
-    mess: ["Dealer's Choice"],
+    mess: ["Lex's Choice"],
     time: "Story Arc",
     atmosphere: ["High-Energy Urban", "Surprise Me"],
     episodes: ["s5e10", "s5e11", "s5e12"],
@@ -670,7 +740,7 @@ const prescriptions = [
   },
   {
     goal: "Catch Me Up Before I Jump Ahead",
-    mess: ["Dealer's Choice"],
+    mess: ["Lex's Choice"],
     time: "Story Arc",
     atmosphere: ["Surprise Me"],
     episodes: ["s4e5", "s4e6", "s4e8", "s4e9", "s4e10"],
@@ -691,6 +761,7 @@ const prescriptions = [
     mess: ["Low-Stakes Nonsense"],
     time: "Story Arc",
     atmosphere: ["Tropical & Chaotic", "Surprise Me"],
+    lexChoice: true,
     episodes: ["s9e16", "s9e17", "s9e18"],
     why: "Mexico is high-rewatch vacation nonsense: room politics, tequila, Luann falling, and the group getting loose without feeling grim.",
     alsoConsider: "S12E16–S12E19 for another long Mexico run."
@@ -706,7 +777,7 @@ const prescriptions = [
   },
   {
     goal: "Give Me Vacation Chaos",
-    mess: ["Dealer's Choice"],
+    mess: ["Lex's Choice"],
     time: "Two-Episode Taste",
     atmosphere: ["Cozy & Insular", "Surprise Me"],
     episodes: ["s12e13", "s12e14"],
@@ -891,10 +962,12 @@ function readPickerAnswers() {
 function scorePrescription(prescription, answers) {
   let score = 0;
 
+  if (answers.mess.includes("Lex's Choice") && prescription.lexChoice) score += 20;
+
   if (prescription.goal === answers.goal) score += 10;
   if (prescription.time === answers.time) score += 3;
 
-  if (!answers.mess.length || answers.mess.includes("Dealer's Choice")) {
+  if (!answers.mess.length || answers.mess.includes("Lex's Choice")) {
     score += 2;
   } else {
     score += prescription.mess.filter((tag) => answers.mess.includes(tag)).length * 3;
@@ -907,7 +980,13 @@ function scorePrescription(prescription, answers) {
 }
 
 function pickPrescription(answers, excludeKey = "") {
-  const ranked = prescriptions
+  const wantsLex = answers.mess.includes("Lex's Choice");
+  const candidates = prescriptions.filter((item) => {
+    if (answers.goal === "Catch Me Up on the Current Season") return item.goal === answers.goal;
+    if (item.goal === "Catch Me Up on the Current Season") return false;
+    return wantsLex ? item.lexChoice === true : item.lexOnly !== true;
+  });
+  const ranked = candidates
     .map((prescription) => ({
       prescription,
       score: scorePrescription(prescription, answers),
@@ -1101,13 +1180,13 @@ function renderSeasonPanel(season, episodes) {
   const verified = season.sourceStatus === "Peacock verified";
   const seasonTitle = `Season ${season.season}${seasonYears[season.season] ? `: ${seasonYears[season.season]}` : ""}`;
   return `
-    <article class="season-panel">
+    <article class="season-panel" id="season-${season.season}">
       <div class="season-header">
         <span class="season-title-wrap">
           <span class="season-title">${seasonTitle}</span>
           <span class="source-status ${verified ? "verified" : "provisional"}">${escapeHtml(season.sourceStatus || "Source status pending")}</span>
         </span>
-        <span class="season-meta">${episodes.length} visible rows · ${season.episodes.length} total</span>
+        <span class="season-meta">${episodes.length} visible rows · ${season.episodes.length} ${season.currentlyAiring ? "released · Currently airing" : "total"}</span>
       </div>
       <div class="cast-block">
         ${renderCastColumn("Returning Cast", cast.returning)}
@@ -1179,7 +1258,7 @@ function renderEpisodeRow(episode) {
       <td class="chaos-cell chaos-agents-cell" data-label="Chaos Agents">
         ${renderChaosAgents(episode.chaos)}
       </td>
-      <td class="score-cell nyc-cell" data-label="NYC">${repeat("🍎", episode.nyc)}</td>
+      <td class="score-cell nyc-cell" data-label="NYC"><span aria-label="NYC texture: ${episode.nyc} out of 5">${repeat("🍎", episode.nyc)}</span></td>
     </tr>
   `;
 }
@@ -1269,10 +1348,17 @@ function renderCastGuide() {
 }
 
 function linkifyQuote(quote) {
-  return escapeHtml(quote).replace(/\(S(\d+)E(\d+)\)/g, (match, s, e) => {
+  return escapeHtml(quote).replace(/\(Season (\d+) Tagline\)/g, (match, season) => `(<a href="#season-${season}">Season ${season} Tagline</a>)`).replace(/\(S(\d+)E(\d+)\)/g, (match, s, e) => {
     const id = `s${s}e${e}`;
     return `(<a href="#${id}" data-episode-jump="${id}" style="color:var(--oxblood);font-weight:500;text-decoration:underline;text-underline-offset:2px;">S${s}E${e}</a>)`;
   });
+}
+
+function renderCastQuote(quote) {
+  if (typeof quote === "string") return `<span>${linkifyQuote(quote)}</span>`;
+  const episode = quote.episodeId && findEpisodeById(quote.episodeId);
+  const jump = episode ? `<a href="#${episode.id}" data-episode-jump="${episode.id}">S${episode.season}E${episode.ep}</a>` : "";
+  return `<span class="cast-quote">“${escapeHtml(quote.text)}”<small class="quote-context">${escapeHtml(quote.context)} ${jump}</small></span>`;
 }
 
 function renderCastMeta(name) {
@@ -1283,16 +1369,16 @@ function renderCastMeta(name) {
   }
 
   const knownFor = Array.isArray(raw.knownFor) && raw.knownFor.length
-    ? raw.knownFor.map((item) => `<span>${escapeHtml(item)}</span>`).join("")
+    ? raw.knownFor.map((item) => escapeHtml(item)).join(" • ")
     : "<span>Known-for moment pending.</span>";
 
   const quotes = Array.isArray(raw.quotes) && raw.quotes.length
-    ? raw.quotes.map((quote) => `<span>${linkifyQuote(quote)}</span>`).join("")
+    ? raw.quotes.map(renderCastQuote).join("")
     : "<span>No major quote logged yet.</span>";
 
   return `
     <div class="cast-meta">
-      <p><strong>Astro:</strong> ${escapeHtml(raw.astro || "Pending")}</p>
+      ${raw.astro ? `<p><strong>Astro:</strong> ${escapeHtml(raw.astro)}</p>` : ""}
       <p><strong>Seasons:</strong> ${escapeHtml(raw.seasons || "Pending")}</p>
       <p><strong>Known for:</strong> <span class="inline-list">${knownFor}</span></p>
       <p><strong>Quotes:</strong> <span class="inline-list">${quotes}</span></p>
@@ -1315,7 +1401,7 @@ function renderTripsGuide() {
       return grouped;
     }, {});
 
-  el.tripsGuide.innerHTML = Object.entries(arcsBySeason)
+  el.tripsGuide.innerHTML = `<p class="current-trip-note">Season 16: the island trip is announced in <a href="#s16e4" data-episode-jump="s16e4">S16E4</a>. On-location episodes will be indexed once released.</p>` + Object.entries(arcsBySeason)
     .sort(([a], [b]) => Number(a) - Number(b))
     .map(([season, arcs]) => `
       <details class="trip-season" open>

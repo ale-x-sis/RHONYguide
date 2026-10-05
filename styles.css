@@ -543,8 +543,8 @@ td {
 }
 
 th {
-  background: #e3efe6;
-  color: var(--muted);
+  background: var(--paper);
+  color: var(--ink);
   font-size: 0.72rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -556,7 +556,7 @@ th {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: #e3efe6;
+  background: var(--paper);
   box-shadow: 0 1px 0 var(--border);
 }
 
@@ -801,6 +801,13 @@ details summary {
   content: "•";
   margin-left: 0.55rem;
   color: var(--oxblood);
+}
+
+.cast-name {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  line-height: 1.15;
 }
 
 .cast-name,
@@ -1308,11 +1315,13 @@ tr:target {
 }
 
 .compact-episode-table th {
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--oxblood);
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
 }
 
 .compact-episode-table th:nth-child(1),
@@ -1840,3 +1849,20 @@ text-decoration: none;
   .topbar a { padding: 0.45rem 0.6rem; }
   .hero h1 { font-size: clamp(2.8rem, 10vw, 4rem); }
 }
+
+/* Current-season navigation and contextual cast quotes. */
+.current-season-callout { width: min(1180px, calc(100% - 3rem)); margin: 1.5rem auto 0; padding: 1rem 0; border-bottom: 1px solid var(--border); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem; }
+.current-season-callout a { font: italic 1.5rem var(--serif); text-decoration: none; color: var(--ink); }
+.current-season-callout span { font-size: .8rem; color: var(--text); }
+.guide-key { margin: 0 0 1.5rem; padding: 1rem 0; border-block: 1px solid var(--border); color: var(--text); font-size: .85rem; }
+.guide-key summary { font: italic 1.3rem var(--serif); }
+.quote-context { display: block; margin-top: .35rem; font-style: italic; color: var(--text); font-size: .8rem; }
+.quote-context a { text-decoration: underline; text-underline-offset: 2px; margin-left: .3rem; }
+.cast-meta .inline-list .cast-quote { display: block; }
+.cast-meta .inline-list .cast-quote::after { content: none; }
+.current-trip-note { color: var(--text); font-size: .9rem; }
+html { scroll-padding-top: 7rem; }
+.season-panel { scroll-margin-top: 7rem; }
+/* Replace forest-green/white action blocks with editorial text on stone. */
+.button.primary, .picker-next, .picker-actions > button[type="submit"] { background: var(--paper) !important; color: var(--ink) !important; border-color: var(--ink) !important; font-family: var(--serif); font-style: italic; font-size: 1.2rem; font-weight: 400; }
+.button.primary:hover, .picker-next:hover { background: #e3efe6 !important; }

@@ -4826,3 +4826,109 @@ window.GUIDE_DATA = window.GUIDE_DATA.map((season) => ({
   ...season,
   footer: reunionFooters[season.season] || season.footer
 }));
+
+// Current season: released episodes only; classifications are editorial.
+window.GUIDE_DATA.push({
+  "season": 16,
+  "sourceStatus": "Bravo episode listings; editorial classifications provisional",
+  "currentlyAiring": true,
+  "updatedAt": "2026-10-04",
+  "cast": {
+    "returning": [
+      "Sai De Silva",
+      "Erin Lichy",
+      "Jessel Taank",
+      "Carole Radziwill"
+    ],
+    "departed": [
+      "Jenna Lyons",
+      "Ubah Hassan",
+      "Brynn Whitfield",
+      "Racquel Chevremont",
+      "Rebecca Minkoff (friend)"
+    ],
+    "new": [
+      "Hailey Glassman",
+      "Erika Hammond",
+      "Daisy Toye"
+    ]
+  },
+  "episodes": [
+    {
+      "id": "s16e1",
+      "season": 16,
+      "ep": 1,
+      "episodeTitle": "The Price of Perfection",
+      "synopsis": "Jessel hosts a Lunar New Year party as a changed lineup reconnects; Sai opens up about her marriage.",
+      "editorialSynopsis": "Jessel hosts a Lunar New Year party as a changed lineup reconnects; Sai opens up about her marriage.",
+      "nyc": 4,
+      "bias": 2,
+      "darkness": 2,
+      "chaos": "New Faces. Lunar New Year. Marriage.",
+      "enjoyment": 90,
+      "enjoymentTier": "great",
+      "watchStatus": "essential",
+      "notes": "Cast introductions and the starting relationships make this useful foundation viewing. Context: grief and marital separation.",
+      "travel": false,
+      "airDate": "2026-09-08",
+      "sourceUrl": "https://www.bravotv.com/the-real-housewives-of-new-york-city/season-16/episode-1/the-price-of-perfection"
+    },
+    {
+      "id": "s16e2",
+      "season": 16,
+      "ep": 2,
+      "episodeTitle": "Much Ado About Brunching",
+      "synopsis": "Daisy hosts a brunch for Sai, where old tensions and uncomfortable questions test the new group; Erin faces a home emergency.",
+      "editorialSynopsis": "Daisy hosts a brunch for Sai, where old tensions and uncomfortable questions test the new group; Erin faces a home emergency.",
+      "nyc": 4,
+      "bias": 2,
+      "darkness": 2,
+      "chaos": "Brunch. Boundaries. Old Wounds.",
+      "enjoyment": 90,
+      "enjoymentTier": "great",
+      "watchStatus": "essential",
+      "notes": "Carole reconnects with the group; questions about personal history create friction. Context: bereavement and marriage.",
+      "travel": false,
+      "airDate": "2026-09-15",
+      "sourceUrl": "https://www.bravotv.com/the-real-housewives-of-new-york-city/season-16/episode-2/much-ado-about-brunching"
+    },
+    {
+      "id": "s16e3",
+      "season": 16,
+      "ep": 3,
+      "episodeTitle": "A Seder in Brooklyn",
+      "synopsis": "Daisy brings the group together for a Brooklyn Seder as Hailey discusses her past and unresolved tensions escalate.",
+      "editorialSynopsis": "Daisy brings the group together for a Brooklyn Seder as Hailey discusses her past and unresolved tensions escalate.",
+      "nyc": 5,
+      "bias": 2,
+      "darkness": 2,
+      "chaos": "Brooklyn. Seder. Escalation.",
+      "enjoyment": 90,
+      "enjoymentTier": "great",
+      "watchStatus": "essential",
+      "notes": "First half of a two-episode conflict arc. Context: distressing tabloid scrutiny and relationship discussions.",
+      "travel": false,
+      "airDate": "2026-09-22",
+      "sourceUrl": "https://www.bravotv.com/the-real-housewives-of-new-york-city/season-16/episode-3/a-seder-in-brooklyn"
+    },
+    {
+      "id": "s16e4",
+      "season": 16,
+      "ep": 4,
+      "episodeTitle": "Gloves Off at the Gala",
+      "synopsis": "The Seder fallout continues, Erika invites the women on an island getaway, and Hailey and Erin clash again at Carole's gala.",
+      "editorialSynopsis": "The Seder fallout continues, Erika invites the women on an island getaway, and Hailey and Erin clash again at Carole's gala.",
+      "nyc": 5,
+      "bias": 2,
+      "darkness": 2,
+      "chaos": "Gala. Fallout. Trip Setup.",
+      "enjoyment": 90,
+      "enjoymentTier": "great",
+      "watchStatus": "essential",
+      "notes": "Second half of the Seder conflict arc. The island invitation is trip setup, not an on-location travel episode. Context: divorce and personal attacks.",
+      "travel": false,
+      "airDate": "2026-09-29",
+      "sourceUrl": "https://www.bravotv.com/the-real-housewives-of-new-york-city/season-16/episode-4/gloves-off-at-the-gala"
+    }
+  ]
+});
