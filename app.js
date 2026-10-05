@@ -27,28 +27,28 @@ const castArchetypes = {
     seasons: "1-4",
     type: "Main",
     knownFor: ["Brooklyn social-climbing era"],
-    quotes: ["\"And while you are in high school, I am in Brooklyn, trying to survive in this economy!\" (S3E11)"]
+    quotes: [{"text":"And while you are in high school, I am in Brooklyn, trying to survive in this economy!","context":"Confronting Jill about their conflict.","episodeId":"s3e11"}]
   },
   "Aviva Drescher": {
     astro: "September 9, 1970 • Virgo",
     seasons: "5-6",
     type: "Main",
     knownFor: ["Throwing her prosthetic leg at Le Cirque"],
-    quotes: ["\"The only thing artificial or fake about me is THIS.\" (S6E20)"]
+    quotes: [{"text":"The only thing artificial or fake about me is THIS.","context":"Removing her prosthetic leg during the Le Cirque confrontation.","episodeId":"s6e20"}]
   },
   "Bethenny Frankel": {
     astro: "November 4, 1970 • Scorpio",
     seasons: "1-3, 7-11",
     type: "Main",
     knownFor: ["Selling Skinnygirl to Beam Suntory", "The 'Mention It All' fight"],
-    quotes: ["\"Go to sleep!\" (S3E12)", "\"Mention it all!\" (S9E9)"]
+    quotes: [{"text":"Go to sleep!","context":"Reacting to Kelly during the Scary Island dinner.","episodeId":"s3e12"}, {"text":"Mention it all!","context":"Challenging Ramona during their Berkshires argument.","episodeId":"s9e9"}]
   },
   "Brynn Whitfield": {
     astro: "February 8, 1987 • Aquarius",
     seasons: "14-15",
     type: "Main",
     knownFor: ["Quick-witted one-liners • Aggressive flirting "],
-    quotes: ["\"Like, Olive Garden to me is chicer.\" (S14E1)"]
+    quotes: [{"text":"Like, Olive Garden to me is chicer.","context":"Explaining why she skipped Erin’s restaurant choice.","episodeId":"s14e1"}]
   },
   "Cindy Barshop": {
     astro: "October 11, 1964 • Libra",
@@ -62,14 +62,14 @@ const castArchetypes = {
     seasons: "7-12",
     type: "Main",
     knownFor: ["Bluestone Manor", "Berkshires blowups"],
-    quotes: ["\"Clip!\" (S9E14)", "\"I made it nice!\" (S8E9)"]
+    quotes: [{"text":"Clip!","context":"Cutting off Sonja during a group lunch.","episodeId":"s9e14"}, {"text":"I made it nice!","context":"After the fighting at her Berkshires holiday gathering.","episodeId":"s8e9"}]
   },
   "Eboni K. Williams": {
     astro: "September 9, 1983 • Virgo",
     seasons: "13",
     type: "Main",
     knownFor: ["Becoming RHONY’s first Black Housewife"],
-    quotes: ["\"I don’t subscribe to the fact that to use those words means you’re unclassy or not a lady.\" (S13E5)"]
+    quotes: [{"text":"I don’t subscribe to the fact that to use those words means you’re unclassy or not a lady.","context":"Rejecting the idea that using certain words makes a woman unladylike.","episodeId":"s13e5"}]
   },
   "Erin Lichy": {
     astro: "July 1, 1987 • Cancer",
@@ -83,28 +83,28 @@ const castArchetypes = {
     seasons: "5-7",
     type: "Main",
     knownFor: ["Standing up to Aviva and Ramona"],
-    quotes: ["\"Deck me.\" (S6E4)"]
+    quotes: [{"text":"Deck me.","context":"Daring Amanda to hit her during the Hamptons argument.","episodeId":"s6e4"}]
   },
   "Jenna Lyons": {
     astro: "June 8, 1968 • Gemini",
     seasons: "14-15",
     type: "Main",
     knownFor: ["Anguilla flight drama"],
-    quotes: ["\"I didn’t want to fly coach.\" (S14E8)"]
+    quotes: [{"text":"I didn’t want to fly coach.","context":"Admitting to Erin why she chose an earlier flight to Anguilla.","episodeId":"s14e8"}]
   },
   "Jessel Taank": {
     astro: "October 23, 1979 • Scorpio",
     seasons: "14-present",
     type: "Main",
     knownFor: ["Calling Tribeca an \"up and coming\" neighborhood", "Keeping a detailed grievance list about one of the women on her phone"],
-    quotes: ["\"Up and coming.\" (S14E5)"]
+    quotes: [{"text":"Up and coming.","context":"Describing Tribeca to Erin during their coffee meeting.","episodeId":"s14e5"}]
   },
   "Jill Zarin": {
     astro: "November 30, 1963 • Sagittarius",
     seasons: "1-4",
     type: "Main",
     knownFor: ["her surprise Scary Island arrival"],
-    quotes: ["\"Hiiiiiiiiiiiiiiiiii!\" (S3E13)"]
+    quotes: [{"text":"Hiiiiiiiiiiiiiiiiii!","context":"Arriving uninvited on the Scary Island trip.","episodeId":"s3e13"}]
   },
   "Jules Wainstein": {
     verificationNote: "Quote wording awaiting caption confirmation.",
@@ -119,28 +119,28 @@ const castArchetypes = {
     seasons: "2-4",
     type: "Main",
     knownFor: ["Scary Island"],
-    quotes: ["\"Al Sharpton. Al Sharpton came to my house. He sat on my couch.\" (S3E12)", "\"I'm up here, and you're down here.\" (S2E7)"]
+    quotes: [{"text":"Al Sharpton. Al Sharpton came to my house. He sat on my couch.","context":"During the Scary Island dinner.","episodeId":"s3e12"}, {"text":"I'm up here, and you're down here.","context":"Explaining her perceived hierarchy to Bethenny at the Brass Monkey.","episodeId":"s2e7"}]
   },
   "Kristen Taekman": {
     astro: "April 21, 1977 • Taurus",
     seasons: "6-7",
     type: "Main",
     knownFor: ["Ramona throwing a wine glass at her face"],
-    quotes: ["\"What are you the wicked witch of the Hamptons? You gonna melt?\" (S6E10)"]
+    quotes: [{"text":"What are you the wicked witch of the Hamptons? You gonna melt?","context":"Responding to Ramona’s reaction to getting splashed on the Berkshires outing.","episodeId":"s6e10"}]
   },
   "Leah McSweeney": {
     astro: "August 27, 1982 • Virgo",
     seasons: "12-13",
     type: "Main",
     knownFor: ["Newport chaos", "Generational clashes with Ramona"],
-    quotes: ["\"Where did good time Luann go?\" (S12E13)"]
+    quotes: [{"text":"Where did good time Luann go?","context":"Reacting to Luann’s anger after the cabaret-pay argument with Sonja.","episodeId":"s12e13"}]
   },
   "Luann de Lesseps": {
     astro: "May 17, 1965 • Taurus",
     seasons: "1-13",
     type: "Main",
     knownFor: ["The pirate hookup in St. Barts", "her Cabaret era"],
-    quotes: ["\"Be cool. Don’t be all, like, uncool.\" (S7E15)"]
+    quotes: [{"text":"Be cool. Don’t be all, like, uncool.","context":"Responding to Heather over the overnight guests in Turks and Caicos.","episodeId":"s7e15"}]
   },
   "Racquel Chevremont": {
     astro: "October 31, 1971 • Scorpio",
@@ -154,35 +154,35 @@ const castArchetypes = {
     seasons: "1-13",
     type: "Main",
     knownFor: ["Being called White Trash and then Googling \"What is white trash?\"", "Drunken chaos"],
-    quotes: ["\"Who are you to get me wet?\" (S6E10)"]
+    quotes: [{"text":"Who are you to get me wet?","context":"After Kristen splashes her during the Berkshires outing.","episodeId":"s6e10"}]
   },
     "Rebecca Minkoff": {
     astro: "December 4, 1980 • Sagittarius",
     seasons: "15",
     type: "Friend",
     knownFor: ["Nordstrom Rack shady drama", "Scientology"],
-    quotes: ["\"I built a $100 million company.\" (S15E7)"]
+    quotes: [{"text":"I built a $100 million company.","context":"Responding to Brynn’s digs at her fashion brand.","episodeId":"s15e7"}]
   },
   "Sai De Silva": {
     astro: "November 22, 1980 • Sagittarius",
     seasons: "14-present",
     type: "Main",
     knownFor: ["Food complaints and conflicts with Jessel"],
-    quotes: ["\"Did I not have a mouth full of cheese and champagne?\" (S14E1)"]
+    quotes: [{"text":"Did I not have a mouth full of cheese and champagne?","context":"Recalling what she actually ate during the cheese argument.","episodeId":"s14e1"}]
   },
   "Sonja Morgan": {
     astro: "November 25, 1963 • Sagittarius",
     seasons: "3-13",
     type: "Main",
     knownFor: ["Being Ramona's ride-or-die", "Party-girl lore"],
-    quotes: ["\"I party with John John Kennedy and Madonna all the time.\" (S7E6)"]
+    quotes: [{"text":"I party with John John Kennedy and Madonna all the time.","context":"Invoking her famous friends during the Atlantic City trip.","episodeId":"s7e6"}]
   },
   "Tinsley Mortimer": {
     astro: "August 11, 1975 • Leo",
     seasons: "9-12",
     type: "Main",
     knownFor: ["Scott relationship", "Crying over frozen eggs in clown makeup"],
-    quotes: ["\"Yeah, I’m drinking, Luann.\" (S11E15)"]
+    quotes: [{"text":"Yeah, I’m drinking, Luann.","context":"Responding to Luann’s criticism of the group’s drinking in Miami.","episodeId":"s11e15"}]
   },
   "Ubah Hassan": {
     astro: "August 27, 1983 • Virgo",
@@ -204,7 +204,7 @@ castArchetypes["Carole Radziwill"] = {
     "Running the NYC Marathon on the show",
     "Returning to the cast in Season 16"
   ],
-  "quotes": ["\"I was awoken in the middle of the night by two male voices. One was Luann’s.\" (S5E13)"]
+  "quotes": [{"text":"I was awoken in the middle of the night by two male voices. One was Luann’s.","context":"Recalling the overnight voices during the St. Barts trip.","episodeId":"s5e13"}]
 };
 castArchetypes["Hailey Glassman"] = {
   "astro": "February 18, 1987 • Aquarius",
@@ -217,7 +217,7 @@ castArchetypes["Hailey Glassman"] = {
   "quotes": [
     {
       "text": "Lying-ass snake.",
-      "context": "Excerpt from her confrontation with Erin during the Seder fallout.",
+      "context": "Confronting Erin during the Seder fallout.",
       "episodeId": "s16e4",
       "sourceUrl": "https://tasteofreality.com/the-real-housewives-of-new-york-live-discussion-gloves-off-at-the-gala-season-16-episode-4/"
     }
@@ -1341,16 +1341,8 @@ function renderCastGuide() {
   `).join("");
 }
 
-function linkifyQuote(quote) {
-  return escapeHtml(quote).replace(/\(Season (\d+) Tagline\)/g, (match, season) => `(<a href="#season-${season}">Season ${season} Tagline</a>)`).replace(/\(S(\d+)E(\d+)\)/g, (match, s, e) => {
-    const id = `s${s}e${e}`;
-    return `(<a href="#${id}" data-episode-jump="${id}" class="cast-episode-link">S${s}E${e}</a>)`;
-  });
-}
-
 function renderCastQuote(quote) {
-  if (typeof quote === "string") return `<span class="cast-quote">${linkifyQuote(quote)}</span>`;
-  const episode = quote.episodeId && findEpisodeById(quote.episodeId);
+  const episode = findEpisodeById(quote.episodeId);
   const jump = episode ? `<a href="#${episode.id}" data-episode-jump="${episode.id}" class="cast-episode-link">S${episode.season}E${episode.ep}</a>` : "";
   return `<span class="cast-quote">“${escapeHtml(quote.text)}”<small class="quote-context">${escapeHtml(quote.context)} ${jump}</small></span>`;
 }
@@ -1376,7 +1368,6 @@ function renderCastMeta(name) {
       <p><strong>Seasons:</strong> ${escapeHtml(raw.seasons || "Pending")}</p>
       <p><strong>Known for:</strong> <span class="inline-list">${knownFor}</span></p>
       <p><strong>Quotes:</strong> <span class="cast-quotes">${quotes}</span></p>
-      ${raw.verificationNote ? `<p class="quote-context">${escapeHtml(raw.verificationNote)}</p>` : ""}
     </div>
   `;
 }
@@ -1494,4 +1485,5 @@ function escapeHtml(value) {
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#039;");
 }
+
 
