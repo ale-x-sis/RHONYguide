@@ -60,3 +60,11 @@ Corrected or replaced entries and research:
 - Jules’s S8E9 father-illness context is corroborated by Observer; exact short wording is from a community transcript, not official captions. Verify against the episode video: https://observer.com/2016/06/real-housewives-of-nyc-recap-8x09-december-berkshires-county/ and https://www.reddit.com/r/RHDiscussion/comments/1f4xn4j/
 - Existing historical birth dates/signs are retained, not all independently reverified in this change. Daisy’s corrected birthday is owner-supplied.
 - Browser visual QA remains unavailable locally. Do not describe structural tests as full factual or visual verification.
+
+## Quiz revision — October 5
+
+Removed the generic current-season catch-up prescription and overlapping goal/duration questions. The first question now offers Match my mood or Lex’s Choice with identical typography and no subtitles. Selecting Lex’s Choice immediately returns a random entry from the existing explicitly curated Lex pool, bypassing further questions; the opening Season 16 two-episode taste is removed from that personal pool. The mood path asks episode count (1, 2, or 3–4), mess, and setting. Episode count is a hard filter; mood and setting rank eligible selections. No full-season promise remains.
+
+Results label contiguous selections as episode runs and selections with gaps as samplers, avoiding the claim that any two-episode sample is a complete story arc. The displayed follow-on watch order no longer repeats the start episode. Buttons consistently use Instrument Serif italic; answer labels consistently use regular Lato.
+
+Validation: JavaScript syntax passed; Node VM checks passed for 84 mood/count/setting combinations and retries, the automatic curated Lex pool, valid episode anchors, result rendering, next/back/reset navigation, immediate Lex result behavior, and neutral option markup. Browser visual QA remains unavailable because Playwright’s Chromium executable is absent.
