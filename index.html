@@ -41,75 +41,47 @@
 
       <section class="section picker-section" id="picker" aria-labelledby="picker-title">
         <div class="section-label">Pick My Episode</div>
-        <h2 id="picker-title">Answer four questions and get a prescription.</h2>
-<p class="picker-intro">A quick mood-matcher for when you can't decide. Describe what you're after and receive your viewing Rx.</p>
+        <h2 id="picker-title">Find something worth watching.</h2>
+<p class="picker-intro">Match your mood, or let Lex pick.</p>
 
 <button type="button" class="button primary picker-start" id="pickerStart">
   Start
 </button>
 
 <form class="picker-form" id="pickerForm" aria-label="Pick my episode" hidden>
-          <fieldset class="picker-q" data-step-name="goal">
-            <legend>What is your general vibe?</legend>
+          <fieldset class="picker-q" data-step-name="mode">
+            <legend>How should we pick?</legend>
             <div class="picker-options">
-              <label>
-                <input type="radio" name="goal" value="Quick Episode" checked />
-                <span class="picker-option-copy">
-                  <span class="picker-option-title">Quick Episode</span>
-                  <span class="picker-option-desc">One strong episode. Minimal homework.</span>
-                </span>
-              </label>
-              <label>
-                <input type="radio" name="goal" value="Short Arc" />
-                <span class="picker-option-copy">
-                  <span class="picker-option-title">Short Arc</span>
-                  <span class="picker-option-desc">A tight 2–4 episode run with a beginning, middle, and payoff.</span>
-                </span>
-              </label>
-              <label>
-                <input type="radio" name="goal" value="Catch Me Up Before I Jump Ahead" />
-                <span class="picker-option-copy">
-                  <span class="picker-option-title">Catch Me Up Before I Jump Ahead</span>
-                  <span class="picker-option-desc">The essential season context: what you need without watching everything.</span>
-                </span>
-              </label>
-              <label>
-                <input type="radio" name="goal" value="Give Me Vacation Chaos" />
-                <span class="picker-option-copy">
-                  <span class="picker-option-title">Give Me Vacation Chaos</span>
-                  <span class="picker-option-desc">A trip Rx, from light vacation nonsense to full villa warfare.</span>
-                </span>
-              </label>
-              <label><input type="radio" name="goal" value="Catch Me Up on the Current Season" /><span class="picker-option-copy"><span class="picker-option-title">Catch Me Up on the Current Season</span><span class="picker-option-desc">The released Season 16 episodes, in order.</span></span></label>
+              <label><input type="radio" name="mode" value="Match my mood" checked /> Match my mood</label>
+              <label><input type="radio" name="mode" value="Lex's Choice" /> Lex's Choice</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="picker-q" data-step-name="time">
+            <legend>How many episodes?</legend>
+            <div class="picker-options">
+              <label><input type="radio" name="time" value="Single Episode" checked /> One episode</label>
+              <label><input type="radio" name="time" value="Two-Episode Taste" /> Two episodes</label>
+              <label><input type="radio" name="time" value="Story Arc" /> Three or four episodes</label>
             </div>
           </fieldset>
 
           <fieldset class="picker-q" data-step-name="mess">
             <legend>What kind of mess? <span class="picker-hint">Pick up to 2.</span></legend>
             <div class="picker-options" id="messOptions">
-              <label><input type="checkbox" name="mess" value="Iconic Canon" /> Iconic Canon</label>
-              <label><input type="checkbox" name="mess" value="Low-Stakes Nonsense" /> Low-Stakes Nonsense</label>
-              <label><input type="checkbox" name="mess" value="Emotional Fallout" /> Emotional Fallout</label>
-              <label><input type="checkbox" name="mess" value="Lex's Choice" /><span class="picker-option-copy"><span class="picker-option-title">Lex's Choice</span><span class="picker-option-desc">Playful group chaos, a little vulnerability, Bethenny in doses.</span></span></label>
-            </div>
-          </fieldset>
-
-          <fieldset class="picker-q" data-step-name="time">
-            <legend>How much are we watching?</legend>
-            <div class="picker-options">
-              <label><input type="radio" name="time" value="Two-Episode Taste" checked /> Two-Episode Taste</label>
-              <label><input type="radio" name="time" value="Story Arc" /> Story Arc</label>
-              <label><input type="radio" name="time" value="Full Season / Binge Mode" /> Full Season / Binge Mode</label>
+              <label><input type="checkbox" name="mess" value="Iconic Canon" /> Iconic moments</label>
+              <label><input type="checkbox" name="mess" value="Low-Stakes Nonsense" /> Low-stakes nonsense</label>
+              <label><input type="checkbox" name="mess" value="Emotional Fallout" /> Emotional fallout</label>
             </div>
           </fieldset>
 
           <fieldset class="picker-q" data-step-name="atmosphere">
             <legend>What's the atmosphere?</legend>
             <div class="picker-options">
-              <label><input type="radio" name="atmosphere" value="Tropical & Chaotic" checked /> Tropical & Chaotic</label>
+              <label><input type="radio" name="atmosphere" value="Tropical & Chaotic" /> Tropical & Chaotic</label>
               <label><input type="radio" name="atmosphere" value="Cozy & Insular" /> Cozy & Insular</label>
               <label><input type="radio" name="atmosphere" value="High-Energy Urban" /> High-Energy Urban</label>
-              <label><input type="radio" name="atmosphere" value="Surprise Me" /> Surprise Me</label>
+              <label><input type="radio" name="atmosphere" value="Surprise Me" checked /> Surprise Me</label>
             </div>
           </fieldset>
 
@@ -174,3 +146,4 @@
     <script src="app.js"></script>
   </body>
 </html>
+
