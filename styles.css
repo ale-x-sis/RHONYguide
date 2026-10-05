@@ -1,14 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Lato:wght@400;700;900&display=swap");
+
 :root {
-  --paper: #faf7f2;
-  --cream: #f5f0e4;
-  --ink: #0d0d0d;
-  --text: #1a1a1a;
-  --oxblood: #8b1a19;
-  --border: #d8d0c4;
-  --muted: #7a6e63;
+  --paper: #dedbd5;
+  --cream: #ffffff;
+  --ink: #1e1d1b;
+  --text: #181818;
+  --oxblood: #1b6b37;
+  --border: #9d9b93;
+  --muted: #181818;
   --shadow: rgba(13, 13, 13, 0.08);
-  --serif: Georgia, "Times New Roman", serif;
-  --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+  --sans: "Lato", Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 * {
@@ -171,8 +173,8 @@ h3 {
 }
 
 .button.primary:hover {
-  background: #a02020;
-  border-color: #a02020;
+  background: #237f44;
+  border-color: #237f44;
 }
 
 .button.ghost {
@@ -262,7 +264,7 @@ main {
   width: 1.75rem;
   height: 1.75rem;
   border: 1px solid var(--border);
-  background: #fffdf7;
+  background: #ffffff;
   color: var(--oxblood);
   font-size: 1rem;
   font-weight: 400;
@@ -368,7 +370,7 @@ main {
 
 .filters select {
   border: 1px solid var(--border);
-  background: #fffdf7;
+  background: #ffffff;
   color: var(--text);
 }
 
@@ -445,7 +447,7 @@ main {
 
 .source-status.provisional {
   background: transparent;
-  border-color: rgba(139, 26, 25, 0.6);
+  border-color: rgba(27, 107, 55, 0.6);
   color: rgba(245, 240, 228, 0.5);
 }
 
@@ -541,7 +543,7 @@ td {
 }
 
 th {
-  background: #ede8df;
+  background: #e3efe6;
   color: var(--muted);
   font-size: 0.72rem;
   font-weight: 400;
@@ -554,7 +556,7 @@ th {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: #ede8df;
+  background: #e3efe6;
   box-shadow: 0 1px 0 var(--border);
 }
 
@@ -682,7 +684,7 @@ td {
   margin: 1rem;
   padding: 0.85rem 1rem;
   border-left: 3px solid var(--oxblood);
-  background: rgba(139, 26, 25, 0.05);
+  background: rgba(27, 107, 55, 0.05);
   font-size: 0.9rem;
   color: var(--text);
 }
@@ -775,7 +777,7 @@ details summary {
 .trip-card {
   padding: 0.85rem;
   border: 1px solid var(--border);
-  background: #fffdf7;
+  background: #ffffff;
 }
 
 .cast-meta {
@@ -1066,7 +1068,7 @@ tr:target {
   width: 1.05rem;
   height: 1.05rem;
   margin: 0;
-  background: #fffdf7;
+  background: #ffffff;
   border: 1.5px solid var(--ink);
   cursor: pointer;
   transition: background 0.12s ease, border-color 0.12s ease;
@@ -1090,7 +1092,7 @@ tr:target {
 }
 
 .picker-options input[type="radio"]:checked {
-  box-shadow: inset 0 0 0 3px #fffdf7;
+  box-shadow: inset 0 0 0 3px #ffffff;
 }
 
 .picker-options input:focus-visible {
@@ -1100,8 +1102,8 @@ tr:target {
 
 /* Selected rows read as intentional, not just a toggled dot */
 .picker-options label:has(input:checked) {
-  background: rgba(139, 26, 25, 0.07);
-  border-color: rgba(139, 26, 25, 0.35);
+  background: rgba(27, 107, 55, 0.07);
+  border-color: rgba(27, 107, 55, 0.35);
   font-weight: 500;
 }
 
@@ -1125,7 +1127,7 @@ tr:target {
 .prescription-card {
   margin-top: 1.75rem;
   padding: 1.5rem;
-  background: #fffdf7;
+  background: #ffffff;
   border: 1px solid var(--border);
   border-left: 4px solid var(--oxblood);
 }
@@ -1246,7 +1248,7 @@ tr:target {
   tr {
     margin: 0.8rem;
     border: 1px solid var(--border);
-    background: #fffdf7;
+    background: #ffffff;
   }
 
   td {
@@ -1421,7 +1423,7 @@ tr:target {
 .chaos-agent-list span:not(:last-child)::after {
   content: "·";
   margin-left: 0.35rem;
-  color: rgba(139, 26, 25, 0.38);
+  color: rgba(27, 107, 55, 0.38);
   font-weight: 500;
 }
 
@@ -1603,7 +1605,7 @@ tr:target {
 }
 
 .picker-options label:hover {
-  border-color: rgba(139, 26, 25, 0.35);
+  border-color: rgba(27, 107, 55, 0.35);
 }
 
 .picker-options input {
@@ -1738,4 +1740,103 @@ tr:target {
 .prescription-actions .button.ghost:hover {
   border-color: var(--oxblood);
   color: var(--oxblood);
+}
+
+/* Approved stone-and-green editorial theme. Keep episode copy high contrast. */
+.site-header {
+  min-height: auto;
+  padding-top: 4rem;
+  background: var(--paper);
+  color: var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+.topbar {
+  background: var(--paper);
+  border-bottom: 1px solid var(--ink);
+  backdrop-filter: none;
+}
+.topbar a {
+  color: var(--ink);
+  font-family: var(--sans);
+  font-style: normal;
+  border-right: 0;
+}
+.topbar a:hover { color: var(--oxblood); }
+.hero { width: min(1180px, calc(100% - 3rem)); padding: 4rem 0 4.5rem; }
+.hero .kicker, .section-label, .prescription-label {
+  color: var(--oxblood);
+  font-weight: 700;
+}
+.hero h1 {
+  max-width: 980px;
+  color: var(--ink);
+  font-size: clamp(3.2rem, 7vw, 6rem);
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: -0.025em;
+  text-decoration: underline wavy #2a9550;
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.13em;
+}
+.hero p {
+  margin-top: 2rem;
+  color: var(--text);
+  font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+}
+.button { border-radius: 999px; padding: 0.7rem 1.4rem; letter-spacing: 0; }
+.button.primary { color: #fff; }
+.button.ghost { color: var(--ink); border-color: var(--ink); }
+.button.ghost:hover { color: var(--oxblood); border-color: var(--oxblood); }
+.section h2 { font-size: clamp(2rem, 3.5vw, 2.8rem); font-style: normal; }
+.filters, .season-panel, .cast-card, .trip-card, .guide-card, .picker-q, .prescription-card {
+  border-radius: 12px;
+  border-color: var(--ink);
+  background: var(--cream);
+}
+.season-header, .cast-guide summary, .trip-guide summary {
+  background: var(--paper);
+  color: var(--ink);
+}
+.season-header { padding: 1.2rem; border-bottom: 1px solid var(--ink); }
+.season-title { font-size: 2rem; font-style: normal; }
+.season-meta, .trip-guide > details > summary span:last-child,
+.episode-note, .ep-code, .chaos-empty, .notes-cell, .table-wrap {
+  color: var(--text);
+}
+.table-wrap td { color: var(--text); }
+.chaos-agent-list, .chaos-cell { color: var(--oxblood); }
+.ep-title { font-size: 1.3rem; }
+.badge-optional, .badge-good, .b-optional, .b-good {
+  color: var(--text) !important;
+  border-color: var(--border) !important;
+}
+.watch-badge, .enjoyment-badge, .theme-chip, .mini-tag, .count-pill,
+.trip-jumps a, .episode-links a { border-radius: 999px; }
+.cast-guide > details, .trip-guide > details {
+  overflow: clip;
+  border: 1px solid var(--ink);
+  border-radius: 12px;
+  background: var(--cream);
+}
+.cast-guide summary, .trip-guide summary { font-family: var(--serif); font-size: 1.5rem; }
+.trip-card summary { background: var(--cream); }
+.picker-options label { background: var(--cream); border-radius: 8px; }
+.picker-options label:has(input:checked) { background: #e3efe6; border-color: var(--oxblood); }
+.filters input[type="search"], .filters select {
+  min-height: 2.6rem;
+  padding: 0.55rem 0.7rem;
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--cream);
+  color: var(--text);
+}
+.site-footer { background: var(--paper); color: var(--oxblood); border-top: 1px solid var(--ink); }
+.back-to-top { border-radius: 999px; }
+:focus-visible { outline: 2px solid var(--oxblood); outline-offset: 3px; }
+@media (max-width: 720px) {
+  .site-header { padding-top: 6rem; }
+  .hero { padding: 2.5rem 0 3rem; }
+  .topbar a { padding: 0.45rem 0.6rem; }
+  .hero h1 { font-size: clamp(2.8rem, 10vw, 4rem); }
 }
