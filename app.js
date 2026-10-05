@@ -472,6 +472,7 @@ const tripArcs = [
   {
     season: 9,
     location: "Mexico",
+    lexChoice: true,
     episodes: ["s9e16", "s9e17", "s9e18"],
     why: "The Mexico arc is high-rewatch vacation nonsense: room politics, tequila, Luann going horizontal, and villa chaos.",
     mood: "Mexico. Tequila. Villa."
@@ -630,6 +631,12 @@ const tripArcs = [
 // A small set of hand-written prescriptions. Each is tagged against the picker
 // questions and matched by overlap. Keep this curated so results feel intentional.
 const prescriptions = [
+  // Lex's Choice follows expressed viewing preferences, not an official ranking.
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s5e10"], why: "Sonja’s toaster-oven ambitions: sincere business delusion and ensemble absurdity. There is branding-meeting friction, but this pick centers the ridiculous venture rather than cruelty."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e18"], why: "The Mexico trip’s affectionate, alcohol-fueled bonding and bad decisions. Bethenny is part of the ensemble rather than the reason to follow a whole personal arc."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s6e19"], why: "Carole’s birthday and Sonja/Harry social absurdity: a city-party pick built around group chemistry, with a little vulnerability."},
+  {lexChoice: true, lexOnly: true, goal: "Short Arc", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Two-Episode Taste", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e16", "s9e18"], why: "A Mexico sampler: the arrival and Luann’s fall, then the villa’s bonding and bad decisions. This skips Episode 17’s heavier sniping; it is a sampler, not a complete story arc."},
+  {lexChoice: true, lexOnly: true, goal: "Short Arc", mess: ["Lex's Choice"], time: "Two-Episode Taste", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s16e1", "s16e2"], why: "A taste of the current Season 16 ensemble that Lex has called fun and eventful. New personalities and city social dynamics come with real grief and marriage trouble; this is not a claim that the season is an all-time favorite."},
   {goal: "Catch Me Up on the Current Season", mess: ["Iconic Canon", "Emotional Fallout"], time: "Story Arc", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s16e1", "s16e2", "s16e3", "s16e4"], why: "The released Season 16 episodes establish the new lineup and carry the opening conflicts through the Seder and gala. Includes grief, marital separation, and distressing personal history."},
   {goal: "Short Arc", mess: ["Emotional Fallout"], time: "Two-Episode Taste", atmosphere: ["High-Energy Urban", "Cozy & Insular", "Surprise Me"], episodes: ["s16e3", "s16e4"], why: "A Brooklyn Seder becomes a two-episode conflict arc, with fallout carrying into Carole’s gala. Includes discussion of distressing tabloid history and relationship conflict."},
   {
@@ -661,7 +668,7 @@ const prescriptions = [
   },
   {
     goal: "Quick Episode",
-    mess: ["Dealer's Choice"],
+    mess: ["Lex's Choice"],
     time: "Single Episode",
     atmosphere: ["Surprise Me", "High-Energy Urban"],
     episodes: ["s7e15"],
@@ -697,7 +704,7 @@ const prescriptions = [
   },
   {
     goal: "Short Arc",
-    mess: ["Dealer's Choice"],
+    mess: ["Lex's Choice"],
     time: "Story Arc",
     atmosphere: ["High-Energy Urban", "Surprise Me"],
     episodes: ["s5e10", "s5e11", "s5e12"],
@@ -733,7 +740,7 @@ const prescriptions = [
   },
   {
     goal: "Catch Me Up Before I Jump Ahead",
-    mess: ["Dealer's Choice"],
+    mess: ["Lex's Choice"],
     time: "Story Arc",
     atmosphere: ["Surprise Me"],
     episodes: ["s4e5", "s4e6", "s4e8", "s4e9", "s4e10"],
@@ -754,6 +761,7 @@ const prescriptions = [
     mess: ["Low-Stakes Nonsense"],
     time: "Story Arc",
     atmosphere: ["Tropical & Chaotic", "Surprise Me"],
+    lexChoice: true,
     episodes: ["s9e16", "s9e17", "s9e18"],
     why: "Mexico is high-rewatch vacation nonsense: room politics, tequila, Luann falling, and the group getting loose without feeling grim.",
     alsoConsider: "S12E16–S12E19 for another long Mexico run."
@@ -769,7 +777,7 @@ const prescriptions = [
   },
   {
     goal: "Give Me Vacation Chaos",
-    mess: ["Dealer's Choice"],
+    mess: ["Lex's Choice"],
     time: "Two-Episode Taste",
     atmosphere: ["Cozy & Insular", "Surprise Me"],
     episodes: ["s12e13", "s12e14"],
@@ -954,10 +962,12 @@ function readPickerAnswers() {
 function scorePrescription(prescription, answers) {
   let score = 0;
 
+  if (answers.mess.includes("Lex's Choice") && prescription.lexChoice) score += 20;
+
   if (prescription.goal === answers.goal) score += 10;
   if (prescription.time === answers.time) score += 3;
 
-  if (!answers.mess.length || answers.mess.includes("Dealer's Choice")) {
+  if (!answers.mess.length || answers.mess.includes("Lex's Choice")) {
     score += 2;
   } else {
     score += prescription.mess.filter((tag) => answers.mess.includes(tag)).length * 3;
@@ -970,8 +980,12 @@ function scorePrescription(prescription, answers) {
 }
 
 function pickPrescription(answers, excludeKey = "") {
-  const candidates = prescriptions.filter((item) => answers.goal === "Catch Me Up on the Current Season"
-    ? item.goal === answers.goal : item.goal !== "Catch Me Up on the Current Season");
+  const wantsLex = answers.mess.includes("Lex's Choice");
+  const candidates = prescriptions.filter((item) => {
+    if (answers.goal === "Catch Me Up on the Current Season") return item.goal === answers.goal;
+    if (item.goal === "Catch Me Up on the Current Season") return false;
+    return wantsLex ? item.lexChoice === true : item.lexOnly !== true;
+  });
   const ranked = candidates
     .map((prescription) => ({
       prescription,
