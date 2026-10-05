@@ -543,8 +543,8 @@ td {
 }
 
 th {
-  background: #e3efe6;
-  color: var(--muted);
+  background: var(--paper);
+  color: var(--ink);
   font-size: 0.72rem;
   font-weight: 400;
   text-transform: uppercase;
@@ -556,7 +556,7 @@ th {
   position: sticky;
   top: 0;
   z-index: 30;
-  background: #e3efe6;
+  background: var(--paper);
   box-shadow: 0 1px 0 var(--border);
 }
 
@@ -1315,11 +1315,13 @@ tr:target {
 }
 
 .compact-episode-table th {
-  font-size: 0.68rem;
-  font-weight: 900;
-  letter-spacing: 0.09em;
-  text-transform: uppercase;
-  color: var(--oxblood);
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--ink);
 }
 
 .compact-episode-table th:nth-child(1),
