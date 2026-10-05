@@ -1887,3 +1887,19 @@ html { scroll-padding-top: 7rem; }
   text-underline-offset: 2px;
 }
 .cast-meta .quote-context { display: block; font-style: italic; margin-top: .35rem; }
+
+
+/* Consistent controls: serif italic buttons, neutral sans-serif option labels. */
+.button, .picker-actions .button, .picker-flow-controls .button, .prescription-actions .button {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: 1.2rem;
+  line-height: 1.2;
+}
+.picker-options label, .picker-option-title {
+  font-family: var(--sans);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1rem;
+}
