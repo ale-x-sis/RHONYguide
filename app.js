@@ -312,6 +312,13 @@ const destinationPatterns = [
 
 const tripArcs = [
   {
+    season: 16,
+    location: "Moskito Island, British Virgin Islands",
+    episodes: ["s16e5", "s16e6", "s16e7"],
+    why: "A luxurious getaway becomes an intense test of the group's relationships and trust.",
+    mood: "Island. Rumors. Fallout."
+  },
+  {
     season: 2,
     location: "Hamptons",
     episodes: ["s2e1", "s2e2", "s2e3"],
@@ -1252,7 +1259,7 @@ function renderEpisodeRow(episode) {
       <td class="chaos-cell chaos-agents-cell" data-label="Chaos Agents">
         ${renderChaosAgents(episode.chaos)}
       </td>
-      <td class="score-cell nyc-cell" data-label="NYC"><span aria-label="NYC texture: ${episode.nyc} out of 5">${repeat("🍎", episode.nyc)}</span></td>
+      <td class="score-cell nyc-cell" data-label="NYC"><span aria-label="${episode.nyc == null ? "NYC texture not yet rated" : `NYC texture: ${episode.nyc} out of 5`}">${episode.nyc == null ? "—" : repeat("🍎", episode.nyc)}</span></td>
     </tr>
   `;
 }
@@ -1273,12 +1280,14 @@ function getEnjoymentTier(episode) {
 
 function renderWatchBadge(episode) {
   const status = getWatchStatus(episode);
+  if (status === "unrated") return `<span class="watch-badge">Not rated yet</span>`;
   const label = status === "essential" ? "Essential" : "Optional";
   return `<span class="watch-badge badge-${escapeHtml(status)}">${label}</span>`;
 }
 
 function renderEnjoymentBadge(episode) {
   const tier = getEnjoymentTier(episode);
+  if (tier === "unrated") return `<span class="enjoyment-badge">Unrated</span>`;
   const label = tier.charAt(0).toUpperCase() + tier.slice(1);
   return `<span class="enjoyment-badge badge-${escapeHtml(tier)}">${label}</span>`;
 }
