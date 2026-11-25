@@ -1107,8 +1107,14 @@ function getFilteredEpisodes() {
 function compareEpisodes(a, b) {
   const direction = sortState.direction === "asc" ? 1 : -1;
   const key = sortState.key;
-  const aValue = key === "episode" ? a.ep : a[key];
-  const bValue = key === "episode" ? b.ep : b[key];
+  const tierRanks = { good: 1, great: 2, elite: 3 };
+  const value = (episode) => key === "episode" ? episode.ep
+    : key === "enjoyment" ? (tierRanks[getEnjoymentTier(episode)] ?? null)
+    : episode[key];
+  const aValue = value(a);
+  const bValue = value(b);
+  if (aValue == null && bValue != null) return 1;
+  if (bValue == null && aValue != null) return -1;
   if (aValue === bValue) return a.season === b.season ? a.ep - b.ep : a.season - b.season;
   return aValue > bValue ? direction : -direction;
 }
