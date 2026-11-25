@@ -1209,7 +1209,7 @@ function renderSeasonPanel(season, episodes) {
           <table class="episode-table compact-episode-table">
             <thead>
               <tr>
-                ${header("episode", "Episode")}
+                <th><div class="episode-sort-controls"><button class="th-button" data-sort="episode" type="button" aria-label="Sort by episode">Episode${sortState.key === "episode" ? (sortState.direction === "asc" ? " ↑" : " ↓") : ""}</button><button class="th-button" data-sort="enjoyment" type="button" aria-label="Sort by enjoyment">Enjoyment${sortState.key === "enjoyment" ? (sortState.direction === "asc" ? " ↑" : " ↓") : ""}</button></div></th>
                 ${header("synopsis", "Synopsis")}
                 ${header("chaos", "Chaos Agents")}
                 ${header("nyc", "NYC")}
