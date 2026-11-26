@@ -1362,29 +1362,79 @@ function handleGuideClick(event) {
   }
 }
 
+function castSeasonNumbers(raw) {
+  const latest = Math.max(...seasons.map(s => Number(s.season)));
+  const numbers = new Set();
+  for (const part of String(raw.seasons || "").split(",")) {
+    const m = part.trim().match(/^(\d+)(?:\s*[-–]\s*(\d+|present))?$/i);
+    if (!m) continue;
+    const first = Number(m[1]), last = m[2] ? (m[2].toLowerCase() === "present" ? latest : Number(m[2])) : first;
+    for (let n = first; n <= last; n++) numbers.add(n);
+  }
+  return [...numbers].sort((a,b) => a-b);
+}
+
 function renderCastGuide() {
-  const names = Object.keys(castArchetypes).sort((a, b) => a.localeCompare(b));
-
-  const groups = {
-    "A-D": names.filter((name) => /^[A-D]/.test(name)),
-    "E-L": names.filter((name) => /^[E-L]/.test(name)),
-    "M-R": names.filter((name) => /^[M-R]/.test(name)),
-    "S-Z": names.filter((name) => /^[S-Z]/.test(name))
-  };
-
-  el.castGuide.innerHTML = Object.entries(groups).map(([group, groupNames], index) => `
-    <details ${index === 0 ? "open" : ""}>
-      <summary>${group}</summary>
-      <div class="cast-list">
-        ${groupNames.map((name) => `
-          <article class="cast-card">
-            <strong class="cast-name">${escapeHtml(name)}</strong>
-            ${renderCastMeta(name)}
-          </article>
-        `).join("")}
-      </div>
-    </details>
-  `).join("");
+  if (!el.castGuide) return;
+  const seasonSelect = document.querySelector("#castSeason");
+  const search = document.querySelector("#castSearch");
+  const role = document.querySelector("#castRole");
+  const controls = document.querySelector(".cast-controls");
+  if (!seasonSelect || !controls) return;
+  if (!controls.dataset.initialized) {
+    for (const season of seasons) {
+      const option = document.createElement("option");
+      option.value = season.season;
+      option.textContent = `Season ${season.season}`;
+      seasonSelect.append(option);
+    }
+    controls.addEventListener("input", renderCastGuide);
+    controls.addEventListener("change", renderCastGuide);
+    controls.dataset.initialized = "true";
+  }
+  const zodiac = [
+    ["Aries","March 21 – April 19"],["Taurus","April 20 – May 20"],["Gemini","May 21 – June 20"],
+    ["Cancer","June 21 – July 22"],["Leo","July 23 – August 22"],["Virgo","August 23 – September 22"],
+    ["Libra","September 23 – October 22"],["Scorpio","October 23 – November 21"],
+    ["Sagittarius","November 22 – December 21"],["Capricorn","December 22 – January 19"],
+    ["Aquarius","January 20 – February 18"],["Pisces","February 19 – March 20"]
+  ];
+  const mode = controls.querySelector('input[name="castBrowse"]:checked')?.value || "debut";
+  const normalize = value => String(value).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase();
+  const q = normalize(search.value.trim());
+  const names = Object.keys(castArchetypes).sort((a,b) => a.localeCompare(b));
+  const groups = new Map();
+  let count = 0;
+  for (const name of names) {
+    const raw = castArchetypes[name];
+    const years = castSeasonNumbers(raw);
+    if (q && !normalize(name).includes(q)) continue;
+    if (seasonSelect.value !== "all" && !years.includes(Number(seasonSelect.value))) continue;
+    if (role.value !== "all" && raw.type !== role.value) continue;
+    const sign = zodiac.find(([sign]) => String(raw.astro || "").trim().endsWith(sign))?.[0] || "Unconfirmed";
+    const key = mode === "debut" ? (years[0] ?? "Unknown") : mode === "zodiac" ? sign : "All cast members";
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(name);
+    count++;
+  }
+  const keys = [...groups.keys()].sort((a,b) => {
+    if (mode === "debut") return (Number(a)||99)-(Number(b)||99);
+    if (mode === "zodiac") {
+      const rank = x => {const i=zodiac.findIndex(([sign])=>sign===x);return i<0?99:i;};
+      return rank(a)-rank(b);
+    }
+    return String(a).localeCompare(String(b));
+  });
+  document.querySelector("#castCount").textContent = `${count} of ${names.length} cast members`;
+  el.castGuide.innerHTML = keys.map(key => {
+    const groupNames = groups.get(key);
+    const title = mode === "debut" && key !== "Unknown" ? `Season ${key}` : key;
+    const subtitle = mode === "zodiac" ? zodiac.find(([sign])=>sign===key)?.[1] : mode === "debut" ? seasonYears[key] : "";
+    return `<section class="cast-directory-group">
+      <div class="cast-group-heading"><div><h3>${escapeHtml(title)}</h3>${subtitle ? `<p>${escapeHtml(subtitle)}</p>` : ""}</div><span>${groupNames.length} cast member${groupNames.length===1?"":"s"}</span></div>
+      <div class="cast-list">${groupNames.map(name => `<article class="cast-card"><h4 class="cast-name">${escapeHtml(name)}</h4>${renderCastMeta(name)}</article>`).join("")}</div>
+    </section>`;
+  }).join("") || '<p class="cast-empty">No matching cast members.</p>';
 }
 
 function renderCastQuote(quote) {
@@ -1410,10 +1460,10 @@ function renderCastMeta(name) {
 
   return `
     <div class="cast-meta">
-      ${raw.astro ? `<p><strong>Astro:</strong> ${escapeHtml(raw.astro)}</p>` : ""}
-      <p><strong>Seasons:</strong> ${escapeHtml(raw.seasons || "Pending")}</p>
-      <p><strong>Known for:</strong> <span class="inline-list">${knownFor}</span></p>
-      <p><strong>Quotes:</strong> <span class="cast-quotes">${quotes}</span></p>
+      ${raw.astro ? `<p class="cast-astro">${escapeHtml(raw.astro)}</p>` : ""}
+      <p class="cast-seasons">Seasons ${escapeHtml(raw.seasons || "Pending")} · ${raw.type === "Friend" ? "Friend Of" : escapeHtml(raw.type || "Pending")}</p>
+      <div class="cast-known"><div class="cast-label">Known for</div><p>${knownFor}</p></div>
+      <div class="cast-quote-section"><div class="cast-label">Quotes</div><div class="cast-quotes">${quotes}</div></div>
     </div>
   `;
 }
