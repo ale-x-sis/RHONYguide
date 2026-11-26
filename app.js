@@ -831,6 +831,7 @@ function init() {
   });
 
   document.querySelector("#filters").addEventListener("input", renderEpisodeGuide);
+  document.querySelector('a[href="#how"]')?.addEventListener("click", () => { document.querySelector("#guideLegend").open = true; });
   document.querySelector("#filters").addEventListener("change", renderEpisodeGuide);
   el.seasonContainer.addEventListener("click", handleGuideClick);
   document.addEventListener("click", handleEpisodeJump);
@@ -1120,6 +1121,8 @@ function compareEpisodes(a, b) {
 }
 
 function renderEpisodeGuide() {
+  const hint = document.querySelector("#viewingHint");
+  if (hint) hint.textContent = el.essentialFilter.checked ? "The episodes that move the story forward." : "Every episode, including the delightful detours.";
   const episodes = getFilteredEpisodes();
   el.resultCount.textContent = `${episodes.length} of ${allEpisodes.length} rows`;
   const bySeason = new Map();
@@ -1491,6 +1494,8 @@ function resetFilters() {
   el.seasonFilter.value = "all";
   if (el.searchFilter) el.searchFilter.value = "";
   if (el.essentialFilter) el.essentialFilter.checked = false;
+  const full = document.querySelector("#fullExperience");
+  if (full) full.checked = true;
 }
 
 function average(numbers) {
