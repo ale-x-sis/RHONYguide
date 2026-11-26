@@ -17,7 +17,7 @@
   <body>
     <header class="site-header">
       <nav class="topbar" aria-label="Primary navigation">
-        <a href="#home">How to Use</a>
+        <a href="#how">How to Use</a>
         <a href="#picker">Pick My Episode</a>
         <a href="#guide">Episode Guide</a>
         <a href="#cast">Who's Who</a>
@@ -25,10 +25,9 @@
       </nav>
       
       <section class="hero" id="home">
-        <div class="kicker">Field Guide to the Real Housewives of New York City</div>
-        <h1>A Watch Guide to RHONY: by Alexsis </h1>
+        <h1>A Watch Guide to RHONY</h1>
         <p>
-          A spoiler-free viewing guide for choosing an episode by mood.
+          A spoiler-light viewing guide for choosing an episode by mood. By Alexsis.
         </p>
         <div class="hero-actions">
           <a class="button primary" href="#picker">Pick My Episode</a>
@@ -38,14 +37,40 @@
     </header>
 
     <main>
+      <section class="section how-section" id="how" aria-label="How to use this guide">
+        <details class="guide-key" id="guideLegend" open>
+          <summary>How to use this guide</summary>
+          <div class="guide-key-grid">
+            <section class="guide-key-section">
+              <h3>Storyline relevance</h3>
+              <div class="guide-key-items">
+                <span class="watch-badge badge-essential">Essential</span><span>Core to the story</span>
+                <span class="watch-badge badge-optional">Optional</span><span>Additional context</span>
+              </div>
+            </section>
+            <section class="guide-key-section">
+              <h3>Enjoyment</h3>
+              <div class="guide-key-items">
+                <span class="enjoyment-badge badge-good">Good</span><span>Solid viewing</span>
+                <span class="enjoyment-badge badge-great">Great</span><span>Standout episode</span>
+                <span class="enjoyment-badge badge-elite">Elite</span><span>Top-tier RHONY</span>
+              </div>
+            </section>
+            <section class="guide-key-section">
+              <h3>NYC texture</h3>
+              <div data-texture-example></div>
+              <p class="guide-texture-description">How distinctly New York an episode feels, independent of enjoyment.</p>
+            </section>
+          </div>
+        </details>
+      </section>
 
       <section class="section picker-section" id="picker" aria-labelledby="picker-title">
-        <div class="section-label">Pick My Episode</div>
-        <h2 id="picker-title">Find something worth watching.</h2>
+        <h2 id="picker-title">Pick my episode</h2>
 <p class="picker-intro">Match your mood, or let Lex pick.</p>
 
 <button type="button" class="button primary picker-start" id="pickerStart">
-  Start
+  Start Quiz
 </button>
 
 <form class="picker-form" id="pickerForm" aria-label="Pick my episode" hidden>
@@ -96,8 +121,8 @@
       <section class="section guide-section" id="guide" aria-labelledby="guide-title">
         <div class="section-heading">
           <div>
-            <div class="section-label">How to Use This Guide</div>
-            <h2 id="guide-title">The info you need to quickly scan for plotlines or BS to skip.</h2>
+            <h2 id="guide-title">Episode guide</h2>
+            <p>Explore the series, season by season.</p>
           </div>
           <p id="resultCount" class="count-pill"></p>
         </div>
@@ -113,50 +138,29 @@
             Keyword search
             <input id="searchFilter" type="search" placeholder="divorce, Berkshires, cabaret..." />
           </label>
-          <label class="check-filter">
-            <input id="essentialFilter" type="checkbox" />
-            Essential episodes only
-          </label>
+          <fieldset class="viewing-mode">
+            <legend>Viewing mode</legend>
+            <div class="viewing-segments">
+              <label><input type="radio" name="viewingMode" id="fullExperience" checked /><span>The full experience</span></label>
+              <label><input type="radio" name="viewingMode" id="essentialFilter" /><span>Just the essentials</span></label>
+            </div>
+            <p class="viewing-hint" id="viewingHint" aria-live="polite">Every episode, including the delightful detours.</p>
+          </fieldset>
         </form>
 
-        <details class="guide-key">
-          <summary>What the guide labels mean</summary>
-          <div class="guide-key-grid">
-            <section class="guide-key-section">
-              <h3>Storyline relevance</h3>
-              <div class="guide-key-items">
-                <span class="watch-badge badge-essential">Essential</span><span>Core to the story</span>
-                <span class="watch-badge badge-optional">Optional</span><span>Additional context</span>
-              </div>
-            </section>
-            <section class="guide-key-section">
-              <h3>Enjoyment</h3>
-              <div class="guide-key-items">
-                <span class="enjoyment-badge badge-good">Good</span><span>Solid viewing</span>
-                <span class="enjoyment-badge badge-great">Great</span><span>Standout episode</span>
-                <span class="enjoyment-badge badge-elite">Elite</span><span>Top-tier RHONY</span>
-              </div>
-            </section>
-            <section class="guide-key-section">
-              <h3>NYC texture</h3>
-              <div data-texture-example></div>
-              <p class="guide-texture-description">How distinctly New York an episode feels, independent of enjoyment.</p>
-            </section>
-          </div>
-          <p class="guide-key-footer">Season 16 reflects Lex’s confirmed ratings. Earlier seasons may contain provisional classifications. Current-season classifications may change as later episodes reveal which setups matter.</p>
-        </details>
+
         <div id="seasonContainer" class="season-stack"></div>
       </section>
 
       <section class="section" id="cast" aria-labelledby="cast-title">
-        <div class="section-label">Who's who cast guide</div>
-        <h2 id="cast-title">Quick notes on the women of RHONY.</h2>
+        <h2 id="cast-title">Who’s who</h2>
+        <p class="section-intro">Quick notes on the women of RHONY.</p>
         <div id="castGuide" class="cast-guide"></div>
       </section>
 
       <section class="section" id="trips" aria-labelledby="trips-title">
-        <div class="section-label">Trips guide</div>
-        <h2 id="trips-title">Notes on destinations, plotlines, and why it matters.</h2>
+        <h2 id="trips-title">Trips</h2>
+        <p class="section-intro">Destinations, plotlines, and why they matter.</p>
         <div id="tripsGuide" class="trip-guide"></div>
       </section>
     </main>
