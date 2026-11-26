@@ -2010,7 +2010,7 @@ main > .section > h2, .guide-section .section-heading h2 { max-width: none; marg
 .how-section .guide-key[open] > summary::after { content: "−"; }
 .how-section .guide-key-grid { margin: 1.5rem 0 0; }
 .picker-section { text-align: center; }
-.picker-section .picker-intro { margin: 0; font: .875rem/1.6 var(--sans); }
+.picker-section .picker-intro { margin: 0 auto; text-align: center; font: .875rem/1.6 var(--sans); }
 .picker-section > .picker-start { margin: 1rem auto 0; }
 .picker-section .picker-form { margin: 1rem auto 0; text-align: left; }
 .picker-section .prescription { text-align: left; }
