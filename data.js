@@ -4850,7 +4850,8 @@ window.GUIDE_DATA.push({
     "new": [
       "Hailey Glassman",
       "Erika Hammond",
-      "Daisy Toye"
+      "Daisy Toye",
+      "Devyn Simone (friend)"
     ]
   },
   "episodes": [
