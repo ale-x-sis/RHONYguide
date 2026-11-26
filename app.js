@@ -1212,7 +1212,7 @@ function renderSeasonPanel(season, episodes) {
                 ${header("episode", "Episode")}
                 ${header("synopsis", "Synopsis")}
                 ${header("chaos", "Chaos Agents")}
-                ${header("nyc", "NYC")}
+                ${header("nyc", "NYC texture")}
               </tr>
             </thead>
             <tbody>
@@ -1229,7 +1229,7 @@ function renderSeasonPanel(season, episodes) {
 function header(key, label) {
   const marker = sortState.key === key ? (sortState.direction === "asc" ? " ↑" : " ↓") : "";
   const content = key === "nyc"
-    ? `<span class="sort-emoji" aria-hidden="true">🍎</span><span>NYC</span>${marker ? `<span class="sort-marker">${marker.trim()}</span>` : ""}`
+    ? `${label}${marker}`
     : `${label}${marker}`;
   return `<th><button class="th-button ${key === "nyc" ? "apple-sort-button" : ""}" data-sort="${key}" type="button" aria-label="Sort by ${escapeHtml(label.replace(/[🍎😮‍💨😔]/g, "").trim() || label)}">${content}</button></th>`;
 }
@@ -1254,8 +1254,8 @@ function renderEpisodeRow(episode) {
         <span class="ep-code">S${episode.season} · E${episode.ep}</span>
         ${episode.episodeTitle ? `<span class="ep-title">${escapeHtml(episode.episodeTitle)}</span>` : ""}
         <div class="ep-badges">
-          ${renderWatchBadge(episode)}
-          ${renderEnjoymentBadge(episode)}
+          <div class="rating-group"><div class="rating-label">Storyline relevance</div>${renderWatchBadge(episode)}</div>
+          <div class="rating-group"><div class="rating-label">Enjoyment</div>${renderEnjoymentBadge(episode)}</div>
         </div>
       </td>
       <td class="synopsis-cell" data-label="Synopsis">
@@ -1265,10 +1265,20 @@ function renderEpisodeRow(episode) {
       <td class="chaos-cell chaos-agents-cell" data-label="Chaos Agents">
         ${renderChaosAgents(episode.chaos)}
       </td>
-      <td class="score-cell nyc-cell" data-label="NYC"><span aria-label="${episode.nyc == null ? "NYC texture not yet rated" : `NYC texture: ${episode.nyc} out of 5`}">${episode.nyc == null ? "—" : repeat("🍎", episode.nyc)}</span></td>
+      <td class="score-cell nyc-cell" data-label="NYC texture">${renderNYCTexture(episode.nyc)}</td>
     </tr>
   `;
 }
+
+function renderNYCTexture(score, example = false) {
+  const rated = score != null && Number.isInteger(Number(score)) && Number(score) >= 1 && Number(score) <= 5;
+  const value = rated ? Number(score) : null;
+  const apples = Array.from({ length: 5 }, (_, i) => `<svg class="texture-apple ${rated && i < value ? "is-filled" : "is-muted"}" viewBox="0 0 32 34" aria-hidden="true" focusable="false"><path class="apple-body" d="M16 10C5 3 1 15 6 24C10 32 14 28 16 28C19 28 23 32 27 23C32 12 24 4 16 10Z"/><path class="apple-stem" d="M16 10Q15 5 18 2" stroke-width="2" fill="none"/><path class="apple-leaf" d="M17 7Q19 0 26 3Q24 9 17 7Z"/></svg>`).join("");
+  return `<div class="nyc-texture-scale" role="img" aria-label="${rated ? `NYC texture: ${value} out of 5${example ? ", example" : ""}` : "NYC texture not yet rated"}">${example ? "" : `<div class="texture-score">${rated ? `${value} <small>/ 5</small>` : '<small>Unrated</small>'}</div>`}<div class="texture-apples" aria-hidden="true">${apples}</div><div class="texture-endpoints" aria-hidden="true"><span>Barely NYC</span><span>Peak NYC</span></div></div>`;
+}
+
+const guideTextureExample = document.querySelector("[data-texture-example]");
+if (guideTextureExample) guideTextureExample.innerHTML = renderNYCTexture(3, true);
 
 function getWatchStatus(episode) {
   if (episode.watchStatus) return episode.watchStatus;
