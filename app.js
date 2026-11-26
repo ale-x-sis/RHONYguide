@@ -254,6 +254,24 @@ castArchetypes["Daisy Toye"] = {
   }]
 };
 
+// Season 16 quote additions; retain prior quotes and their context.
+castArchetypes["Daisy Toye"].astro = "Sep 25, 1980(?) • Libra";
+castArchetypes["Devyn Simone"] = {
+  astro: "February 6, 1988 • Aquarius",
+  seasons: "16-present",
+  type: "Friend",
+  knownFor: ["Television personality and relationship expert"],
+  quotes: [{ text: "Some people in this group's relationship with the truth is estranged.", context: "Speaking about Daisy on Virtual Reali-Tea, November 18, 2026." }]
+};
+castArchetypes["Carole Radziwill"].quotes.push({ text: "Onions are thin-skinned yet sharp—they can dish it out, but they can't take it.", context: "From her Substack essay, discussed in Episode 11.", episodeId: "s16e11" });
+castArchetypes["Daisy Toye"].quotes.push(
+  { text: "I think you should give an apology for everybody for us fucking traveling 17 hours. No private plane.", context: "Complaining about the return from Moskito Island.", episodeId: "s16e8" },
+  { text: "Erin, you're not saying anything, and now I look like the asshole.", context: "Addressing Erin during the group conflict.", episodeId: "s16e11" }
+);
+castArchetypes["Erika Hammond"].quotes.push({ text: "You might want to look into Prevagen. It's a brain supplement. It's for memory loss.", context: "Text message to Daisy.", episodeId: "s16e10" });
+castArchetypes["Hailey Glassman"].quotes.push({ text: "Talk to the hand because the face ain't listening.", context: "During the fallout at Jessel’s birthday party.", episodeId: "s16e11" });
+castArchetypes["Sai De Silva"].quotes.push({ text: "I don't give a rat's cock if anyone likes me.", context: "During the post-trip conflict.", episodeId: "s16e8" });
+
 const biasThemes = {
   "social-fatigue": ["exhaust", "draining", "drain", "fatigue", "defensiveness", "interrupt", "group dynamic", "socially"],
   "class-elitism": ["class", "elitist", "status", "privilege", "judgment", "etiquette", "upper", "hosting"],
