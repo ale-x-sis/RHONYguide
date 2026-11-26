@@ -39,7 +39,7 @@
     <main>
       <section class="section how-section" id="how" aria-label="How to use this guide">
         <details class="guide-key" id="guideLegend" open>
-          <summary>How to use this guide</summary>
+          <summary>How to Use</summary>
           <div class="guide-key-grid">
             <section class="guide-key-section">
               <h3>Storyline relevance</h3>
@@ -66,7 +66,7 @@
       </section>
 
       <section class="section picker-section" id="picker" aria-labelledby="picker-title">
-        <h2 id="picker-title">Pick my episode</h2>
+        <h2 id="picker-title">Pick My Episode</h2>
 <p class="picker-intro">Match your mood, or let Lex pick.</p>
 
 <button type="button" class="button primary picker-start" id="pickerStart">
@@ -121,7 +121,7 @@
       <section class="section guide-section" id="guide" aria-labelledby="guide-title">
         <div class="section-heading">
           <div>
-            <h2 id="guide-title">Episode guide</h2>
+            <h2 id="guide-title">Episode Guide</h2>
             <p>Explore the series, season by season.</p>
           </div>
           <p id="resultCount" class="count-pill"></p>
@@ -153,9 +153,22 @@
       </section>
 
       <section class="section" id="cast" aria-labelledby="cast-title">
-        <h2 id="cast-title">Who’s who</h2>
+        <h2 id="cast-title">Who's Who</h2>
         <p class="section-intro">Quick notes on the women of RHONY.</p>
-        <div id="castGuide" class="cast-guide"></div>
+        <div class="cast-controls">
+          <div class="cast-filters">
+            <label>Find a Housewife<input type="search" id="castSearch" placeholder="Search cast members…" /></label>
+            <label>Appeared in<select id="castSeason"><option value="all">All seasons</option></select></label>
+            <label>Cast role<select id="castRole"><option value="all">Everyone</option><option value="Main">Main cast</option><option value="Friend">Friends of</option></select></label>
+          </div>
+          <fieldset class="cast-browse"><legend>Browse by</legend><div class="viewing-segments cast-segments">
+            <label><input type="radio" name="castBrowse" value="debut" checked /><span>Season of debut</span></label>
+            <label><input type="radio" name="castBrowse" value="zodiac" /><span>Zodiac sign</span></label>
+            <label><input type="radio" name="castBrowse" value="alpha" /><span>A–Z</span></label>
+          </div></fieldset>
+          <p id="castCount" class="cast-count" aria-live="polite"></p>
+        </div>
+        <div id="castGuide" class="cast-guide cast-directory"></div>
       </section>
 
       <section class="section" id="trips" aria-labelledby="trips-title">
