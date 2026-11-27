@@ -2509,7 +2509,7 @@ function renderTripsGuide() {
       return grouped;
     }, {});
 
-  el.tripsGuide.innerHTML = `<p class="current-trip-note">Season 16: the island trip is announced in <a href="#s16e4" data-episode-jump="s16e4">S16E4</a>. On-location episodes will be indexed once released.</p>` + Object.entries(arcsBySeason)
+  el.tripsGuide.innerHTML = Object.entries(arcsBySeason)
     .sort(([a], [b]) => Number(a) - Number(b))
     .map(([season, arcs]) => `
       <details class="trip-season" open>
