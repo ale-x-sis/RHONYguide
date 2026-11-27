@@ -281,7 +281,7 @@ const castEditorial = {
   "Erin Lichy": { knownFor:["Cheese controversy","Hamptons hosting","Spreading rumors"] },
   "Heather Thomson": { knownFor:["Standing up to Aviva and Ramona","Toaster oven branding saga"] },
   "Jill Zarin": { knownFor:["Surprise Scary Island arrival"] },
-  "Jules Wainstein": { knownFor:["Candid conversations about body image"], quote:{text:"I'm not perfect, just, you know, close to it.",context:"Joking about her own self-confidence.",sourceUrl:"https://www.bustle.com/articles/186024-jules-wainstein-quotes-to-remember-her-time-on-real-housewives-of-new-york-city"} },
+  "Jules Wainstein": { knownFor:["Candid conversations about body image"], quote:{text:"I'm not perfect, just, you know, close to it.",context:"Joking about her self-confidence during dinner with Dorinda and Carole.",episodeId:"s8e5",sourceUrl:"https://www.bustle.com/articles/186024-jules-wainstein-quotes-to-remember-her-time-on-real-housewives-of-new-york-city"} },
   "Kelly Bensimon": { quote:castArchetypes["Kelly Bensimon"].quotes[1] },
   "Luann de Lesseps": { knownFor:["St. Barts pirate storyline","Cabaret era"] },
   "Sai De Silva": { knownFor:["Food complaints","Blunt commentary","Navigating her divorce"], quote:castArchetypes["Sai De Silva"].quotes[1] },
@@ -300,7 +300,7 @@ for (const [name,raw] of Object.entries(castArchetypes)) {
   raw.quotes = [editorial.quote || raw.quotes?.[0]].filter(Boolean);
 }
 castArchetypes["Alex McCord"].verificationNote = "Episode attribution corrected to S3E10.";
-castArchetypes["Jules Wainstein"].verificationNote = "Quote wording confirmed by Bustle; precise aired episode pending.";
+castArchetypes["Jules Wainstein"].verificationNote = "Quote wording documented by Bustle; S8E5 attribution supplied by Lex.";
 
 const biasThemes = {
   "social-fatigue": ["exhaust", "draining", "drain", "fatigue", "defensiveness", "interrupt", "group dynamic", "socially"],
