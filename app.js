@@ -821,6 +821,615 @@ const prescriptions = [
   }
 ];
 
+// Lex Index: explicit favorites and rewatch candidates; arcs approved as viewing combinations.
+const lexLibrary = [
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "favorite",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s9e18"
+    ],
+    "why": "Mexico villa bonding and uninhibited group silliness."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "favorite",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Cozy & Insular"
+    ],
+    "episodes": [
+      "s10e8"
+    ],
+    "why": "A Berkshires murder mystery and costume party."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "favorite",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s12e11"
+    ],
+    "why": "Halloween at Blood Manor in New York."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "favorite",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s16e1"
+    ],
+    "why": "Jessel’s Lunar New Year gathering and immediate new-cast drama."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s3e7"
+    ],
+    "why": "Sonja joins the ensemble and introduces her townhouse life."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "Surprise Me"
+    ],
+    "episodes": [
+      "s5e6"
+    ],
+    "why": "Heather hosts the women in London."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s5e8"
+    ],
+    "why": "Wine pranks and retaliation."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Iconic Canon"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s5e13"
+    ],
+    "why": "St. Barts and the pirate storyline."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "High-Stakes Confrontation"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s6e2"
+    ],
+    "why": "Carole and Aviva’s literary dispute."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Surprise Me"
+    ],
+    "episodes": [
+      "s6e15"
+    ],
+    "why": "Montana activities and group friction."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Iconic Canon"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s7e15"
+    ],
+    "why": "Heather challenges Luann over overnight guests."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Emotional Fallout"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s8e20"
+    ],
+    "why": "The Tom revelation and its fallout."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "High-Stakes Confrontation"
+    ],
+    "atmosphere": [
+      "Cozy & Insular"
+    ],
+    "episodes": [
+      "s9e9"
+    ],
+    "why": "The group raises Tom rumors with Luann."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s9e16"
+    ],
+    "why": "Mexico room politics and Luann’s tumble."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s10e2"
+    ],
+    "why": "Carole runs the NYC Marathon amid financial accusations about Tinsley."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s11e5"
+    ],
+    "why": "Dog fashion and Halloween preparations."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Cozy & Insular"
+    ],
+    "episodes": [
+      "s12e4"
+    ],
+    "why": "Hamptons party dynamics and tennis."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s12e5"
+    ],
+    "why": "Sonja’s fashion show."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s12e20"
+    ],
+    "why": "Leah celebrates Married to the Mob."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Cozy & Insular"
+    ],
+    "episodes": [
+      "s13e10"
+    ],
+    "why": "Salem historical excursions."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s14e1"
+    ],
+    "why": "The reboot and cheese dispute."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s14e13"
+    ],
+    "why": "Couples night at Swingers."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s15e5"
+    ],
+    "why": "A mystery-themed gathering."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s15e11"
+    ],
+    "why": "Puerto Rico room assignments."
+  },
+  {
+    "lexChoice": true,
+    "lexOnly": false,
+    "lexEvidence": "rewatch",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s16e5"
+    ],
+    "why": "Moskito Island gossip and marriage discussions."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Cozy & Insular",
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s12e4",
+      "s12e5"
+    ],
+    "why": "Hamptons social dynamics followed by Sonja’s Fashion Week ambitions."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s9e16",
+      "s9e18"
+    ],
+    "why": "Mexico highlights, skipping the heavier middle episode; a sampler."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Iconic Canon"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s5e13",
+      "s5e14"
+    ],
+    "why": "The pirate encounter and subsequent alibis."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Cozy & Insular"
+    ],
+    "episodes": [
+      "s13e9",
+      "s13e10"
+    ],
+    "why": "Salem and historical excursions."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Emotional Fallout"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s16e5",
+      "s16e6"
+    ],
+    "why": "Moskito Island gossip and escalating tensions."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Iconic Canon"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s5e13",
+      "s5e14",
+      "s5e15"
+    ],
+    "why": "St. Barts pirate revelations and vacation fallout."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s7e12",
+      "s7e13",
+      "s7e14",
+      "s7e15"
+    ],
+    "why": "Turks and Caicos villa dynamics and the uncool confrontation."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s9e16",
+      "s9e17",
+      "s9e18"
+    ],
+    "why": "Mexico room politics, tequila and group bonding; includes heavier arguments."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s12e16",
+      "s12e17",
+      "s12e18",
+      "s12e19"
+    ],
+    "why": "Cancun vacation activities and group friction."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "Cozy & Insular"
+    ],
+    "episodes": [
+      "s13e9",
+      "s13e10",
+      "s13e11"
+    ],
+    "why": "Salem historical outings and contrasting personalities."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "approved viewing combination",
+    "mess": [
+      "Emotional Fallout"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "episodes": [
+      "s16e5",
+      "s16e6",
+      "s16e7"
+    ],
+    "why": "Moskito Island marriage rumors and loyalty disputes."
+  }
+];
+const moodAdditions = [
+  {
+    "mess": [
+      "Emotional Fallout",
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s16e8",
+      "s16e9"
+    ],
+    "why": "Husband rumors follow the women back to New York, followed by birthday invitation politics."
+  },
+  {
+    "mess": [
+      "Petty Social Politics",
+      "High-Stakes Confrontation"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s16e10",
+      "s16e11"
+    ],
+    "why": "Comedy-show confrontations, the memory supplement gift and Carole’s essay."
+  },
+  {
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s16e9"
+    ],
+    "why": "Birthday invitations become a dispute over social access."
+  },
+  {
+    "mess": [
+      "High-Stakes Confrontation",
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "episodes": [
+      "s16e3"
+    ],
+    "why": "A Brooklyn Seder brings etiquette and interpersonal conflict together."
+  }
+];
+const moodLibrary = [...prescriptions.filter(p=>!p.lexOnly && p.episodes.length<=4), ...lexLibrary, ...moodAdditions];
+
 let lastPrescriptionKey = "";
 
 let sortState = { key: "season", direction: "asc" };
@@ -878,6 +1487,8 @@ function initPicker() {
     event.preventDefault();
     lastPrescriptionKey = "";
     renderPrescription(readPickerAnswers());
+    el.pickerForm.hidden = true;
+    el.prescription.scrollIntoView({behavior:"smooth",block:"nearest"});
   });
 }
 
@@ -913,7 +1524,8 @@ function setupPickerCardFlow() {
   submitButton.textContent = "Write my prescription";
 
   function getActiveSteps() {
-    return allSteps;
+    const lex = el.pickerForm.querySelector('input[name="mode"]:checked')?.value === "Lex's Choice";
+    return allSteps.filter(step => lex ? ['mode','lex-time'].includes(step.dataset.stepName) : step.dataset.stepName !== 'lex-time');
   }
 
   function updateStep() {
@@ -945,16 +1557,7 @@ function setupPickerCardFlow() {
     updateStep();
   });
 
-  el.pickerForm.querySelectorAll('input[name="mode"]').forEach((input) => {
-    input.addEventListener("change", () => {
-      if (input.checked && input.value === "Lex's Choice") {
-        lastPrescriptionKey = "";
-        renderPrescription(readPickerAnswers());
-        el.pickerForm.hidden = true;
-        el.prescription.scrollIntoView({ behavior: "smooth", block: "nearest" });
-      }
-    });
-  });
+  el.pickerForm.querySelectorAll('input[name="mode"]').forEach(input => input.addEventListener("change", () => { currentStep = 0; updateStep(); }));
   el.pickerForm.addEventListener("reset", () => {
     currentStep = 0;
     updateStep();
@@ -982,6 +1585,7 @@ function readPickerAnswers() {
   const form = el.pickerForm;
   return {
     mode: form.querySelector('input[name="mode"]:checked')?.value || "Match my mood",
+    lexTime: form.querySelector('input[name="lexTime"]:checked')?.value || "Surprise Me",
     mess: [...form.querySelectorAll('input[name="mess"]:checked')].map((input) => input.value),
     time: form.querySelector('input[name="time"]:checked')?.value || "Single Episode",
     atmosphere: form.querySelector('input[name="atmosphere"]:checked')?.value || "Surprise Me"
@@ -1004,17 +1608,21 @@ function matchesEpisodeCount(prescription, time) {
 
 function pickPrescription(answers, excludeKey = "") {
   const wantsLex = answers.mode === "Lex's Choice";
-  const candidates = prescriptions.filter((item) => wantsLex
-    ? item.lexChoice === true
-    : item.lexOnly !== true && matchesEpisodeCount(item, answers.time));
-  const alternatives = candidates.filter((item) => item.episodes.join("|") !== excludeKey);
+  const key = p => p.episodes.join("|");
+  const available = p => p.episodes.every(id => allEpisodes.some(e => e.id === id));
+  let candidates = (wantsLex ? lexLibrary.filter(p=>answers.lexTime==="Surprise Me" || matchesEpisodeCount(p, answers.lexTime)) : moodLibrary.filter(p=>matchesEpisodeCount(p, answers.time))).filter(available);
+  candidates = [...new Map(candidates.map(p=>[key(p),p])).values()];
+  if (!wantsLex && answers.atmosphere !== "Surprise Me") {
+    const exact = candidates.filter(p=>p.atmosphere.includes(answers.atmosphere));
+    if (exact.length) candidates = exact;
+  }
+  const alternatives = candidates.filter(p=>key(p)!==excludeKey);
   const pool = alternatives.length ? alternatives : candidates;
   if (!pool.length) return null;
-  if (wantsLex) return pool[Math.floor(Math.random() * pool.length)];
-  const ranked = pool.map((prescription) => ({ prescription, score: scorePrescription(prescription, answers) }));
-  const bestScore = Math.max(...ranked.map((item) => item.score));
-  const best = ranked.filter((item) => item.score === bestScore);
-  return best[Math.floor(Math.random() * best.length)].prescription;
+  if (wantsLex) return pool[Math.floor(Math.random()*pool.length)];
+  const bestScore = Math.max(...pool.map(p=>scorePrescription(p,answers)));
+  const best = pool.filter(p=>scorePrescription(p,answers)===bestScore);
+  return best[Math.floor(Math.random()*best.length)];
 }
 
 function findEpisodeById(id) {
@@ -1044,12 +1652,14 @@ function renderPrescription(answers, options = {}) {
 
   el.prescription.innerHTML = `
     <article class="prescription-card">
-      <div class="prescription-label">${episodes.length === 1 ? "Single episode" : `${episodes.length}-episode ${match.episodes.every((id, i) => i === 0 || episodes[i].season === episodes[i - 1].season && episodes[i].ep === episodes[i - 1].ep + 1) ? "run" : "sampler"}`}</div>
+      <div class="prescription-label">${answers.mode === "Lex\'s Choice" ? "Lex’s Recs: " + (answers.lexTime === "Surprise Me" ? "Surprise Me · " : "") + (episodes.length === 1 ? "One and Done · " : episodes.length === 2 ? "Double Feature · " : "Story Arc · ") : ""}${episodes.length === 1 ? "Single episode" : `${episodes.length}-episode ${match.episodes.every((id, i) => i === 0 || episodes[i].season === episodes[i - 1].season && episodes[i].ep === episodes[i - 1].ep + 1) ? "run" : "sampler"}`}</div>
       <p class="prescription-start">
         <a href="#${first.id}" data-episode-jump="${first.id}">${startLine}</a>
       </p>
       ${watchOrder ? `<p class="prescription-watch"><strong>Then watch:</strong> ${watchOrder}</p>` : ""}
       <p class="prescription-why"><strong>Why:</strong> ${escapeHtml(match.why)}</p>
+      ${answers.mode === "Lex\'s Choice" && match.lexEvidence === "favorite" ? `<p class="prescription-also">One of Lex’s confirmed favorite episodes.</p>` : ""}
+      ${answers.mode !== "Lex\'s Choice" && answers.atmosphere !== "Surprise Me" && !match.atmosphere.includes(answers.atmosphere) ? `<p class="prescription-also">Closest available match; the setting differs from your selection.</p>` : ""}
       ${match.alsoConsider ? `<p class="prescription-also"><strong>Also consider:</strong> ${escapeHtml(match.alsoConsider)}</p>` : ""}
       <div class="prescription-actions">
         <button type="button" class="button ghost prescription-try" data-picker-action="try-again">Try another prescription</button>
