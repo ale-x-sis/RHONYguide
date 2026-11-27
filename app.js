@@ -660,10 +660,10 @@ const tripArcs = [
 // questions and matched by overlap. Keep this curated so results feel intentional.
 const prescriptions = [
   // Lex's Choice follows expressed viewing preferences, not an official ranking.
-  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s5e10"], why: "Sonja’s toaster-oven ambitions, branding-meeting friction, and wonderfully sincere business delusion."},
-  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e18"], why: "Affectionate Mexico bonding, tequila, and bad decisions—with Bethenny as part of the ensemble."},
-  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s6e19"], why: "Carole’s birthday, Sonja/Harry absurdity, and city-party chemistry, with a little vulnerability."},
-  {lexChoice: true, lexOnly: true, goal: "Short Arc", mess: ["Lex's Choice", "Low-Stakes Nonsense"], time: "Two-Episode Taste", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e16", "s9e18"], why: "A Mexico sampler: the arrival and Luann’s fall, then the villa’s bonding and bad decisions. This skips Episode 17’s heavier sniping; it is a sampler, not a complete story arc."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Recs", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s5e10"], why: "Sonja’s toaster-oven ambitions, branding-meeting friction, and wonderfully sincere business delusion."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Recs", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e18"], why: "Affectionate Mexico bonding, tequila, and bad decisions—with Bethenny as part of the ensemble."},
+  {lexChoice: true, lexOnly: true, goal: "Quick Episode", mess: ["Lex's Recs", "Low-Stakes Nonsense"], time: "Single Episode", atmosphere: ["High-Energy Urban", "Surprise Me"], episodes: ["s6e19"], why: "Carole’s birthday, Sonja/Harry absurdity, and city-party chemistry, with a little vulnerability."},
+  {lexChoice: true, lexOnly: true, goal: "Short Arc", mess: ["Lex's Recs", "Low-Stakes Nonsense"], time: "Two-Episode Taste", atmosphere: ["Tropical & Chaotic", "Surprise Me"], episodes: ["s9e16", "s9e18"], why: "A Mexico sampler: the arrival and Luann’s fall, then the villa’s bonding and bad decisions. This skips Episode 17’s heavier sniping; it is a sampler, not a complete story arc."},
   {goal: "Short Arc", mess: ["Emotional Fallout"], time: "Two-Episode Taste", atmosphere: ["High-Energy Urban", "Cozy & Insular", "Surprise Me"], episodes: ["s16e3", "s16e4"], why: "A Brooklyn Seder becomes a two-episode conflict arc, with fallout carrying into Carole’s gala. Includes discussion of distressing tabloid history and relationship conflict."},
   {
     goal: "Quick Episode",
@@ -836,7 +836,10 @@ const lexLibrary = [
     "episodes": [
       "s9e18"
     ],
-    "why": "Mexico villa bonding and uninhibited group silliness."
+    "why": "Mexico villa bonding and uninhibited group silliness.",
+    "vibes": [
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -851,7 +854,10 @@ const lexLibrary = [
     "episodes": [
       "s10e8"
     ],
-    "why": "A Berkshires murder mystery and costume party."
+    "why": "A Berkshires murder mystery and costume party.",
+    "vibes": [
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -866,7 +872,11 @@ const lexLibrary = [
     "episodes": [
       "s12e11"
     ],
-    "why": "Halloween at Blood Manor in New York."
+    "why": "Halloween at Blood Manor in New York.",
+    "vibes": [
+      "nyc",
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -881,7 +891,11 @@ const lexLibrary = [
     "episodes": [
       "s16e1"
     ],
-    "why": "Jessel’s Lunar New Year gathering and immediate new-cast drama."
+    "why": "Jessel’s Lunar New Year gathering and immediate new-cast drama.",
+    "vibes": [
+      "nyc",
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -896,7 +910,10 @@ const lexLibrary = [
     "episodes": [
       "s3e7"
     ],
-    "why": "Sonja joins the ensemble and introduces her townhouse life."
+    "why": "Sonja joins the ensemble and introduces her townhouse life.",
+    "vibes": [
+      "nyc"
+    ]
   },
   {
     "lexChoice": true,
@@ -911,7 +928,10 @@ const lexLibrary = [
     "episodes": [
       "s5e6"
     ],
-    "why": "Heather hosts the women in London."
+    "why": "Heather hosts the women in London.",
+    "vibes": [
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -926,7 +946,10 @@ const lexLibrary = [
     "episodes": [
       "s5e8"
     ],
-    "why": "Wine pranks and retaliation."
+    "why": "Wine pranks and retaliation.",
+    "vibes": [
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -941,7 +964,11 @@ const lexLibrary = [
     "episodes": [
       "s5e13"
     ],
-    "why": "St. Barts and the pirate storyline."
+    "why": "St. Barts and the pirate storyline.",
+    "vibes": [
+      "antics",
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -956,7 +983,10 @@ const lexLibrary = [
     "episodes": [
       "s6e2"
     ],
-    "why": "Carole and Aviva’s literary dispute."
+    "why": "Carole and Aviva’s literary dispute.",
+    "vibes": [
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -971,7 +1001,10 @@ const lexLibrary = [
     "episodes": [
       "s6e15"
     ],
-    "why": "Montana activities and group friction."
+    "why": "Montana activities and group friction.",
+    "vibes": [
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -986,7 +1019,11 @@ const lexLibrary = [
     "episodes": [
       "s7e15"
     ],
-    "why": "Heather challenges Luann over overnight guests."
+    "why": "Heather challenges Luann over overnight guests.",
+    "vibes": [
+      "clashes",
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -1001,7 +1038,10 @@ const lexLibrary = [
     "episodes": [
       "s8e20"
     ],
-    "why": "The Tom revelation and its fallout."
+    "why": "The Tom revelation and its fallout.",
+    "vibes": [
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -1016,7 +1056,10 @@ const lexLibrary = [
     "episodes": [
       "s9e9"
     ],
-    "why": "The group raises Tom rumors with Luann."
+    "why": "The group raises Tom rumors with Luann.",
+    "vibes": [
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -1031,7 +1074,10 @@ const lexLibrary = [
     "episodes": [
       "s9e16"
     ],
-    "why": "Mexico room politics and Luann’s tumble."
+    "why": "Mexico room politics and Luann’s tumble.",
+    "vibes": [
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -1046,7 +1092,11 @@ const lexLibrary = [
     "episodes": [
       "s10e2"
     ],
-    "why": "Carole runs the NYC Marathon amid financial accusations about Tinsley."
+    "why": "Carole runs the NYC Marathon amid financial accusations about Tinsley.",
+    "vibes": [
+      "nyc",
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -1061,7 +1111,11 @@ const lexLibrary = [
     "episodes": [
       "s11e5"
     ],
-    "why": "Dog fashion and Halloween preparations."
+    "why": "Dog fashion and Halloween preparations.",
+    "vibes": [
+      "nyc",
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -1076,7 +1130,11 @@ const lexLibrary = [
     "episodes": [
       "s12e4"
     ],
-    "why": "Hamptons party dynamics and tennis."
+    "why": "Hamptons party dynamics and tennis.",
+    "vibes": [
+      "antics",
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -1091,7 +1149,10 @@ const lexLibrary = [
     "episodes": [
       "s12e5"
     ],
-    "why": "Sonja’s fashion show."
+    "why": "Sonja’s fashion show.",
+    "vibes": [
+      "nyc"
+    ]
   },
   {
     "lexChoice": true,
@@ -1106,7 +1167,10 @@ const lexLibrary = [
     "episodes": [
       "s12e20"
     ],
-    "why": "Leah celebrates Married to the Mob."
+    "why": "Leah celebrates Married to the Mob.",
+    "vibes": [
+      "nyc"
+    ]
   },
   {
     "lexChoice": true,
@@ -1121,7 +1185,10 @@ const lexLibrary = [
     "episodes": [
       "s13e10"
     ],
-    "why": "Salem historical excursions."
+    "why": "Salem historical excursions.",
+    "vibes": [
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -1136,7 +1203,11 @@ const lexLibrary = [
     "episodes": [
       "s14e1"
     ],
-    "why": "The reboot and cheese dispute."
+    "why": "The reboot and cheese dispute.",
+    "vibes": [
+      "nyc",
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -1151,7 +1222,11 @@ const lexLibrary = [
     "episodes": [
       "s14e13"
     ],
-    "why": "Couples night at Swingers."
+    "why": "Couples night at Swingers.",
+    "vibes": [
+      "nyc",
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -1166,7 +1241,11 @@ const lexLibrary = [
     "episodes": [
       "s15e5"
     ],
-    "why": "A mystery-themed gathering."
+    "why": "A mystery-themed gathering.",
+    "vibes": [
+      "nyc",
+      "antics"
+    ]
   },
   {
     "lexChoice": true,
@@ -1181,7 +1260,10 @@ const lexLibrary = [
     "episodes": [
       "s15e11"
     ],
-    "why": "Puerto Rico room assignments."
+    "why": "Puerto Rico room assignments.",
+    "vibes": [
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -1196,7 +1278,10 @@ const lexLibrary = [
     "episodes": [
       "s16e5"
     ],
-    "why": "Moskito Island gossip and marriage discussions."
+    "why": "Moskito Island gossip and marriage discussions.",
+    "vibes": [
+      "clashes"
+    ]
   },
   {
     "lexChoice": true,
@@ -1212,7 +1297,12 @@ const lexLibrary = [
       "s12e4",
       "s12e5"
     ],
-    "why": "Hamptons social dynamics followed by Sonja’s Fashion Week ambitions."
+    "why": "Hamptons social dynamics followed by Sonja’s Fashion Week ambitions.",
+    "vibes": [
+      "nyc",
+      "antics"
+    ],
+    "title": "Hamptons to the runway"
   },
   {
     "lexChoice": true,
@@ -1227,7 +1317,11 @@ const lexLibrary = [
       "s9e16",
       "s9e18"
     ],
-    "why": "Mexico highlights, skipping the heavier middle episode; a sampler."
+    "why": "Mexico highlights, skipping the heavier middle episode; a sampler.",
+    "vibes": [
+      "antics"
+    ],
+    "title": "Mexico highlights"
   },
   {
     "lexChoice": true,
@@ -1242,7 +1336,12 @@ const lexLibrary = [
       "s5e13",
       "s5e14"
     ],
-    "why": "The pirate encounter and subsequent alibis."
+    "why": "The pirate encounter and subsequent alibis.",
+    "vibes": [
+      "antics",
+      "clashes"
+    ],
+    "title": "Pirate alibis"
   },
   {
     "lexChoice": true,
@@ -1257,7 +1356,11 @@ const lexLibrary = [
       "s13e9",
       "s13e10"
     ],
-    "why": "Salem and historical excursions."
+    "why": "Salem and historical excursions.",
+    "vibes": [
+      "antics"
+    ],
+    "title": "Witching around Salem"
   },
   {
     "lexChoice": true,
@@ -1272,7 +1375,11 @@ const lexLibrary = [
       "s16e5",
       "s16e6"
     ],
-    "why": "Moskito Island gossip and escalating tensions."
+    "why": "Moskito Island gossip and escalating tensions.",
+    "vibes": [
+      "clashes"
+    ],
+    "title": "Moskito Island gossip"
   },
   {
     "lexChoice": true,
@@ -1288,7 +1395,12 @@ const lexLibrary = [
       "s5e14",
       "s5e15"
     ],
-    "why": "St. Barts pirate revelations and vacation fallout."
+    "why": "St. Barts pirate revelations and vacation fallout.",
+    "vibes": [
+      "antics",
+      "clashes"
+    ],
+    "title": "The St. Barts pirate saga"
   },
   {
     "lexChoice": true,
@@ -1305,7 +1417,12 @@ const lexLibrary = [
       "s7e14",
       "s7e15"
     ],
-    "why": "Turks and Caicos villa dynamics and the uncool confrontation."
+    "why": "Turks and Caicos villa dynamics and the uncool confrontation.",
+    "vibes": [
+      "antics",
+      "clashes"
+    ],
+    "title": "Turks and Caicos"
   },
   {
     "lexChoice": true,
@@ -1321,7 +1438,11 @@ const lexLibrary = [
       "s9e17",
       "s9e18"
     ],
-    "why": "Mexico room politics, tequila and group bonding; includes heavier arguments."
+    "why": "Mexico room politics, tequila and group bonding; includes heavier arguments.",
+    "vibes": [
+      "antics"
+    ],
+    "title": "Tequila in Mexico"
   },
   {
     "lexChoice": true,
@@ -1338,7 +1459,12 @@ const lexLibrary = [
       "s12e18",
       "s12e19"
     ],
-    "why": "Cancun vacation activities and group friction."
+    "why": "Cancun vacation activities and group friction.",
+    "vibes": [
+      "antics",
+      "clashes"
+    ],
+    "title": "Cancun antics"
   },
   {
     "lexChoice": true,
@@ -1354,7 +1480,12 @@ const lexLibrary = [
       "s13e10",
       "s13e11"
     ],
-    "why": "Salem historical outings and contrasting personalities."
+    "why": "Salem historical outings and contrasting personalities.",
+    "vibes": [
+      "antics",
+      "clashes"
+    ],
+    "title": "Witching around Salem"
   },
   {
     "lexChoice": true,
@@ -1370,7 +1501,202 @@ const lexLibrary = [
       "s16e6",
       "s16e7"
     ],
-    "why": "Moskito Island marriage rumors and loyalty disputes."
+    "why": "Moskito Island marriage rumors and loyalty disputes.",
+    "vibes": [
+      "clashes"
+    ],
+    "title": "Trouble in paradise"
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "proposed combination based on Lex Index",
+    "episodes": [
+      "s12e3",
+      "s12e4",
+      "s12e5"
+    ],
+    "title": "Hamptons to Fashion Week",
+    "vibes": [
+      "nyc",
+      "antics"
+    ],
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "Cozy & Insular",
+      "High-Energy Urban"
+    ],
+    "why": "A winery outing, tennis rivalry and Sonja’s runway show offer a mix of weekend antics and city fashion."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "proposed combination based on Lex Index",
+    "episodes": [
+      "s12e5",
+      "s12e20"
+    ],
+    "title": "New York fashion and business",
+    "vibes": [
+      "nyc"
+    ],
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "why": "A sampler of Sonja’s runway show and Leah’s streetwear anniversary. Lex enjoys professional ventures, fashion and Leah’s brand story."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "proposed combination based on Lex Index",
+    "episodes": [
+      "s12e5",
+      "s12e11",
+      "s12e20"
+    ],
+    "title": "Season 12 city sampler",
+    "vibes": [
+      "nyc",
+      "antics"
+    ],
+    "mess": [
+      "Low-Stakes Nonsense"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "why": "Fashion Week, Halloween at Blood Manor and Married to the Mob’s anniversary. A city-focused sampler rather than a continuous arc."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "proposed combination based on Lex Index",
+    "episodes": [
+      "s12e9",
+      "s12e10",
+      "s12e11"
+    ],
+    "title": "Newport to Halloween",
+    "vibes": [
+      "antics",
+      "clashes"
+    ],
+    "mess": [
+      "Emotional Fallout",
+      "High-Stakes Confrontation"
+    ],
+    "atmosphere": [
+      "Cozy & Insular",
+      "High-Energy Urban"
+    ],
+    "why": "Leah invites her sister to Newport, tensions rise at dinner, and the women return to NYC for Blood Manor. Includes conflict as well as playful activities."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "proposed combination based on Lex Index",
+    "episodes": [
+      "s12e16",
+      "s12e17",
+      "s12e18"
+    ],
+    "title": "Cancun beach antics",
+    "vibes": [
+      "antics",
+      "clashes"
+    ],
+    "mess": [
+      "Low-Stakes Nonsense",
+      "High-Stakes Confrontation"
+    ],
+    "atmosphere": [
+      "Tropical & Chaotic"
+    ],
+    "why": "Cancun confrontations, camel rides and Luann and Leah bringing men back to the villa."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "proposed combination based on Lex Index",
+    "episodes": [
+      "s13e10",
+      "s13e11"
+    ],
+    "title": "Salem after dark",
+    "vibes": [
+      "clashes"
+    ],
+    "mess": [
+      "High-Stakes Confrontation"
+    ],
+    "atmosphere": [
+      "Cozy & Insular"
+    ],
+    "why": "The Pioneer Village outing and the continuing Sonja–Bershan argument. Salem is among Lex’s personally recommended trips."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "proposed combination based on Lex Index",
+    "episodes": [
+      "s16e1",
+      "s16e2",
+      "s16e3"
+    ],
+    "title": "A new New York",
+    "vibes": [
+      "nyc",
+      "clashes"
+    ],
+    "mess": [
+      "Petty Social Politics",
+      "High-Stakes Confrontation"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "why": "Lunar New Year, Daisy’s brunch and a Brooklyn Seder introduce the new group and its tensions."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "proposed combination based on Lex Index",
+    "episodes": [
+      "s16e1",
+      "s16e3"
+    ],
+    "title": "New faces, New York tables",
+    "vibes": [
+      "nyc",
+      "clashes"
+    ],
+    "mess": [
+      "Petty Social Politics"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "why": "A sampler of the Lunar New Year gathering and Brooklyn Seder; the premiere is one of Lex’s confirmed favorites."
+  },
+  {
+    "lexChoice": true,
+    "lexEvidence": "proposed combination based on Lex Index",
+    "episodes": [
+      "s16e8",
+      "s16e9",
+      "s16e10",
+      "s16e11"
+    ],
+    "title": "Back in the city",
+    "vibes": [
+      "nyc",
+      "clashes"
+    ],
+    "mess": [
+      "Petty Social Politics",
+      "Emotional Fallout"
+    ],
+    "atmosphere": [
+      "High-Energy Urban"
+    ],
+    "why": "Husband rumors, invitation disputes and birthday-party fallout. Lex enjoys these storylines, not necessarily every individual episode."
   }
 ];
 const moodAdditions = [
@@ -1426,6 +1752,45 @@ const moodAdditions = [
       "s16e3"
     ],
     "why": "A Brooklyn Seder brings etiquette and interpersonal conflict together."
+  },
+  {
+    "episodes": [
+      "s16e2"
+    ],
+    "mess": [
+      "Emotional Fallout",
+      "Petty Social Politics"
+    ],
+    "why": "Daisy’s brunch revives old tensions while Erin faces a home emergency.",
+    "atmosphere": [
+      "High-Energy Urban"
+    ]
+  },
+  {
+    "episodes": [
+      "s16e8"
+    ],
+    "mess": [
+      "Emotional Fallout",
+      "High-Stakes Confrontation"
+    ],
+    "why": "Husband rumors follow the group back to New York.",
+    "atmosphere": [
+      "High-Energy Urban"
+    ]
+  },
+  {
+    "episodes": [
+      "s16e11"
+    ],
+    "mess": [
+      "Petty Social Politics",
+      "High-Stakes Confrontation"
+    ],
+    "why": "Jessel’s birthday, Erika’s gift and Carole’s essay fuel fresh conflict.",
+    "atmosphere": [
+      "High-Energy Urban"
+    ]
   }
 ];
 const moodLibrary = [...prescriptions.filter(p=>!p.lexOnly && p.episodes.length<=4), ...lexLibrary, ...moodAdditions];
@@ -1521,11 +1886,11 @@ function setupPickerCardFlow() {
   flowControls.append(backButton, nextButton);
   actions.prepend(flowControls);
 
-  submitButton.textContent = "Write my prescription";
+  submitButton.textContent = "Show my picks";
 
   function getActiveSteps() {
-    const lex = el.pickerForm.querySelector('input[name="mode"]:checked')?.value === "Lex's Choice";
-    return allSteps.filter(step => lex ? ['mode','lex-time'].includes(step.dataset.stepName) : step.dataset.stepName !== 'lex-time');
+    const lex = el.pickerForm.querySelector('input[name="mode"]:checked')?.value === "Lex's Recs";
+    return allSteps.filter(step => lex ? ['mode','lex-time','lex-vibe'].includes(step.dataset.stepName) : !['lex-time','lex-vibe'].includes(step.dataset.stepName));
   }
 
   function updateStep() {
@@ -1586,6 +1951,7 @@ function readPickerAnswers() {
   return {
     mode: form.querySelector('input[name="mode"]:checked')?.value || "Match my mood",
     lexTime: form.querySelector('input[name="lexTime"]:checked')?.value || "Surprise Me",
+    lexVibe: form.querySelector('input[name="lexVibe"]:checked')?.value || "any",
     mess: [...form.querySelectorAll('input[name="mess"]:checked')].map((input) => input.value),
     time: form.querySelector('input[name="time"]:checked')?.value || "Single Episode",
     atmosphere: form.querySelector('input[name="atmosphere"]:checked')?.value || "Surprise Me"
@@ -1607,11 +1973,12 @@ function matchesEpisodeCount(prescription, time) {
 }
 
 function pickPrescription(answers, excludeKey = "") {
-  const wantsLex = answers.mode === "Lex's Choice";
+  const wantsLex = answers.mode === "Lex's Recs";
   const key = p => p.episodes.join("|");
   const available = p => p.episodes.every(id => allEpisodes.some(e => e.id === id));
   let candidates = (wantsLex ? lexLibrary.filter(p=>answers.lexTime==="Surprise Me" || matchesEpisodeCount(p, answers.lexTime)) : moodLibrary.filter(p=>matchesEpisodeCount(p, answers.time))).filter(available);
   candidates = [...new Map(candidates.map(p=>[key(p),p])).values()];
+  if (wantsLex && answers.lexVibe && answers.lexVibe !== "any") candidates = candidates.filter(p=>p.vibes?.includes(answers.lexVibe));
   if (!wantsLex && answers.atmosphere !== "Surprise Me") {
     const exact = candidates.filter(p=>p.atmosphere.includes(answers.atmosphere));
     if (exact.length) candidates = exact;
@@ -1636,37 +2003,36 @@ function episodeCode(episode) {
 function renderPrescription(answers, options = {}) {
   const match = pickPrescription(answers, options.excludeKey ? lastPrescriptionKey : "");
   const episodes = match ? match.episodes.map(findEpisodeById).filter(Boolean) : [];
-
   if (!episodes.length) {
-    el.prescription.innerHTML = `<div class="empty-state">No prescription available yet for that combination.</div>`;
+    el.prescription.innerHTML = '<div class="empty-state">No matching recommendation yet. <button type="button" class="button ghost" data-picker-action="reset">Reset quiz</button></div>';
     return;
   }
-
   lastPrescriptionKey = match.episodes.join("|");
-
-  const first = episodes[0];
-  const startLine = `${episodeCode(first)} — “${escapeHtml(first.episodeTitle || `Episode ${first.ep}`)}”`;
-  const watchOrder = episodes.length > 1
-    ? episodes.slice(1).map((episode) => `<a href="#${episode.id}" data-episode-jump="${episode.id}">${episodeCode(episode)}</a>`).join(" → ")
-    : "";
-
+  const lex = answers.mode === "Lex's Recs";
+  const bucket = episodes.length===1 ? "One and Done" : episodes.length===2 ? "Double Feature" : "Story Arc";
+  const continuous = episodes.every((ep,i)=>i===0 || ep.season===episodes[i-1].season && ep.ep===episodes[i-1].ep+1);
+  const reason = episodes.length===1 ? "Why this one?" : episodes.length===2 ? "Why these two?" : continuous ? "Why this arc?" : "Why these episodes?";
   el.prescription.innerHTML = `
-    <article class="prescription-card">
-      <div class="prescription-label">${answers.mode === "Lex\'s Choice" ? "Lex’s Recs: " + (answers.lexTime === "Surprise Me" ? "Surprise Me · " : "") + (episodes.length === 1 ? "One and Done · " : episodes.length === 2 ? "Double Feature · " : "Story Arc · ") : ""}${episodes.length === 1 ? "Single episode" : `${episodes.length}-episode ${match.episodes.every((id, i) => i === 0 || episodes[i].season === episodes[i - 1].season && episodes[i].ep === episodes[i - 1].ep + 1) ? "run" : "sampler"}`}</div>
-      <p class="prescription-start">
-        <a href="#${first.id}" data-episode-jump="${first.id}">${startLine}</a>
-      </p>
-      ${watchOrder ? `<p class="prescription-watch"><strong>Then watch:</strong> ${watchOrder}</p>` : ""}
-      <p class="prescription-why"><strong>Why:</strong> ${escapeHtml(match.why)}</p>
-      ${answers.mode === "Lex\'s Choice" && match.lexEvidence === "favorite" ? `<p class="prescription-also">One of Lex’s confirmed favorite episodes.</p>` : ""}
-      ${answers.mode !== "Lex\'s Choice" && answers.atmosphere !== "Surprise Me" && !match.atmosphere.includes(answers.atmosphere) ? `<p class="prescription-also">Closest available match; the setting differs from your selection.</p>` : ""}
-      ${match.alsoConsider ? `<p class="prescription-also"><strong>Also consider:</strong> ${escapeHtml(match.alsoConsider)}</p>` : ""}
+    <article class="prescription-card editorial-result">
+      <div class="prescription-label">${lex ? "Lex’s Recs · " : "Match My Mood · "}${bucket}${lex && answers.lexTime==="Surprise Me" ? " · Surprise Me" : ""}</div>
+      ${episodes.length>1 ? `<h3 class="result-heading">${escapeHtml(match.title || (continuous ? "Watch in order" : "A curated sampler"))}</h3>` : ""}
+      <div class="result-episodes">
+        ${episodes.map(ep=>`<section class="result-episode">
+          <div class="result-code">${episodeCode(ep)}</div>
+          <h4><a href="#${ep.id}" data-episode-jump="${ep.id}">${escapeHtml(ep.episodeTitle || "Episode "+ep.ep)}</a></h4>
+          <p>${escapeHtml(ep.editorialSynopsis || ep.officialSynopsis || ep.synopsis || "")}</p>
+        </section>`).join("")}
+      </div>
+      <div class="result-reason"><h4>${reason}</h4><p>${escapeHtml(match.why)}</p>
+      ${lex && match.lexEvidence==="favorite" ? '<p class="result-breadcrumb">One of Lex’s confirmed favorite episodes.</p>' : ""}
+      ${!lex && answers.atmosphere!=="Surprise Me" && !match.atmosphere.includes(answers.atmosphere) ? '<p class="result-breadcrumb">Closest available match; the setting differs from your selection.</p>' : ""}
+      ${!lex && answers.mess.length && !match.mess.some(tag=>answers.mess.includes(tag)) ? '<p class="result-breadcrumb">The requested mood is not available at this viewing length and setting.</p>' : ""}
+      </div>
       <div class="prescription-actions">
-        <button type="button" class="button ghost prescription-try" data-picker-action="try-again">Try another prescription</button>
+        <button type="button" class="button ghost prescription-try" data-picker-action="try-again">Try another recommendation</button>
         <button type="button" class="button ghost prescription-reset" data-picker-action="reset">Reset quiz</button>
       </div>
-    </article>
-  `;
+    </article>`;
 }
 
 function handlePickerAction(event) {
