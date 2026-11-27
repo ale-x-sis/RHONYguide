@@ -1883,8 +1883,9 @@ function setupPickerCardFlow() {
   nextButton.className = "button primary picker-next";
   nextButton.textContent = "Next";
 
-  flowControls.append(backButton, nextButton);
+  flowControls.append(backButton);
   actions.prepend(flowControls);
+  actions.insertBefore(nextButton, submitButton);
 
   submitButton.textContent = "Show my picks";
 
@@ -1907,7 +1908,7 @@ function setupPickerCardFlow() {
     progress.textContent = `Question ${currentStep + 1} of ${activeSteps.length}`;
 
     backButton.hidden = currentStep === 0;
-    nextButton.hidden = currentStep === activeSteps.length - 1;
+    nextButton.hidden = activeSteps[currentStep]?.dataset.stepName !== 'mess';
     submitButton.hidden = currentStep !== activeSteps.length - 1;
   }
 
@@ -1922,10 +1923,28 @@ function setupPickerCardFlow() {
     updateStep();
   });
 
-  el.pickerForm.querySelectorAll('input[name="mode"]').forEach(input => input.addEventListener("change", () => { currentStep = 0; updateStep(); }));
+  // Radio choices advance on explicit activation, including a previously selected answer.
+  // The last question keeps a confirmation button; multi-select keeps Next.
+  allSteps.forEach(step => {
+    step.addEventListener("click", event => {
+      const input = event.target;
+      if (!input.matches('input[type="radio"]') || step.hidden) return;
+      const activeSteps = getActiveSteps();
+      const index = activeSteps.indexOf(step);
+      if (index < 0 || index >= activeSteps.length - 1) return;
+      currentStep = index + 1;
+      updateStep();
+      activeSteps[currentStep].querySelector(".picker-question-title")?.focus({preventScroll:true});
+    });
+    step.addEventListener("keydown", event => {
+      if (event.key !== "Enter" || !event.target.matches('input[type="radio"]')) return;
+      event.preventDefault();
+      event.target.click();
+    });
+  });
   el.pickerForm.addEventListener("reset", () => {
     currentStep = 0;
-    updateStep();
+    queueMicrotask(updateStep);
   });
 
   updateStep();
