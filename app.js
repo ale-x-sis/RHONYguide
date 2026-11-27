@@ -272,6 +272,36 @@ castArchetypes["Erika Hammond"].quotes.push({ text: "You might want to look into
 castArchetypes["Hailey Glassman"].quotes.push({ text: "Talk to the hand because the face ain't listening.", context: "During the fallout at Jessel’s birthday party.", episodeId: "s16e11" });
 castArchetypes["Sai De Silva"].quotes.push({ text: "I don't give a rat's cock if anyone likes me.", context: "During the post-trip conflict.", episodeId: "s16e8" });
 
+// Editorial display selections: one aired quote per profile.
+const castEditorial = {
+  "Alex McCord": { quote:{...castArchetypes["Alex McCord"].quotes[0],episodeId:"s3e10"} },
+  "Bethenny Frankel": { quote:castArchetypes["Bethenny Frankel"].quotes[1] },
+  "Brynn Whitfield": { knownFor:["Quick-witted one-liners","Flirting","Stirring the pot"] },
+  "Dorinda Medley": { quote:castArchetypes["Dorinda Medley"].quotes[1] },
+  "Erin Lichy": { knownFor:["Cheese controversy","Hamptons hosting","Spreading rumors"] },
+  "Heather Thomson": { knownFor:["Standing up to Aviva and Ramona","Toaster oven branding saga"] },
+  "Jill Zarin": { knownFor:["Surprise Scary Island arrival"] },
+  "Jules Wainstein": { knownFor:["Candid conversations about body image"], quote:{text:"I'm not perfect, just, you know, close to it.",context:"Joking about her self-confidence during dinner with Dorinda and Carole.",episodeId:"s8e5",sourceUrl:"https://www.bustle.com/articles/186024-jules-wainstein-quotes-to-remember-her-time-on-real-housewives-of-new-york-city"} },
+  "Kelly Bensimon": { quote:castArchetypes["Kelly Bensimon"].quotes[1] },
+  "Luann de Lesseps": { knownFor:["St. Barts pirate storyline","Cabaret era"] },
+  "Sai De Silva": { knownFor:["Food complaints","Blunt commentary","Navigating her divorce"], quote:castArchetypes["Sai De Silva"].quotes[1] },
+  "Carole Radziwill": { knownFor:["NYC Marathon","Friendship fallout with Bethenny"],quote:castArchetypes["Carole Radziwill"].quotes[0] },
+  "Hailey Glassman": { knownFor:["Unapologetic stoner","Unconventional marriage"],quote:{text:"Gucci's not expensive.",context:"Responding to Daisy's questions about her lifestyle.",episodeId:"s16e7"} },
+  "Daisy Toye": { knownFor:["Private plane expectations","Putting her foot in her mouth"],quote:castArchetypes["Daisy Toye"].quotes[1] },
+  "Erika Hammond": { knownFor:["Billionaire lifestyle","Frugal spending habits"],quote:{text:"You might want to look into Prevagen.",context:"Texting Daisy after their birthday invitation dispute.",episodeId:"s16e10"} },
+  "Devyn Simone": { knownFor:["Bringing receipts","Quick-witted clapbacks"],quote:{text:"Bitch, I'm perceptive!",context:"Responding to Daisy questioning her knowledge of the group's drama at Jessel's birthday party.",episodeId:"s16e11"} },
+  "Jessel Taank": { knownFor:["Up-and-coming Tribeca","Pavit's international food trips","Grievance lists"] },
+  "Sonja Morgan": { knownFor:["Ramona's ride-or-die","Party-girl antics"] },
+  "Tinsley Mortimer": { knownFor:["Relationship with Scott","Crying over frozen eggs in clown makeup"] }
+};
+for (const [name,raw] of Object.entries(castArchetypes)) {
+  const editorial = castEditorial[name] || {};
+  raw.knownFor = (editorial.knownFor || raw.knownFor || []).flatMap(v=>v.split("•")).map(v=>v.trim()).filter(Boolean);
+  raw.quotes = [editorial.quote || raw.quotes?.[0]].filter(Boolean);
+}
+castArchetypes["Alex McCord"].verificationNote = "Episode attribution corrected to S3E10.";
+castArchetypes["Jules Wainstein"].verificationNote = "Quote wording documented by Bustle; S8E5 attribution supplied by Lex.";
+
 const biasThemes = {
   "social-fatigue": ["exhaust", "draining", "drain", "fatigue", "defensiveness", "interrupt", "group dynamic", "socially"],
   "class-elitism": ["class", "elitist", "status", "privilege", "judgment", "etiquette", "upper", "hosting"],
@@ -1464,7 +1494,7 @@ function renderCastMeta(name) {
       ${raw.astro ? `<p class="cast-astro">${escapeHtml(raw.astro)}</p>` : ""}
       <p class="cast-seasons">Seasons ${escapeHtml(raw.seasons || "Pending")} · ${raw.type === "Friend" ? "Friend Of" : escapeHtml(raw.type || "Pending")}</p>
       <div class="cast-known"><div class="cast-label">Known for</div><p>${knownFor}</p></div>
-      <div class="cast-quote-section"><div class="cast-label">Quotes</div><div class="cast-quotes">${quotes}</div></div>
+      <div class="cast-quote-section"><div class="cast-label">Quote</div><div class="cast-quotes">${quotes}</div></div>
     </div>
   `;
 }
