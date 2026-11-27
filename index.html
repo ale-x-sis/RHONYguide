@@ -74,16 +74,40 @@
 </button>
 
 <form class="picker-form" id="pickerForm" aria-label="Pick my episode" hidden>
-          <fieldset class="picker-q" data-step-name="mode">
-            <legend>How should we pick?</legend>
+          <fieldset class="picker-q" data-step-name="mode" aria-labelledby="picker-question-mode">
+            <legend class="picker-sr-only">How should we pick?</legend>
+            <h3 class="picker-question-title" id="picker-question-mode" tabindex="-1">How should we pick?</h3>
             <div class="picker-options">
               <label><input type="radio" name="mode" value="Match my mood" checked /> Match my mood</label>
-              <label><input type="radio" name="mode" value="Lex's Choice" /> Lex's Choice</label>
+              <label><input type="radio" name="mode" value="Lex's Recs" /> Lex's Recs</label>
             </div>
           </fieldset>
 
-          <fieldset class="picker-q" data-step-name="time">
-            <legend>How many episodes?</legend>
+          <fieldset class="picker-q" data-step-name="lex-time" aria-labelledby="picker-question-lex-time">
+            <legend class="picker-sr-only">How much RHONY are we getting into?</legend>
+            <h3 class="picker-question-title" id="picker-question-lex-time" tabindex="-1">How much RHONY are we getting into?</h3>
+            <div class="picker-options">
+              <label><input type="radio" name="lexTime" value="Single Episode" /> One and Done</label>
+              <label><input type="radio" name="lexTime" value="Two-Episode Taste" /> Double Feature</label>
+              <label><input type="radio" name="lexTime" value="Story Arc" /> Story Arc</label>
+              <label><input type="radio" name="lexTime" value="Surprise Me" checked /> Surprise Me</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="picker-q" data-step-name="lex-vibe" aria-labelledby="picker-question-lex-vibe">
+            <legend class="picker-sr-only">What sounds good?</legend>
+            <h3 class="picker-question-title" id="picker-question-lex-vibe" tabindex="-1">What sounds good?</h3>
+            <div class="picker-options">
+              <label><input type="radio" name="lexVibe" value="nyc" /> A little NYC flavor</label>
+              <label><input type="radio" name="lexVibe" value="antics" /> Antics &amp; absurdity</label>
+              <label><input type="radio" name="lexVibe" value="clashes" /> Clashes &amp; comebacks</label>
+              <label><input type="radio" name="lexVibe" value="any" checked /> Surprise me</label>
+            </div>
+          </fieldset>
+
+          <fieldset class="picker-q" data-step-name="time" aria-labelledby="picker-question-time">
+            <legend class="picker-sr-only">How many episodes?</legend>
+            <h3 class="picker-question-title" id="picker-question-time" tabindex="-1">How many episodes?</h3>
             <div class="picker-options">
               <label><input type="radio" name="time" value="Single Episode" checked /> One episode</label>
               <label><input type="radio" name="time" value="Two-Episode Taste" /> Two episodes</label>
@@ -91,17 +115,21 @@
             </div>
           </fieldset>
 
-          <fieldset class="picker-q" data-step-name="mess">
-            <legend>What kind of mess? <span class="picker-hint">Pick up to 2.</span></legend>
+          <fieldset class="picker-q" data-step-name="mess" aria-labelledby="picker-question-mess">
+            <legend class="picker-sr-only">What kind of mess? Pick up to 2.</legend>
+            <h3 class="picker-question-title" id="picker-question-mess" tabindex="-1">What kind of mess? <span class="picker-hint">Pick up to 2.</span></h3>
             <div class="picker-options" id="messOptions">
               <label><input type="checkbox" name="mess" value="Iconic Canon" /> Iconic moments</label>
               <label><input type="checkbox" name="mess" value="Low-Stakes Nonsense" /> Low-stakes nonsense</label>
               <label><input type="checkbox" name="mess" value="Emotional Fallout" /> Emotional fallout</label>
+              <label><input type="checkbox" name="mess" value="Petty Social Politics" /> Petty social politics</label>
+              <label><input type="checkbox" name="mess" value="High-Stakes Confrontation" /> High-stakes confrontation</label>
             </div>
           </fieldset>
 
-          <fieldset class="picker-q" data-step-name="atmosphere">
-            <legend>What's the atmosphere?</legend>
+          <fieldset class="picker-q" data-step-name="atmosphere" aria-labelledby="picker-question-atmosphere">
+            <legend class="picker-sr-only">What's the atmosphere?</legend>
+            <h3 class="picker-question-title" id="picker-question-atmosphere" tabindex="-1">What's the atmosphere?</h3>
             <div class="picker-options">
               <label><input type="radio" name="atmosphere" value="Tropical & Chaotic" /> Tropical & Chaotic</label>
               <label><input type="radio" name="atmosphere" value="Cozy & Insular" /> Cozy & Insular</label>
@@ -111,7 +139,7 @@
           </fieldset>
 
           <div class="picker-actions">
-            <button type="submit" class="button primary">Write my prescription</button>
+            <button type="submit" class="button primary">Show my picks</button>
           </div>
         </form>
 
